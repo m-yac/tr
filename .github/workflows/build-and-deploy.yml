@@ -14,7 +14,7 @@ jobs:
           submodules: recursive
 
       - name: Install and Build
-        run: node ./src/main.js
+        run: sh build.sh
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.1
