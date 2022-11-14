@@ -102,11 +102,12 @@
     "choices": {},
     "text": [
       ["", "*בָּרוּךְ אַתָּה", "[Blessed](0) [are you](1)", {}],
-      ["", "*יְיָ *אֱלֹהֵ_|ינוּ", "[*Adonai*](0) [our](2) [God](1)", {}],
+      ["", "*יְיָ", "[*Adonai*](0)", {}],
+      ["", "*אֱלֹהֵ_|ינוּ", "[our](2) [God](1)", {}],
       ["", "*מֶלֶךְ *הָ|עוֹלָם", "[Ruler of](0) [the](1) [Universe](2)", {}],
       ["", "שֶׁ|הֶחֱיָ_|נוּ", "[who](0) [has given](1) [us](2) [life](1),", {}],
       ["", "וְ|קִיְּמָ_|נוּ", "[sustained](1) [us](2),", {"1": [1, "Lit. \"and\", implied in the English by commas."]}],
-      ["", "וְ|הִגִּיעָ_|נוּ", "[and](0) [has brought](1) [us](2)", {}],
+      ["", "וְ|הִגִּיעָ_|נוּ", "[and](0) [brought](1) [us](2)", {}],
       ["", "לַ|זְּמַן הַזֶּה", "[to](0) [this](2) [time](1).", {"1": [1, "Or: \"moment\", or: \"season\" – depending on the context and/or intention."]}]
     ]
   },

@@ -312,7 +312,7 @@ function addHeTlEnRow(pr, trlit, ix, colors, line_nos = true) {
 prayers = require("./prayers.json");
 
 // Make index.html
-const index_pr = { "text": [ ["", "זִכְרוֹנָ|ם לִ|בְרָכָה", "[May](4) [their](1) [memory](0) [be](4) [for](2) [a blessing](3)"] ] };
+const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה", "[May](4) [their](1) [memory](0) [be](4) [for](2) [a blessing](3)"] ] };
 const [index_row, index_colors] = addHeTlEnRow(index_pr, trlit_std, 0, {}, false);
 let index = `<!DOCTYPE html><html>\n`;
 index += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
