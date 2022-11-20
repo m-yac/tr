@@ -76,7 +76,11 @@ function transliterate(txt, trlit, includeSeps = true) {
     }
     // English Exceptions
     else if (gp.replace("_", "") in trlit["exceptions"]) {
-      result += trlit["exceptions"][gp.replace("_", "")];
+      let to_add = trlit["exceptions"][gp.replace("_", "")];
+      if (to_add[0].match(/[aeiou]/i) && last_char.match(/[aeiou]/i)) {
+        to_add = trlit["multi-vowel-character"] + to_add;
+      }
+      result += to_add;
       last_char = result[result.length - 1];
       last_was_en_exception = true;
     }
@@ -130,7 +134,7 @@ function transliterate(txt, trlit, includeSeps = true) {
         // Consonants
         if (in_consonants) {
           let consonant_to_add = curr_vowels_en.length > 0 ? curr_consonant_en_with_vowel : curr_consonant_en_without_vowel;
-          if (consonant_to_add.match(/[aeiou]/g) && last_char.match(/[aeiou]/g)) {
+          if (consonant_to_add.match(/[aeiou]/i) && last_char.match(/[aeiou]/i)) {
             consonant_to_add = trlit["multi-vowel-character"] + consonant_to_add;
           }
           gp_result += consonant_to_add + curr_vowels_en;
@@ -174,7 +178,7 @@ function transliterate(txt, trlit, includeSeps = true) {
           else if (curr_consonant_en_with_vowel.length > 0) {
             in_prog_last_char = curr_consonant_en_with_vowel[curr_consonant_en_with_vowel.length - 1];
           }
-          if (in_prog_last_char.match(/[aeiou]/g)) {
+          if (in_prog_last_char.match(/[aeiou]/i)) {
             curr_vowels_en += trlit["multi-vowel-character"];
             if (trlit["vowels"][gp[i]] !== trlit["multi-vowel-character"]) {
               curr_vowels_en += trlit["vowels"][gp[i]];
@@ -186,7 +190,7 @@ function transliterate(txt, trlit, includeSeps = true) {
         }
       }
       let consonant_to_add = curr_vowels_en.length > 0 ? curr_consonant_en_with_vowel : curr_consonant_en_without_vowel;
-      if (consonant_to_add.match(/[aeiou]/g) && last_char.match(/[aeiou]/g)) {
+      if (consonant_to_add.match(/[aeiou]/i) && last_char.match(/[aeiou]/i)) {
         consonant_to_add = trlit["multi-vowel-character"] + consonant_to_add;
       }
       gp_result += consonant_to_add + curr_vowels_en;
@@ -284,7 +288,7 @@ function addSpansEn(ix, en) {
   return [js, en_html.replace(/\*[^\*]+\*/g, function(v) { return `<i>${v.slice(1,-1)}</i>`; })];
 }
 
-function addHeTlEnRow(pr, trlit, ix, colors, line_nos = true) {
+function getHeTlEnRowTds(pr, trlit, ix, colors) {
   const [_v, he, en, notes] = pr["text"][ix];
   const tl = transliterate(he, trlit, true);
   const [he_max_j, he_html] = addSpansHeTl("he", ix, he);
@@ -298,15 +302,26 @@ function addHeTlEnRow(pr, trlit, ix, colors, line_nos = true) {
       colors[ix+"-"+j] = ibm_color(4/3);
     }
   }
+  const tdHe = `    <td id="ix${ix}-hetd" class="he" dir="rtl">${he_html}</td>\n`;
+  const tdTl = `    <td id="ix${ix}-tltd" class="tl">${tl_html}</td>\n`;
+  const tdEn = `    <td id="ix${ix}-entd" class="en">${en_html}</td>\n`;
+  return [tdHe, tdTl, tdEn, en.length == 0, colors];
+}
+
+function addRow(rowContent, ix, isEmpty_l, isEmpty_r, line_nos = true, suffix = "") {
   let content = "";
-  content += `  <tr id="ix${ix}-tr">`;
-  if (line_nos) { content += `    <td id="ix${ix}-lno1" class="line_no${en.length == 0 ? "_empty" : ""}">/</td>\n`; }
-  content += `    <td id="ix${ix}-hetd" class="he" dir="rtl">${he_html}</td>\n`;
-  content += `    <td id="ix${ix}-tltd" class="tl">${tl_html}</td>\n`;
-  content += `    <td id="ix${ix}-entd" class="en">${en_html}</td>\n`;
-  if (line_nos) { content += `    <td id="ix${ix}-lno2" class="line_no${en.length == 0 ? "_empty" : ""}">/</td>\n`; }
+  content += `  <tr id="ix${ix}-tr${suffix}">`;
+  if (line_nos) { content += `    <td id="ix${ix}-lnoL${suffix}" class="line_no${isEmpty_l ? "_empty" : ""}">/</td>\n`; }
+  content += rowContent;
+  if (line_nos) { content += `    <td id="ix${ix}-lnoR${suffix}" class="line_no${isEmpty_r ? "_empty" : ""}">/</td>\n`; }
   content += `  </tr>\n`;
-  return [content, colors];
+  return content;
+}
+
+function addHeTlEnRow(pr, trlit, ix, colors, line_nos = true) {
+  const [tdHe, tdTl, tdEn, isEmpty, new_colors] = getHeTlEnRowTds(pr, trlit, ix, colors);
+  const content = addRow(tdHe + tdTl + tdEn, ix, isEmpty, isEmpty, line_nos);
+  return [content, new_colors];
 }
 
 prayers = require("./prayers.json");
@@ -337,8 +352,10 @@ index += `</div>\n`;
 index += `<table>\n`;
 for (const pr of Object.keys(prayers).sort()) {
   const page_name = pr.replace(" ", "_") + ".html";
-  const title = "title" in prayers[pr] ? prayers[pr]["title"] : pr;
-  index += `  <tr><td><a href="${page_name}">${title}</a></td></tr>\n`;
+  index += `  <tr class="aHilight">\n`;
+  index += `    <td class="he heStam" dir="rtl"><a href="${page_name}">${prayers[pr]["title"][0]}</a></td>\n`;
+  index += `    <td><a href="${page_name}">${prayers[pr]["title"][1]}</a></td>\n`;
+  index += `  </tr>\n`;
 }
 index += `</table>\n</body></html>`;
 fs.writeFile("./index.html", index, err => {
@@ -348,7 +365,6 @@ fs.writeFile("./index.html", index, err => {
 // Make each prayer's page
 for (const pr in prayers) {
   const page_name = pr.replace(" ", "_") + ".html";
-  const title = "title" in prayers[pr] ? prayers[pr]["title"] : pr;
   let trlit = trlit_std;
   if ("transliteration" in prayers[pr] && "standard" in prayers[pr]["transliteration"]) {
     trlit = _.merge(_.cloneDeep(trlit_std), prayers[pr]["transliteration"]["standard"]);
@@ -357,7 +373,7 @@ for (const pr in prayers) {
   // Header (wait to stringify `colors`!)
   let header = `<!DOCTYPE html><html>\n`;
   header += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
-  header += `<title>${title}</title>\n`;
+  header += `<title>${prayers[pr]["title"][1]}</title>\n`;
   header += `<link rel="stylesheet" href="style.css" />\n`;
   header += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
   header += `<script>var pr = ${JSON.stringify(prayers[pr])};</script>\n`;
@@ -365,7 +381,10 @@ for (const pr in prayers) {
   content += `</head>\n<body>\n`;
   // Title
   content += `<div class="titleAndCredits">\n`;
-  content += `  <h1>${title}</h1>\n`;
+  content += `  <h1>\n`;
+  content += `    <span class="h2He">${prayers[pr]["title"][0]}</span>\n`;
+  content += `    <span class="h2En">${prayers[pr]["title"][1]}</span>\n`;
+  content += `  </h1>\n`;
   if ("text-credit" in prayers[pr]) {
     content += `  <div class="credits">${prayers[pr]["text-credit"]}</div>`;
   }
@@ -398,14 +417,16 @@ for (const pr in prayers) {
     content += `  </tr>\n`;
   }
   content += `</table>\n`;
-  // ...
+  // View controls
   content += `<div class="checkboxes">\n`;
-  content += `  <div id="layoutContainer" class="selectContainer layoutContainer">\n`;
-  content += `    <select id="layout-select" title="Layout" aria-label="Layout" class="layoutContainer">\n`;
-  content += `      <option value="0">1 Col.</option>`
-  content += `      <option value="1">2 Col.</option>`
-  content += `      <option value="2">Blocks</option>`
-  content += `    </select>\n`;
+  content += `  <div class="checkboxContainer darkCheckboxContainer">\n`
+  content += `    <input id="dark-checkbox" name="dark-checkbox" type="checkbox" disabled/>\n`
+  content += `    <label for="dark-checkbox">\n`;
+  content += `      <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->\n`;
+  content += `      <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">\n`;
+  content += `        <path fill="currentColor" d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"/>\n`;
+  content += `      </svg>\n`;
+  content += `    </label>\n`
   content += `  </div>\n`;
   content += `  <div class="checkboxContainer">\n`
   content += `    <input id="he-checkbox" name="he-checkbox" type="checkbox" checked/>\n`
@@ -417,15 +438,42 @@ for (const pr in prayers) {
   content += `  </div>\n`;
   content += `  <div class="checkboxContainer colorCheckboxContainer">\n`
   content += `    <input id="color-checkbox" name="color-checkbox" type="checkbox"/>\n`
-  content += `    <label for="color-checkbox">Color</label>\n`
+  content += `    <label for="color-checkbox">\n`
+  content += `      <!-- Adapted from: https://www.svgrepo.com/svg/155843/paint-bucket-with-a-paint-drop -->\n`;
+  content += `      <svg viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">\n`;
+  content += `        <defs>\n`;
+  content += `          <path id="p1" d="M321.342,231.438c1.247,18.164,16.82,29.531,34.985,28.283c18.165-1.246,32.041-14.633,30.795-32.798 s-36.318-63.804-36.542-50.949C350.271,193.849,320.095,213.273,321.342,231.438z"/>\n`;
+  content += `          <path id="p2" d="M123.587,31.759c-4.533-2.444-10.243-0.734-12.688,3.799L1.115,239.19c-2.444,4.534-0.734,10.243,3.799,12.688 l192.092,103.562c4.534,2.444,10.243,0.734,12.688-3.799l96.69-173.578c2.443-4.533,36.644-26.883,36.644-26.883 c4.143-3.061,3.82-7.565-0.712-10.01L123.587,31.759z"/>\n`;
+  content += `          <clipPath id="c1"><use xlink:href="#p1"/></clipPath>\n`;
+  content += `          <clipPath id="c2"><use xlink:href="#p2"/></clipPath>\n`;
+  content += `        </defs>\n`;
+  content += `        <use xlink:href="#p1" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c1)"/>\n`;
+  content += `        <use xlink:href="#p2" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c2)"/>\n`;
+  content += `      </svg>\n`;
+  content += `    </label>\n`
   content += `  </div>\n`;
   content += `</div>\n`;
   // Text
   content += `<table class="text">\n`;
-  for (let ix = 0; ix < prayers[pr]["text"].length; ix++) {
-    const [to_add, new_colors] = addHeTlEnRow(prayers[pr], trlit, ix, colors);
-    content += to_add;
-    colors = new_colors;
+  if ([undefined, "columns"].includes(prayers[pr]["format"])) {
+    for (let ix = 0; ix < prayers[pr]["text"].length; ix++) {
+      const [to_add, new_colors] = addHeTlEnRow(prayers[pr], trlit, ix, colors);
+      content += to_add;
+      colors = new_colors;
+    }
+  }
+  else if (["blocks"].includes(prayers[pr]["format"])) {
+    let [blkHe, blkTl, blkEn] = ["", "", ""];
+    for (let ix = 0; ix < prayers[pr]["text"].length; ix++) {
+      const [tdHe, tdTl, tdEn, isEmpty, new_colors] = getHeTlEnRowTds(prayers[pr], trlit, ix, colors);
+      blkHe += addRow(tdHe, ix, true, isEmpty, true, "He");
+      blkTl += addRow(tdTl, ix, isEmpty, true, true, "Tl");
+      blkEn += addRow(tdEn, ix, isEmpty, true, true, "En");
+      colors = new_colors;
+    }
+    content += blkHe + addRow("", "br", true, true, true, "br");
+    content += blkTl + addRow("", "br", true, true, true, "br");
+    content += blkEn;
   }
   content += `</table>\n`;
   // Location-1 choices and presets

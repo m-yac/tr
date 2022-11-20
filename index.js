@@ -76,23 +76,22 @@ function update(choice) {
   let line_no = 1;
   for (let ix = 0; ix < pr["text"].length; ix++) {
     if (in_current_choice(pr["text"][ix][0])) {
-      $(`#ix${ix}-tr`).removeClass("hidden");
+      $(`tr[id^="ix${ix}-tr"]`).removeClass("hidden");
       if (pr["text"][ix][1].length > 0) {
-        $(`#ix${ix}-lno1`).text(line_no);
-        $(`#ix${ix}-lno2`).text(line_no);
+        $(`td[id^="ix${ix}-lno"]`).text(line_no);
         line_no++;
       }
     }
     else {
-      $(`#ix${ix}-tr`).addClass("hidden");
-      $(`#ix${ix}-lno1`).text("/");
-      $(`#ix${ix}-lno2`).text("/");
+      $(`tr[id^="ix${ix}-tr"]`).addClass("hidden");
+      $(`td[id^="ix${ix}-lno"]`).text("/");
     }
   }
 }
 
 function updateHighlighting(ix) {
-  if ($('#color-checkbox').is(":checked") || $(`#ix${ix}-tr`).is(":hover")) {
+  const trs_hover = $(`tr[id^="ix${ix}-tr"]`).filter(function () { return $(this).is(":hover"); })
+  if ($('#color-checkbox').is(":checked") || trs_hover.length > 0) {
     const spans_hover = $(`span[id^="ix${ix}-"]`).filter(function () { return $(this).is(":hover"); })
     const alpha = spans_hover.length == 0 ? 1.0 : 1/3;
     const hover_j = spans_hover.length == 0 ? null : spans_hover[0].id.split("-")[2];
@@ -101,9 +100,11 @@ function updateHighlighting(ix) {
       const this_alpha = j === hover_j ? 1.0 : alpha;
       $(this).css("background-color", colors[ix+"-"+j].replace(/, [^),]+\)/g, `, ${this_alpha})`));
     });
+    $(`td[id^="ix${ix}-lno"]`).addClass("line_no_visible");
   }
   else {
     $(`span[id^="ix${ix}-"]`).removeClass("highlighted").removeClass("underlined").css("background-color", "");
+    $(`td[id^="ix${ix}-lno"]`).removeClass("line_no_visible");
   }
 }
 

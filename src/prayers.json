@@ -1,5 +1,6 @@
 {
   "Kaddish": {
+    "title": ["קדיש", "Kaddish"],
     "choices": {
       "Version": [
         ["", "Half Kaddish"],
@@ -90,6 +91,7 @@
     }
   },
   "Oseh Shalom": {
+    "title": ["עושה שלום", "Oseh Shalom"],
     "choices": {},
     "text": [
       ["", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[The one who makes](0) [peace](1) [in](2) [heaven](3) –", {"3": [2, "Lit. \"His high places\""]}],
@@ -99,20 +101,20 @@
     ]
   },
   "Shehecheyanu": {
+    "title": ["שהחינו", "Shehecheyanu"],
     "choices": {},
+    "format": "blocks",
     "text": [
-      ["", "*בָּרוּךְ אַתָּה", "[Blessed](0) [are you](1)", {}],
-      ["", "*יְיָ", "[*Adonai*](0)", {}],
-      ["", "*אֱלֹהֵ_|ינוּ", "[our](2) [God](1)", {}],
-      ["", "*מֶלֶךְ *הָ|עוֹלָם", "[Ruler of](0) [the](1) [Universe](2)", {}],
-      ["", "שֶׁ|הֶחֱיָ_|נוּ", "[who](0) [has given](1) [us](2) [life](1),", {}],
-      ["", "וְ|קִיְּמָ_|נוּ", "[sustained](1) [us](2),", {"1": [1, "Lit. \"and\", implied in the English by commas."]}],
-      ["", "וְ|הִגִּיעָ_|נוּ", "[and](0) [brought](1) [us](2)", {}],
-      ["", "לַ|זְּמַן הַזֶּה", "[to](0) [this](2) [time](1).", {"1": [1, "Or: \"moment\", or: \"season\" – depending on the context and/or intention."]}]
+      ["", "*בָּרוּךְ אַתָּה *יְיָ *אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם"
+         , "[Blessed](0) [are you](1) [*Adonai*](2), [our](4) [God](3), [Ruler of](5) [the](6) [Universe](7),"
+         , {}],
+      ["", "שֶׁ|הֶחֱיָ_|נוּ וְ|קִיְּמָ_|נוּ וְ|הִגִּיעָ_|נוּ לַ|זְּמַן הַזֶּה"
+         , "[who](0) [has given](1) [us](2) [life](1), [sustained](4) [us](5), [and](6) [brought](7) [us](8) [to](9) [this](11) [time](10)."
+         , {}]
     ]
   },
   "Ozi": {
-    "title": "Ozi V'Zim'rat Yah",
+    "title": ["עזי וזמרת יה", "Ozi V'Zim'rat Yah"],
     "text-credit": "Exodus 15:2 / Psalm 118:14 / Isaiah 12:2",
     "choices": {
       "Version": [
@@ -209,7 +211,8 @@
       "Rabbi Gold also takes catering to modern ears one step further and translates {יְהִי} as \"will be\", ignoring the \"vav-consecutive\" grammatical rule from biblical Hebrew that says a verb in future tense becomes past tense when prefixed with a letter {ו/Vav}."
     ]]
   },
-  "Adonai S'fatai": {
+  "Adonai Sfatai": {
+    "title": ["אדני שפתי", "Adonai S'fatai"],
     "text-credit": "Psalm 51:17",
     "choices": {
       "Version": [
@@ -222,12 +225,59 @@
       "Version": 1
     },
     "text": [
-      ["2", "*אֲדֹנָ_|י", "[My](1) [Lord](0)", {}],
+      [".", "*אֲדֹנָ_|י", "[My](1) [Lord](0)", {}],
       ["2", "שְׂפָ_|תַי תִּפְתָּח", "[my](1) [lips](0) [may you open](2)", {}],
-      ["[01]", "*אֲדֹנָי שְׂפָ_|תַי תִּפְתָּח", "[Lord](0), [open](3) [my](2) [lips](1)", {"0": [0, "Lit. \"my lord\""]}],
+      ["[01]", "*שְׂפָ_|תַי תִּפְתָּח", "[open](2) [my](1) [lips](0)", {}],
       ["0", "וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ", "[and](0) [my](2) [mouth](1) [will](3) [sing](4) [your](6) [praise](5)"],
       ["1", "וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ", "[and](0) [let](3) [my](2) [mouth](1) [sing](4) [your](6) [praise](5)"],
       ["2", "וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ", "[and](0) [my](2) [mouth](1) [may you let](3) [sing](4) [your](6) [praise](5)"]
+    ]
+  },
+  "Pitchu Li": {
+    "title": ["פתחו לי", "Pitchu Li"],
+    "text-credit": "Psalm 118:19-20",
+    "choices": {},
+    "text": [
+      ["", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the gates](3) [of](4) [righteousness](5),", {}],
+      ["", "אָבֹא-בָם אוֹדֶה יָהּ", "[I will enter](0) [them](1), [I will thank](2) [God](3)", {}],
+      ["", "", "", {}],
+      ["", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This](0) [is](9) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
+      ["", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will enter](1) [it](2)"]
+    ]
+  },
+  "Ldor Vador": {
+    "title": ["לדור ודור", "L'dor Vador"],
+    "text-credit": "from the Kedushah of the Amidah",
+    "text": [
+      ["", "*לְ|דוֹר וָ|דוֹר", "[From](0) [generation](1) [to](2) [generation](3)", {}],
+      ["", "נַגִּיד גָּדְלֶ_|ךָ", "[we will tell of](0) [your](2) [greatness](1)", {}],
+      ["", "", "", {}],
+      ["", "*וּ|לְ|נֵצַח נְצָחִים", "[And](0) [from](4) [eternity](3) [to](1) [eternity](2)", {}],
+      ["", "קְדֻשָּׁ_|תְךָ נַקְדִּישׁ", "[we will keep holy](2) [your](1) [holiness](0)", {}],
+      ["", "", "", {}],
+      ["", "*וְ|שִׁבְחֲ_|ךָ *אֱלֹהֵ_|ינוּ", "[And](0) [your](2) [praise](1), [our](4) [God](3),", {}],
+      ["", "מִ|פִּ_|ינוּ לֹא יָמוּשׁ", "[will](4) [not](3) [depart](4) [from](0) [our](2) [lips](1)", {}],
+      ["", "לְ|עוֹלָם וָ|עֶד", "[for](0) [ever](1) [and](2) [ever](3)", {}],
+      ["", "", "", {}],
+      ["", "*כִּי *אֵל *מֶלֶךְ", "[For](0), [God](1) [and](3) [Sovereign](2),", {}],
+      ["", "גָּדוֹל וְ|קָדוֹשׁ אָתָּה", "[you](3) [are](4) [great](0) [and](1) [holy](2)", {}]
+    ]
+  },
+  "Shalom Rav": {
+    "title": ["שלום רב", "Shalom Rav"],
+    "text": [
+      ["", "*שָׁלוֹם רָב", "[Peace](0) [in plenty](1)", {}],
+      ["", "עַל יִשְׂרָאֵל עַמְּ_|ךָ", "[to](0) [your](3) [people](2) [*Yisrael*](1)", {}],
+      ["", "תָּשִׂים לְעוֹלָם", "– [may you grant](0) [us this](2) [forever](1) –", {}],
+      ["", "", "", {}],
+      ["", "כִּי אַתָּה הוּא *מֶלֶךְ *אָדוֹן", "[for](0) [you](1) [are](2) [*Melech*](3) [*Adon*](4)", {}],
+      ["", "לְ|כָל~הַ|שָּׁלוֹם", "[of](1) [all](2) [peace](3)", {}],
+      ["", "", "", {}],
+      ["", "*וְ|טוֹב בְּ|עֵינֶי|ךָ", "[And so](0) [may it be](5) [good](1) [in](2) [your](4) [eyes](3)", {}],
+      ["", "לְ|בָרֵךְ אֶת עַמְּ_|ךָ יִשְׂרָאֵל", "[to](0) [bless](1) [your](4) [people](3) [*Yisrael*](2)", {}],
+      ["", "בְּ|כָל עֵת", "[in](0) [every](1) [season](2)", {}],
+      ["", "וּ|בְ|כָל שָׁעָה", "[and](0) [in](1) [every](2) [hour](3)", {}],
+      ["", "בִּ|שְּׁלוֹמֶ_|ךָ", "[with](0) [your](2) [peace](1)", {}]
     ]
   }
 }
