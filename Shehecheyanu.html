@@ -3,21 +3,29 @@
 <title>Shehecheyanu</title>
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
-<script>var pr = {"choices":{},"text":[["","*בָּרוּךְ אַתָּה","[Blessed](0) [are you](1)",{}],["","*יְיָ","[*Adonai*](0)",{}],["","*אֱלֹהֵ_|ינוּ","[our](2) [God](1)",{}],["","*מֶלֶךְ *הָ|עוֹלָם","[Ruler of](0) [the](1) [Universe](2)",{}],["","שֶׁ|הֶחֱיָ_|נוּ","[who](0) [has given](1) [us](2) [life](1),",{}],["","וְ|קִיְּמָ_|נוּ","[sustained](1) [us](2),",{"1":[1,"Lit. \"and\", implied in the English by commas."]}],["","וְ|הִגִּיעָ_|נוּ","[and](0) [brought](1) [us](2)",{}],["","לַ|זְּמַן הַזֶּה","[to](0) [this](2) [time](1).",{"1":[1,"Or: \"moment\", or: \"season\" – depending on the context and/or intention."]}]]};</script>
-<script>var colors = {"0-0":"rgba(255, 215, 128, 1.0)","0-1":"rgba(255, 153, 202, 1.0)","1-0":"rgba(255, 215, 128, 1.0)","2-0":"rgba(255, 215, 128, 1.0)","2-1":"rgba(255, 153, 202, 1.0)","2-2":"rgba(167, 149, 249, 1.0)","3-0":"rgba(255, 215, 128, 1.0)","3-1":"rgba(255, 170.5, 146.5, 1.0)","3-2":"rgba(255, 153, 202, 1.0)","4-0":"rgba(255, 215, 128, 1.0)","4-1":"rgba(255, 170.5, 146.5, 1.0)","4-2":"rgba(255, 153, 202, 1.0)","5-0":"rgba(255, 215, 128, 1.0)","5-1":"rgba(255, 170.5, 146.5, 1.0)","5-2":"rgba(255, 153, 202, 1.0)","6-0":"rgba(255, 215, 128, 1.0)","6-1":"rgba(255, 170.5, 146.5, 1.0)","6-2":"rgba(255, 153, 202, 1.0)","7-0":"rgba(255, 215, 128, 1.0)","7-1":"rgba(255, 170.5, 146.5, 1.0)","7-2":"rgba(255, 153, 202, 1.0)"};</script>
+<script>var pr = {"title":["שהחינו","Shehecheyanu"],"choices":{},"format":"blocks","text":[["","*בָּרוּךְ אַתָּה *יְיָ *אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[Blessed](0) [are you](1) [*Adonai*](2), [our](4) [God](3), [Ruler of](5) [the](6) [Universe](7),",{}],["","שֶׁ|הֶחֱיָ_|נוּ וְ|קִיְּמָ_|נוּ וְ|הִגִּיעָ_|נוּ לַ|זְּמַן הַזֶּה","[who](0) [has given](1) [us](2) [life](1), [sustained](4) [us](5), [and](6) [brought](7) [us](8) [to](9) [this](11) [time](10).",{}]]};</script>
+<script>var colors = {"0-0":"rgba(255, 215, 128, 1.0)","0-1":"rgba(254.99999999999997, 198.28571428571428, 128, 1.0)","0-2":"rgba(255, 181.57142857142858, 128, 1.0)","0-3":"rgba(255, 172.85714285714286, 138.57142857142856, 1.0)","0-4":"rgba(255, 168.14285714285717, 154.42857142857144, 1.0)","0-5":"rgba(255, 163.28571428571428, 170.28571428571428, 1.0)","0-6":"rgba(255, 158.14285714285714, 186.1428571428571, 1.0)","0-7":"rgba(255, 153, 202, 1.0)","1-0":"rgba(255, 215, 128, 1.0)","1-1":"rgba(255, 204.36363636363637, 128, 1.0)","1-2":"rgba(255, 193.72727272727275, 128, 1.0)","1-3":"rgba(255, 183.0909090909091, 128, 1.0)","1-4":"rgba(255, 175, 131.36363636363637, 1.0)","1-5":"rgba(255, 172, 141.45454545454544, 1.0)","1-6":"rgba(255, 169, 151.54545454545456, 1.0)","1-7":"rgba(255, 166, 161.63636363636363, 1.0)","1-8":"rgba(255, 162.8181818181818, 171.72727272727272, 1.0)","1-9":"rgba(255, 159.54545454545456, 181.8181818181818, 1.0)","1-10":"rgba(255, 156.27272727272728, 191.9090909090909, 1.0)","1-11":"rgba(255, 153, 202, 1.0)"};</script>
 <script>var ibm_clrs = [[255,215,128],[255,176,128],[255,165,165],[255,153,202],[167,149,249],[128,164,255]];</script>
 <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
 <div class="titleAndCredits">
-  <h1>Shehecheyanu</h1>
+  <h1>
+    <span class="h2He">שהחינו</span>
+    <span class="h2En">Shehecheyanu</span>
+  </h1>
 </div>
 <table class="choices">
 </table>
 <div class="checkboxes">
-  <div id="layoutContainer" class="selectContainer layoutContainer">
-    <select id="layout-select" title="Layout" aria-label="Layout" class="layoutContainer">
-      <option value="0">1 Col.</option>      <option value="1">2 Col.</option>      <option value="2">Blocks</option>    </select>
+  <div class="checkboxContainer darkCheckboxContainer">
+    <input id="dark-checkbox" name="dark-checkbox" type="checkbox" disabled/>
+    <label for="dark-checkbox">
+      <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->
+      <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"/>
+      </svg>
+    </label>
   </div>
   <div class="checkboxContainer">
     <input id="he-checkbox" name="he-checkbox" type="checkbox" checked/>
@@ -29,57 +37,51 @@
   </div>
   <div class="checkboxContainer colorCheckboxContainer">
     <input id="color-checkbox" name="color-checkbox" type="checkbox"/>
-    <label for="color-checkbox">Color</label>
+    <label for="color-checkbox">
+      <!-- Adapted from: https://www.svgrepo.com/svg/155843/paint-bucket-with-a-paint-drop -->
+      <svg viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="p1" d="M321.342,231.438c1.247,18.164,16.82,29.531,34.985,28.283c18.165-1.246,32.041-14.633,30.795-32.798 s-36.318-63.804-36.542-50.949C350.271,193.849,320.095,213.273,321.342,231.438z"/>
+          <path id="p2" d="M123.587,31.759c-4.533-2.444-10.243-0.734-12.688,3.799L1.115,239.19c-2.444,4.534-0.734,10.243,3.799,12.688 l192.092,103.562c4.534,2.444,10.243,0.734,12.688-3.799l96.69-173.578c2.443-4.533,36.644-26.883,36.644-26.883 c4.143-3.061,3.82-7.565-0.712-10.01L123.587,31.759z"/>
+          <clipPath id="c1"><use xlink:href="#p1"/></clipPath>
+          <clipPath id="c2"><use xlink:href="#p2"/></clipPath>
+        </defs>
+        <use xlink:href="#p1" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c1)"/>
+        <use xlink:href="#p2" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c2)"/>
+      </svg>
+    </label>
   </div>
 </div>
 <table class="text">
-  <tr id="ix0-tr">    <td id="ix0-lno1" class="line_no">/</td>
-    <td id="ix0-hetd" class="he" dir="rtl"><span id="ix0-he-0">בָּרוּךְ</span> <span id="ix0-he-1">אַתָּה</span></td>
-    <td id="ix0-tltd" class="tl"><span id="ix0-tl-0">Baruch</span> <span id="ix0-tl-1">atah</span></td>
-    <td id="ix0-entd" class="en"><span id="ix0-en-0">Blessed</span> <span id="ix0-en-1">are you</span></td>
-    <td id="ix0-lno2" class="line_no">/</td>
+  <tr id="ix0-trHe">    <td id="ix0-lnoLHe" class="line_no_empty">/</td>
+    <td id="ix0-hetd" class="he" dir="rtl"><span id="ix0-he-0">בָּרוּךְ</span> <span id="ix0-he-1">אַתָּה</span> <span id="ix0-he-2">יְיָ</span> <span id="ix0-he-3">אֱלֹהֵ</span><span id="ix0-he-4">ינוּ</span> <span id="ix0-he-5">מֶלֶךְ</span> <span id="ix0-he-6">הָ</span><span id="ix0-he-7">עוֹלָם</span></td>
+    <td id="ix0-lnoRHe" class="line_no">/</td>
   </tr>
-  <tr id="ix1-tr">    <td id="ix1-lno1" class="line_no">/</td>
-    <td id="ix1-hetd" class="he" dir="rtl"><span id="ix1-he-0">יְיָ</span></td>
-    <td id="ix1-tltd" class="tl"><span id="ix1-tl-0">Adonai</span></td>
-    <td id="ix1-entd" class="en"><span id="ix1-en-0"><i>Adonai</i></span></td>
-    <td id="ix1-lno2" class="line_no">/</td>
+  <tr id="ix1-trHe">    <td id="ix1-lnoLHe" class="line_no_empty">/</td>
+    <td id="ix1-hetd" class="he" dir="rtl"><span id="ix1-he-0">שֶׁ</span><span id="ix1-he-1">הֶחֱיָ</span><span id="ix1-he-2">נוּ</span> <span id="ix1-he-3">וְ</span><span id="ix1-he-4">קִיְּמָ</span><span id="ix1-he-5">נוּ</span> <span id="ix1-he-6">וְ</span><span id="ix1-he-7">הִגִּיעָ</span><span id="ix1-he-8">נוּ</span> <span id="ix1-he-9">לַ</span><span id="ix1-he-10">זְּמַן</span> <span id="ix1-he-11">הַזֶּה</span></td>
+    <td id="ix1-lnoRHe" class="line_no">/</td>
   </tr>
-  <tr id="ix2-tr">    <td id="ix2-lno1" class="line_no">/</td>
-    <td id="ix2-hetd" class="he" dir="rtl"><span id="ix2-he-0">אֱלֹהֵ</span><span id="ix2-he-1">ינוּ</span></td>
-    <td id="ix2-tltd" class="tl"><span id="ix2-tl-0">Eloh</span><span id="ix2-tl-1">einu</span></td>
-    <td id="ix2-entd" class="en"><span id="ix2-en-2">our</span> <span id="ix2-en-1">God</span></td>
-    <td id="ix2-lno2" class="line_no">/</td>
+  <tr id="ixbr-trbr">    <td id="ixbr-lnoLbr" class="line_no_empty">/</td>
+    <td id="ixbr-lnoRbr" class="line_no_empty">/</td>
   </tr>
-  <tr id="ix3-tr">    <td id="ix3-lno1" class="line_no">/</td>
-    <td id="ix3-hetd" class="he" dir="rtl"><span id="ix3-he-0">מֶלֶךְ</span> <span id="ix3-he-1">הָ</span><span id="ix3-he-2">עוֹלָם</span></td>
-    <td id="ix3-tltd" class="tl"><span id="ix3-tl-0">Melech</span> <span id="ix3-tl-1">Ha</span><span id="ix3-tl-2">’olam</span></td>
-    <td id="ix3-entd" class="en"><span id="ix3-en-0">Ruler of</span> <span id="ix3-en-1">the</span> <span id="ix3-en-2">Universe</span></td>
-    <td id="ix3-lno2" class="line_no">/</td>
+  <tr id="ix0-trTl">    <td id="ix0-lnoLTl" class="line_no">/</td>
+    <td id="ix0-tltd" class="tl"><span id="ix0-tl-0">Baruch</span> <span id="ix0-tl-1">atah</span> <span id="ix0-tl-2">Adonai</span> <span id="ix0-tl-3">Eloh</span><span id="ix0-tl-4">einu</span> <span id="ix0-tl-5">Melech</span> <span id="ix0-tl-6">Ha</span><span id="ix0-tl-7">’olam</span></td>
+    <td id="ix0-lnoRTl" class="line_no_empty">/</td>
   </tr>
-  <tr id="ix4-tr">    <td id="ix4-lno1" class="line_no">/</td>
-    <td id="ix4-hetd" class="he" dir="rtl"><span id="ix4-he-0">שֶׁ</span><span id="ix4-he-1">הֶחֱיָ</span><span id="ix4-he-2">נוּ</span></td>
-    <td id="ix4-tltd" class="tl"><span id="ix4-tl-0">she</span><span id="ix4-tl-1">hechey</span><span id="ix4-tl-2">anu</span></td>
-    <td id="ix4-entd" class="en"><span id="ix4-en-0">who</span> <span id="ix4-en-1">has given</span> <span id="ix4-en-2">us</span> <span id="ix4-en-1">life</span>,</td>
-    <td id="ix4-lno2" class="line_no">/</td>
+  <tr id="ix1-trTl">    <td id="ix1-lnoLTl" class="line_no">/</td>
+    <td id="ix1-tltd" class="tl"><span id="ix1-tl-0">she</span><span id="ix1-tl-1">hechey</span><span id="ix1-tl-2">anu</span> <span id="ix1-tl-3">v’</span><span id="ix1-tl-4">kiy’m</span><span id="ix1-tl-5">anu</span> <span id="ix1-tl-6">v’</span><span id="ix1-tl-7">higi</span><span id="ix1-tl-8">’anu</span> <span id="ix1-tl-9">la</span><span id="ix1-tl-10">z’man</span> <span id="ix1-tl-11">hazeh</span></td>
+    <td id="ix1-lnoRTl" class="line_no_empty">/</td>
   </tr>
-  <tr id="ix5-tr">    <td id="ix5-lno1" class="line_no">/</td>
-    <td id="ix5-hetd" class="he" dir="rtl"><span id="ix5-he-0">וְ</span><span id="ix5-he-1">קִיְּמָ</span><span id="ix5-he-2">נוּ</span></td>
-    <td id="ix5-tltd" class="tl"><span id="ix5-tl-0">v’</span><span id="ix5-tl-1">kiy’m</span><span id="ix5-tl-2">anu</span></td>
-    <td id="ix5-entd" class="en"><span id="ix5-en-1">sustained</span> <span id="ix5-en-2">us</span>,</td>
-    <td id="ix5-lno2" class="line_no">/</td>
+  <tr id="ixbr-trbr">    <td id="ixbr-lnoLbr" class="line_no_empty">/</td>
+    <td id="ixbr-lnoRbr" class="line_no_empty">/</td>
   </tr>
-  <tr id="ix6-tr">    <td id="ix6-lno1" class="line_no">/</td>
-    <td id="ix6-hetd" class="he" dir="rtl"><span id="ix6-he-0">וְ</span><span id="ix6-he-1">הִגִּיעָ</span><span id="ix6-he-2">נוּ</span></td>
-    <td id="ix6-tltd" class="tl"><span id="ix6-tl-0">v’</span><span id="ix6-tl-1">higi</span><span id="ix6-tl-2">’anu</span></td>
-    <td id="ix6-entd" class="en"><span id="ix6-en-0">and</span> <span id="ix6-en-1">brought</span> <span id="ix6-en-2">us</span></td>
-    <td id="ix6-lno2" class="line_no">/</td>
+  <tr id="ix0-trEn">    <td id="ix0-lnoLEn" class="line_no">/</td>
+    <td id="ix0-entd" class="en"><span id="ix0-en-0">Blessed</span> <span id="ix0-en-1">are you</span> <span id="ix0-en-2"><i>Adonai</i></span>, <span id="ix0-en-4">our</span> <span id="ix0-en-3">God</span>, <span id="ix0-en-5">Ruler of</span> <span id="ix0-en-6">the</span> <span id="ix0-en-7">Universe</span>,</td>
+    <td id="ix0-lnoREn" class="line_no_empty">/</td>
   </tr>
-  <tr id="ix7-tr">    <td id="ix7-lno1" class="line_no">/</td>
-    <td id="ix7-hetd" class="he" dir="rtl"><span id="ix7-he-0">לַ</span><span id="ix7-he-1">זְּמַן</span> <span id="ix7-he-2">הַזֶּה</span></td>
-    <td id="ix7-tltd" class="tl"><span id="ix7-tl-0">la</span><span id="ix7-tl-1">z’man</span> <span id="ix7-tl-2">hazeh</span></td>
-    <td id="ix7-entd" class="en"><span id="ix7-en-0">to</span> <span id="ix7-en-2">this</span> <span id="ix7-en-1">time</span>.</td>
-    <td id="ix7-lno2" class="line_no">/</td>
+  <tr id="ix1-trEn">    <td id="ix1-lnoLEn" class="line_no">/</td>
+    <td id="ix1-entd" class="en"><span id="ix1-en-0">who</span> <span id="ix1-en-1">has given</span> <span id="ix1-en-2">us</span> <span id="ix1-en-1">life</span>, <span id="ix1-en-4">sustained</span> <span id="ix1-en-5">us</span>, <span id="ix1-en-6">and</span> <span id="ix1-en-7">brought</span> <span id="ix1-en-8">us</span> <span id="ix1-en-9">to</span> <span id="ix1-en-11">this</span> <span id="ix1-en-10">time</span>.</td>
+    <td id="ix1-lnoREn" class="line_no_empty">/</td>
   </tr>
 </table>
 <div class="footer">

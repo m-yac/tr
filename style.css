@@ -1,3 +1,5 @@
+
+/* Bitter */
 @font-face {
   font-family: bitter;
   src: url(Bitter-Regular.ttf);
@@ -7,11 +9,52 @@
   src: url(Bitter-Italic.ttf);
   font-style: italic;
 }
+@font-face {
+  font-family: bitter;
+  src: url(Bitter-Bold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: bitterSpecial;
+  src: url(Bitter-Regular.ttf);
+  /*             '      */
+  unicode-range: U+0027;
+}
+@font-face {
+  font-family: bitterSpecial;
+  src: url(Bitter-Bold.ttf);
+  font-weight: bold;
+  /*             '      */
+  unicode-range: U+0027;
+}
 
+/* Charis STL */
+@font-face {
+  font-family: charisSTL;
+  src: url(CharisSIL-Regular.ttf);
+}
+@font-face {
+  font-family: charisSTL;
+  src: url(CharisSIL-Bold.ttf);
+  font-weight: bold;
+}
+
+/* Shlomo (Hebrew font) */
 @font-face {
   font-family: shlomo;
   src: url(Shlomo.ttf);
 }
+@font-face {
+  font-family: shlomo;
+  src: url(ShlomoBold.ttf);
+  font-weight: bold;
+}
+@font-face {
+  font-family: shlomoStam;
+  src: url(ShlomoStam.ttf);
+}
+
+/* -------------------------------- */
 
 html {
   font-family: bitter, serif;
@@ -20,10 +63,19 @@ html {
 h1, h2, h3, h4 {
   margin-bottom: 5px;
   text-align: center;
-  font-family: shlomo, bitter, serif;
+  font-family: bitterSpecial, charisSTL, bitter, serif;
 }
 h1 {
-  font-size: 27pt;
+  font-size: 30pt;
+}
+
+.h2He {
+  margin-right: 4px;
+  font-family: shlomoStam, shlomo, bitter, serif;
+}
+
+.h2En {
+  margin-left: 4px;
 }
 
 a,
@@ -36,6 +88,10 @@ a:hover,
 a:focus,
 a:visited:hover,
 a:visited:focus {
+  color: #F3470F;
+}
+
+.aHilight:hover a {
   color: #F3470F;
 }
 
@@ -145,6 +201,7 @@ a.grey:visited:focus {
   padding: 4px;
   float: left;
   background-color: transparent;
+  text-align: center;
 }
 .checkboxContainer input:checked + label {
   border-color: #666;
@@ -171,8 +228,22 @@ a.grey:visited:focus {
   padding: 4px;
 }
 
+.colorCheckboxContainer input + label {
+  width: 19px;
+  height: 19px;
+  color: black;
+}
 .colorCheckboxContainer input:checked + label {
   background-image: linear-gradient(to right, rgb(255, 215, 128), rgb(255, 176, 128), rgb(255, 165, 165), rgb(255, 153, 202));
+}
+.colorCheckboxContainer input:checked + label {
+  color: transparent
+}
+
+.darkCheckboxContainer input + label {
+  width: 19px;
+  height: 19px;
+  color: black;
 }
 
 .layoutContainer {
@@ -190,7 +261,22 @@ table {
 }
 
 .text {
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 40px;
+}
+.textBlocks {
+  text-align: center;
+}
+
+.textBlock {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.textBlockHe {
+  text-align: right;
 }
 
 td {
@@ -202,7 +288,10 @@ td {
   padding-top: 0;
   padding-bottom: 0;
   font-size: 123%;
-  font-family: shlomo, serif;
+  font-family: shlomo, bitter, serif;
+}
+.heStam {
+  font-family: shlomoStam, shlomo, bitter, serif;
 }
 
 .line_no, .line_no_empty {
@@ -212,8 +301,7 @@ td {
   text-align: center;
   visibility: hidden;
 }
-
-tr:hover .line_no {
+.line_no.line_no_visible {
   visibility: visible;
 }
 
