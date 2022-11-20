@@ -100,10 +100,14 @@ function updateHighlighting(ix) {
       const this_alpha = j === hover_j ? 1.0 : alpha;
       $(this).css("background-color", colors[ix+"-"+j].replace(/, [^),]+\)/g, `, ${this_alpha})`));
     });
-    $(`td[id^="ix${ix}-lno"]`).addClass("line_no_visible");
   }
   else {
     $(`span[id^="ix${ix}-"]`).removeClass("highlighted").removeClass("underlined").css("background-color", "");
+  }
+  if (trs_hover.length > 0) {
+    $(`td[id^="ix${ix}-lno"]`).addClass("line_no_visible");
+  }
+  else {
     $(`td[id^="ix${ix}-lno"]`).removeClass("line_no_visible");
   }
 }
@@ -180,7 +184,6 @@ $(document).ready(function () {
   $('#en-checkbox').change(function () { updateCheckboxes(this); });
   $('#color-checkbox').change(function () {
     $('tr[id^="ix"]').each(function () {
-      console.log(this.id.split("-")[0].slice(2));
       updateHighlighting(this.id.split("-")[0].slice(2));
     });
   });
