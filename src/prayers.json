@@ -81,24 +81,63 @@
       ["[2-5]", "עָלֵ_|ינוּ וְ|עַל כׇּל יִשְׂרָאֵל", "[for](0) [us](1) [and](2) [for](3) [all](4) [*Yisrael*](5).", {}],
       ["[2-5]", "*וְ|אִמְרוּ[:] *אָמֵן", "[And](0) [let us say](1): [*Amen*](2).", {"1": [1, "Lit. \"we say\" (imperative)"]}],
       ["[2-5]", "", "", {}],
-      ["[2-5]", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[The one who makes](0) [peace](1) [in](2) [heaven](3) –", {"3": [2, "Lit. \"His high places\""]}],
+      ["[2-5]", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He who](5) [makes](0) [peace](1) [in](2) [heaven](3) –", {}],
       ["[2-5]", "הוּא יַעֲשֶׂה שָׁלוֹם", "[let](1) [Him](0) [make](1) [peace](2)", {}],
       ["[2-5]", "עָלֵ|ינוּ וְ|עַל כׇּל יִשְׂרָאֵל", "[for](0) [us](1) [and](2) [for](3) [all](4) [*Yisrael*](5).", {}],
       ["[2-5]", "*וְ|אִמְרוּ[:] *אָמֵן", "[And](0) [let us say](1): [*Amen*](2).", {"1": [1, "Lit. \"we say\" (imperative)"]}]
-    ],
-    "lexicon": {
-      "יִתְגַּדַּל": ""
-    }
+    ]
   },
   "Oseh Shalom": {
     "title": ["עושה שלום", "Oseh Shalom"],
-    "choices": {},
+    "text-credit": "Traditional prayer based on Job 25:2",
+    "choices": {
+      "Version": [
+        ["", "Text from Liturgy"],
+        ["", "Lyrics to Nurit Hirsch Melody"]
+      ],
+      "First line": [
+        [".", "Direct translation"],
+        [".", "With \"who\""]
+      ],
+      "{מְרוֹמָ_|יו} as": [
+        ["..", "His heights"],
+        [".1", "Heaven"]
+      ]
+    },
+    "default-choices": {
+      "Version": [ ["", 0] ],
+      "First line": [ [".", 1] ],
+      "{מְרוֹמָ_|יו} as": [ [".0", 0], [".1", 1] ]
+    },
+    "choices-presets-locations": {
+      "Version": 0,
+      "First line": 1,
+      "{מְרוֹמָ_|יו} as": 1
+    },
     "text": [
-      ["", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[The one who makes](0) [peace](1) [in](2) [heaven](3) –", {"3": [2, "Lit. \"His high places\""]}],
-      ["", "הוּא יַעֲשֶׂה שָׁלוֹם עָלֵ_|ינוּ", "[let](1) [Him](0) [make](1) [peace](2) [for](3) [us](4)", {}],
-      ["", "וְ|עַל כׇּל יִשְׂרָאֵל", "[and](0) [for](1) [all](2) [*Yisrael*](3)", {}],
-      ["", "וְ|אִמְרוּ[:] *אָמֵן", "[and](0) [let us say](1): [*Amen*](2)", {"1": [1, "Lit. \"we say\" (imperative)"]}]
-    ]
+      [".00", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He makes](0) [peace](1) [in](2) [His](4) [heights](3) –", {}],
+      [".01", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He makes](0) [peace](1) [in](2) [heaven](3) –", {}],
+      [".10", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He](0) [who](5) [makes](0) [peace](1) [in](2) [His](4) [heights](3) –", {}],
+      [".11", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He](0) [who](5) [makes](0) [peace](1) [in](2) [heaven](3) –", {}],
+      ["...", "הוּא יַעֲשֶׂה שָׁלוֹם עָלֵ_|ינוּ", "[may](1) [He](0) [make](1) [peace](2) [for](3) [us](4)", {}],
+      ["...", "וְ|עַל כׇּל יִשְׂרָאֵל", "[and](0) [for](1) [all](2) [*Yisrael*](3)", {}],
+      ["0..", "וְ|אִמְרוּ[:] *אָמֵן", "[and](0) [let us say](1): [*Amen*](2)", {"1": [1, "Lit. \"we say\" (imperative)"]}],
+      ["1..", "וְ|אִמְרוּ[,] אִמְרוּ[:] *אָמֵן", "[and](0) [let us say](1), [let us say](2): [*Amen*](3)", {"1": [1, "Lit. \"we say\" (imperative)"], "2": [1, "Lit. \"we say\" (imperative)"]}],
+      ["1..", "", "", {}],
+      ["1..", "*יַעֲשֶׂה שָׁלוֹם", "[He will make](0) [peace](1)", {}],
+      ["1..", "יַעֲשֶׂה שָׁלוֹם", "[He will make](0) [peace](1)", {}],
+      ["1..", "שָׁלוֹם עָלֵ_|ינוּ", "[peace](0) [for](1) [us](2)", {}],
+      ["1..", "וְ|עַל כׇּל יִשְׂרָאֵל", "[and](0) [for](1) [all](2) [*Yisrael*](3)", {}]
+    ],
+    "general-notes": [[
+      "This prayer is an elaboration on its first line, a quote from Job 25:2.",
+      "In this context, the first line is most often translated with an added \"who,\" even though the text itself contains no such word.",
+      "I could not find a source which explains the presence of this word in the translation, but I speculate that perhaps it is to indicate to the purpose of this line in the prayer.",
+      "Most likely this line is included not to state that God \"makes peace in His heights\" (as is its purpose in Job) but to indicate who we are asking: Job's God who \"makes peace in His heights.\""
+      ],[
+      "Additionally, the word {מְרוֹמָ_|יו}, meaning \"His heights\" or \"His high places\", is sometimes translated as \"heaven.\"",
+      "Although less poetic than the Hebrew, I personally find doing this makes the English flow better."
+    ]]
   },
   "Shehecheyanu": {
     "title": ["שהחינו", "Shehecheyanu"],

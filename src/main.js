@@ -96,9 +96,11 @@ function transliterate(txt, trlit, includeSeps = true) {
       let curr_consonant_en_without_vowel = "";
       let curr_vowels_en = "";
       for (let i = 0; i < gp.length; i++) {
-        if (includeSeps && gp[i] === "_") {
-          curr_consonant_en_with_vowel += "|";
-          curr_consonant_en_without_vowel += "|";
+        if (gp[i] === "_") {
+          if (includeSeps) {
+            curr_consonant_en_with_vowel += "|";
+            curr_consonant_en_without_vowel += "|";
+          }
           sep_was_moved = true;
           continue;
         }
