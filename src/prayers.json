@@ -81,7 +81,7 @@
       ["[2-5]", "עָלֵ_|ינוּ וְ|עַל כׇּל יִשְׂרָאֵל", "[for](0) [us](1) [and](2) [for](3) [all](4) [*Yisrael*](5).", {}],
       ["[2-5]", "*וְ|אִמְרוּ[:] *אָמֵן", "[And](0) [let us say](1): [*Amen*](2).", {"1": [1, "Lit. \"we say\" (imperative)"]}],
       ["[2-5]", "", "", {}],
-      ["[2-5]", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He who](5) [makes](0) [peace](1) [in](2) [heaven](3) –", {}],
+      ["[2-5]", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[The one who makes](0) [peace](1) [in](2) [heaven](3) –", {}],
       ["[2-5]", "הוּא יַעֲשֶׂה שָׁלוֹם", "[let](1) [Him](0) [make](1) [peace](2)", {}],
       ["[2-5]", "עָלֵ|ינוּ וְ|עַל כׇּל יִשְׂרָאֵל", "[for](0) [us](1) [and](2) [for](3) [all](4) [*Yisrael*](5).", {}],
       ["[2-5]", "*וְ|אִמְרוּ[:] *אָמֵן", "[And](0) [let us say](1): [*Amen*](2).", {"1": [1, "Lit. \"we say\" (imperative)"]}]
@@ -89,36 +89,39 @@
   },
   "Oseh Shalom": {
     "title": ["עושה שלום", "Oseh Shalom"],
-    "text-credit": "Traditional prayer based on Job 25:2",
+    "text-credit": "based on a quote from Job 25:2",
     "choices": {
       "Version": [
         ["", "Text from Liturgy"],
         ["", "Lyrics to Nurit Hirsch Melody"]
       ],
-      "First line": [
-        [".", "Direct translation"],
-        [".", "With \"who\""]
+      "{עוֹשֶׂה} as": [
+        [".", "He makes (as in Job 25:2)"],
+        [".", "Maker of"],
+        [".", "The one who makes"]
       ],
       "{מְרוֹמָ_|יו} as": [
         ["..", "His heights"],
-        [".1", "Heaven"]
+        ["..", "Heaven"]
       ]
     },
     "default-choices": {
       "Version": [ ["", 0] ],
-      "First line": [ [".", 1] ],
-      "{מְרוֹמָ_|יו} as": [ [".0", 0], [".1", 1] ]
+      "{עוֹשֶׂה} as": [ [".", 2] ],
+      "{מְרוֹמָ_|יו} as": [ [".0", 0], [".[12]", 1] ]
     },
     "choices-presets-locations": {
       "Version": 0,
-      "First line": 1,
+      "{עוֹשֶׂה} as": 1,
       "{מְרוֹמָ_|יו} as": 1
     },
     "text": [
       [".00", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He makes](0) [peace](1) [in](2) [His](4) [heights](3) –", {}],
-      [".01", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He makes](0) [peace](1) [in](2) [heaven](3) –", {}],
-      [".10", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He](0) [who](5) [makes](0) [peace](1) [in](2) [His](4) [heights](3) –", {}],
-      [".11", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[He](0) [who](5) [makes](0) [peace](1) [in](2) [heaven](3) –", {}],
+      [".01", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[He makes](0) [peace](1) [in](2) [heaven](3) –", {}],
+      [".10", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[Maker of](0) [peace](1) [in](2) [His](4) [heights](3) –", {}],
+      [".11", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[Maker of](0) [peace](1) [in](2) [heaven](3) –", {}],
+      [".20", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָ_|יו", "[The one who makes](0) [peace](1) [in](2) [His](4) [heights](3) –", {}],
+      [".21", "*עוֹשֶׂה שָׁלוֹם בִּ|מְרוֹמָיו", "[The one who makes](0) [peace](1) [in](2) [heaven](3) –", {}],
       ["...", "הוּא יַעֲשֶׂה שָׁלוֹם עָלֵ_|ינוּ", "[may](1) [He](0) [make](1) [peace](2) [for](3) [us](4)", {}],
       ["...", "וְ|עַל כׇּל יִשְׂרָאֵל", "[and](0) [for](1) [all](2) [*Yisrael*](3)", {}],
       ["0..", "וְ|אִמְרוּ[:] *אָמֵן", "[and](0) [let us say](1): [*Amen*](2)", {"1": [1, "Lit. \"we say\" (imperative)"]}],
@@ -131,12 +134,14 @@
     ],
     "general-notes": [[
       "This prayer is an elaboration on its first line, a quote from Job 25:2.",
-      "In this context, the first line is most often translated with an added \"who,\" even though the text itself contains no such word.",
-      "I could not find a source which explains the presence of this word in the translation, but I speculate that perhaps it is to indicate to the purpose of this line in the prayer.",
-      "Most likely this line is included not to state that God \"makes peace in His heights\" (as is its purpose in Job) but to indicate who we are asking: Job's God who \"makes peace in His heights.\""
+      "In its original context, {עוֹשֶׂה} is a verb meaning \"he makes.\"",
+      "However, when this phrase is taken out of that context, this word could instead be a noun in construct state, meaning \"maker of.\"",
+      "This latter interpretation is what is most often chosen for this prayer.",
+      "I could not find a source which explains why, but I speculate that perhaps it is to indicate to the purpose of this line in the prayer.",
+      "Most likely, this line is included not to state that God \"makes peace in His heights\" (as is its purpose in Job) but to indicate who we are asking: Job's God who is the \"maker of peace in His heights.\""
       ],[
       "Additionally, the word {מְרוֹמָ_|יו}, meaning \"His heights\" or \"His high places\", is sometimes translated as \"heaven.\"",
-      "Although less poetic than the Hebrew, I personally find doing this makes the English flow better."
+      "Although less poetic than the Hebrew, I personally find doing this results in less stilted English."
     ]]
   },
   "Shehecheyanu": {
@@ -275,13 +280,25 @@
   "Pitchu Li": {
     "title": ["פתחו לי", "Pitchu Li"],
     "text-credit": "Psalm 118:19-20",
-    "choices": {},
+    "choices": {
+      "Imagery": [
+        ["", "Entering gates (original)"],
+        ["", "Taking paths (interpretive)"]
+      ]
+    },
+    "choices-presets-locations": {
+      "Imagery": 1
+    },
     "text": [
-      ["", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the gates](3) [of](4) [righteousness](5),", {}],
-      ["", "אָבֹא-בָם אוֹדֶה יָהּ", "[I will enter](0) [them](1), [I will thank](2) [God](3)", {}],
-      ["", "", "", {}],
-      ["", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This](0) [is](9) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
-      ["", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will enter](1) [it](2)"]
+      ["0", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the gates](3) [of](4) [righteousness](5),", {}],
+      ["0", "אָבֹא-בָם אוֹדֶה יָהּ", "[I will enter](0) [them](1), [I will thank](2) [God](3)", {}],
+      ["1", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the path](3) [of](4) [righteousness](5),", {}],
+      ["1", "אָבֹא-בָם אוֹדֶה יָהּ", "[taking](0) [it](1), [I will thank](2) [God](3)", {}],
+      [".", "", "", {}],
+      ["0", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This](0) [is](9) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
+      ["0", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will enter](1) [it](2)"],
+      ["1", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This](0) [is](9) [the](1) [path](2) [to](3) [*Adonai*](4),", {}],
+      ["1", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will take](1) [it](2)"]
     ]
   },
   "Ldor Vador": {
@@ -318,5 +335,33 @@
       ["", "וּ|בְ|כָל שָׁעָה", "[and](0) [in](1) [every](2) [hour](3)", {}],
       ["", "בִּ|שְּׁלוֹמֶ_|ךָ", "[with](0) [your](2) [peace](1)", {}]
     ]
+  },
+  "Psalm 150": {
+    "title": ["תהילים קנ", "Psalm 150 (Hallelu)"],
+    "text": [
+      ["", "*הַלְלוּ-יָהּ", "[Sing out in praise to](0) [God](1)!", {}],
+      ["", "*הַלְלוּ-אֵל בְּ|קׇדְשׁ|וֹ", "[Sing out to](0) [God](1) [in](2) [his](4) [sanctuary](3),", {}],
+      ["", "*הַלְלוּ|הוּ בִּ|רְקִיעַ עֻזּ|וֹ", "[Sing out to](0) [Him](1) [in](2) [his](5) [mighty](4) [heavens](3)", {}],
+      ["", "", "", {}],
+      ["", "*הַלְלוּ|הוּ בִ|גְבוּרֹתָ_|יו", "[Sing out](0) [for](2) [his](4) [great deeds](3),", {}],
+      ["", "*הַלְלוּ|הוּ כְּ|רֹב גֻּדְל|וֹ", "[Sing out](0) [as befits](2) [his](5) [abundant](3) [greatness](4)", {}],
+      ["", "", "", {}],
+      ["", "*הַלְלוּ|הוּ בְּ|תֵקַע שׁוֹפָר", "[Sing out](0) [with](2) [resounding](3) [horns](4),", {}],
+      ["", "*הַלְלוּ|הוּ בְּ|נֵבֶל וְ|כִנּוֹר", "[Sing out](0) [with](2) [lute](3) [and](4) [lyre](5)", {}],
+      ["", "", "", {}],
+      ["", "*הַלְלוּ|הוּ בְּ|תֹף וּ|מָחוֹל", "[Sing out](0) [with](2) [drums](3) [and](4) [dance](5),", {}],
+      ["", "*הַלְלוּ|הוּ בְּ|מִנִּים וְ|עֻגָב", "[Sing out](0) [with](2) [strings](2) [and](4) [flutes](5)", {}],
+      ["", "", "", {}],
+      ["", "*הַלְלוּ|הוּ בְ|צִלְצְלֵי שָׁמַע", "[Sing out](0) [with](2) [crashing](4) [cymbals](3),", {}],
+      ["", "*הַלְלוּ|הוּ בְּ|צִלְצְלֵי תְרוּעָה", "[Sing out](0) [with](2) [booming](4) [cymbals](3)", {}],
+      ["", "", "", {}],
+      ["", "*כֹּל הַ|נְּשָׁמָה תְּהַלֵּל יָהּ", "[All](0) [with breath](2) [sing out in praise to](3) [God](4),", {}],
+      ["", "*הַלְלוּ-יָהּ", "[Sing out in praise to](0) [God](1)!", {}]
+    ],
+    "general-notes": [[
+      "This final entry in {*תְּהִלִּים}, the Book of Psalms, embodies the word {תְּהִלָּה}, \"song of praise,\" that gives the Book of Psalms its name.",
+      "Derived from the same root, {ה-ל-ל}, the command {הַלְלוּ}, \"sing out in praise,\" begins all but one line.",
+      "Most translations render {הַלְלוּ} simply as \"praise,\" but leaving out the sonic connotations of the word does a great disservice to this prayer filled with sonic imagery."
+    ]]
   }
 }
