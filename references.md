@@ -40,6 +40,7 @@ Kaddish
 - https://opensiddur.org/prayers/solilunar/everyday/kaddish/mourners-qaddish-a-translation-by-everett-fox-after-franz-rosenzweig/
 - https://bethshalompgh.org/why-do-we-say-leella-leella-in-kaddish-on-the-high-holidays-originally-published-october-9-10-2020/
 - Interpretation: https://seforimblog.com/2017/01/kaddish-his-wi/
+- http://www.jewish-funeral-guide.com/tradition/rabbis-kaddish-ashkenazi.htm
 
 Oseh Shalom
 - https://alexandermassey.com/oseh-shalom-no-2/
@@ -53,6 +54,10 @@ Ozi
 Adonai S'fatai
 - https://www.sefaria.org/Psalms.51?lang=bi
 - https://web.archive.org/web/20110625013704/http://ancienthebrewpoetry.typepad.com/ancient_hebrew_poetry/2007/10/psalm-5110-21-a.html
+
+L'dor Vador
+- https://opensiddur.org/prayers/solilunar/weekdays/amidah-weekday/weekday-amidah-and-kaddish-with-taamei-hamiqra/
+- https://www.adatelohim.org/worship/prayers-and-songs/kedusha-l-dor-vador/
 
 Psalm 150 (Hallelu)
 - Robert Alter: https://ldorvdor.org/images/worship/cantor/Psalm-150-Halleluyah.pdf
