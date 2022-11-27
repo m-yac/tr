@@ -60,6 +60,11 @@ html {
   font-family: bitter, serif;
 }
 
+.dark-mode {
+  background-color: #111;
+  color: white;
+}
+
 h1, h2, h3, h4 {
   margin-bottom: 5px;
   text-align: center;
@@ -84,6 +89,12 @@ a:visited  {
   text-decoration: none;
   cursor: pointer;
 }
+.dark-mode a,
+.dark-mode a:visited  {
+  color: #5392f9;
+  text-decoration: none;
+  cursor: pointer;
+}
 a:hover,
 a:focus,
 a:visited:hover,
@@ -98,6 +109,10 @@ a:visited:focus {
 a.grey,
 a.grey:visited {
   color: #555;
+}
+.dark-mode a.grey,
+.dark-mode a.grey:visited {
+  color: #AAA;
 }
 a.grey:hover,
 a.grey:focus,
@@ -131,6 +146,7 @@ a.grey:visited:focus {
 
 .choiceLabel {
   text-align: right;
+  white-space: nowrap;
 }
 .choiceSelect {
   text-align: left;
@@ -152,11 +168,19 @@ a.grey:visited:focus {
   padding-left: 5px;
   font-family: bitter, serif;
   font-size: 85%;
+  color: black;
+}
+.dark-mode .selectContainer select {
+  color: white;
 }
 .selectContainer:hover,
 .selectContainer:focus {
   box-shadow: 0 0 2pt 1pt #6AF;
   /* # outline: 2px solid #6AF; */
+}
+.dark-mode .selectContainer:hover,
+.dark-mode .selectContainer:focus {
+  box-shadow: 0 0 2pt 1pt #049;
 }
 .selectContainer {
   /* margin: 50px; */
@@ -177,6 +201,10 @@ a.grey:visited:focus {
   background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   background-repeat: no-repeat;
   background-position: top 50% right 1px;
+}
+.dark-mode .selectContainer {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-color: #333;
 }
 
 .checkboxes {
@@ -203,9 +231,16 @@ a.grey:visited:focus {
   background-color: transparent;
   text-align: center;
 }
+.dark-mode .checkboxContainer input + label {
+  border-color: #333;
+}
 .checkboxContainer input:checked + label {
   border-color: #666;
   background-color: #EEE;
+}
+.dark-mode .checkboxContainer input:checked + label {
+  border-color: #999;
+  background-color: #111;
 }
 .checkboxContainer input + label:hover,
 .checkboxContainer input + label:focus {
@@ -213,6 +248,11 @@ a.grey:visited:focus {
   border-width: 1px;
   box-shadow: 0 0 2pt 1pt #6AF;
   /* # outline: 2px solid #6AF; */
+}
+.dark-mode .checkboxContainer input + label:hover,
+.dark-mode .checkboxContainer input + label:focus {
+  border-color: #999;
+  box-shadow: 0 0 2pt 1pt #049;
 }
 .checkboxContainer {
   margin-left: 3px;
@@ -227,23 +267,43 @@ a.grey:visited:focus {
   position: relative;
   padding: 4px;
 }
+.dark-mode .checkboxContainer {
+  background-color: #333;
+}
 
 .colorCheckboxContainer input + label {
   width: 19px;
   height: 19px;
   color: black;
 }
+.dark-mode .colorCheckboxContainer input + label {
+  color: white;
+}
+.colorCheckboxContainer input + label .colorSVG {
+  fill: black
+}
+.dark-mode .colorCheckboxContainer input + label .colorSVG {
+  fill: white
+}
 .colorCheckboxContainer input:checked + label {
   background-image: linear-gradient(to right, rgb(255, 215, 128), rgb(255, 176, 128), rgb(255, 165, 165), rgb(255, 153, 202));
 }
-.colorCheckboxContainer input:checked + label {
-  color: transparent
+.dark-mode .colorCheckboxContainer input:checked + label {
+  background-image: linear-gradient(to right, rgb(155, 115, 28), rgb(155, 76, 28), rgb(155, 65, 65), rgb(155, 53, 102));
+}
+.colorCheckboxContainer input:checked + label .colorSVG {
+  fill: transparent
 }
 
 .darkCheckboxContainer input + label {
   width: 19px;
   height: 19px;
   color: black;
+}
+.dark-mode .darkCheckboxContainer input + label {
+  width: 19px;
+  height: 19px;
+  color: white;
 }
 
 .layoutContainer {

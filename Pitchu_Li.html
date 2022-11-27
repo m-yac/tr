@@ -4,8 +4,7 @@
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
 <script>var pr = {"title":["פתחו לי","Pitchu Li"],"text-credit":"Psalm 118:19-20","choices":{"Imagery":[["","Entering gates (original)"],["","Taking paths (interpretive)"]]},"choices-presets-locations":{"Imagery":1},"text":[["0","*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק","[Open](0) [for](1) [me](2) [the gates](3) [of](4) [righteousness](5),",{}],["0","אָבֹא-בָם אוֹדֶה יָהּ","[I will enter](0) [them](1), [I will thank](2) [God](3)",{}],["1","*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק","[Open](0) [for](1) [me](2) [the path](3) [of](4) [righteousness](5),",{}],["1","אָבֹא-בָם אוֹדֶה יָהּ","[taking](0) [it](1), [I will thank](2) [God](3)",{}],[".","","",{}],["0","*זֶה-הַ|שַּׁעַר לַ|יְיָ","[This](0) [is](9) [the](1) [gateway](2) [to](3) [*Adonai*](4),",{}],["0","צַדִּיקִים יָבֹאוּ בוֹ","[the righteous](0) [will enter](1) [it](2)"],["1","*זֶה-הַ|שַּׁעַר לַ|יְיָ","[This](0) [is](9) [the](1) [path](2) [to](3) [*Adonai*](4),",{}],["1","צַדִּיקִים יָבֹאוּ בוֹ","[the righteous](0) [will take](1) [it](2)"]]};</script>
-<script>var colors = {"0-0":"rgba(255, 215, 128, 1.0)","0-1":"rgba(255, 191.60000000000002, 128, 1.0)","0-2":"rgba(255, 173.79999999999998, 135.4, 1.0)","0-3":"rgba(255, 167.2, 157.6, 1.0)","0-4":"rgba(255, 160.2, 179.8, 1.0)","0-5":"rgba(255, 153, 202, 1.0)","1-0":"rgba(255, 215, 128, 1.0)","1-1":"rgba(255, 176, 128, 1.0)","1-2":"rgba(255, 165, 165, 1.0)","1-3":"rgba(255, 153, 202, 1.0)","2-0":"rgba(255, 215, 128, 1.0)","2-1":"rgba(255, 191.60000000000002, 128, 1.0)","2-2":"rgba(255, 173.79999999999998, 135.4, 1.0)","2-3":"rgba(255, 167.2, 157.6, 1.0)","2-4":"rgba(255, 160.2, 179.8, 1.0)","2-5":"rgba(255, 153, 202, 1.0)","3-0":"rgba(255, 215, 128, 1.0)","3-1":"rgba(255, 176, 128, 1.0)","3-2":"rgba(255, 165, 165, 1.0)","3-3":"rgba(255, 153, 202, 1.0)","4-0":"rgba(255, 215, 128, 1.0)","5-0":"rgba(255, 215, 128, 1.0)","5-1":"rgba(255, 185.75, 128, 1.0)","5-2":"rgba(255, 170.5, 146.5, 1.0)","5-3":"rgba(255, 162, 174.25, 1.0)","5-4":"rgba(255, 153, 202, 1.0)","5-9":"rgba(167, 149, 249, 1.0)","6-0":"rgba(255, 215, 128, 1.0)","6-1":"rgba(255, 170.5, 146.5, 1.0)","6-2":"rgba(255, 153, 202, 1.0)","7-0":"rgba(255, 215, 128, 1.0)","7-1":"rgba(255, 185.75, 128, 1.0)","7-2":"rgba(255, 170.5, 146.5, 1.0)","7-3":"rgba(255, 162, 174.25, 1.0)","7-4":"rgba(255, 153, 202, 1.0)","7-9":"rgba(167, 149, 249, 1.0)","8-0":"rgba(255, 215, 128, 1.0)","8-1":"rgba(255, 170.5, 146.5, 1.0)","8-2":"rgba(255, 153, 202, 1.0)"};</script>
-<script>var ibm_clrs = [[255,215,128],[255,176,128],[255,165,165],[255,153,202],[167,149,249],[128,164,255]];</script>
+<script>var colors = {"0-0":0,"0-1":0.2,"0-2":0.4,"0-3":0.6,"0-4":0.8,"0-5":1,"1-0":0,"1-1":0.3333333333333333,"1-2":0.6666666666666666,"1-3":1,"2-0":0,"2-1":0.2,"2-2":0.4,"2-3":0.6,"2-4":0.8,"2-5":1,"3-0":0,"3-1":0.3333333333333333,"3-2":0.6666666666666666,"3-3":1,"4-0":0,"5-0":0,"5-1":0.25,"5-2":0.5,"5-3":0.75,"5-4":1,"5-9":1.3333333333333333,"6-0":0,"6-1":0.5,"6-2":1,"7-0":0,"7-1":0.25,"7-2":0.5,"7-3":0.75,"7-4":1,"7-9":1.3333333333333333,"8-0":0,"8-1":0.5,"8-2":1};</script>
 <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
@@ -19,7 +18,7 @@
 </table>
 <div class="checkboxes">
   <div class="checkboxContainer darkCheckboxContainer">
-    <input id="dark-checkbox" name="dark-checkbox" type="checkbox" disabled/>
+    <input id="dark-checkbox" name="dark-checkbox" type="checkbox"/>
     <label for="dark-checkbox">
       <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->
       <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -39,15 +38,15 @@
     <input id="color-checkbox" name="color-checkbox" type="checkbox"/>
     <label for="color-checkbox">
       <!-- Adapted from: https://www.svgrepo.com/svg/155843/paint-bucket-with-a-paint-drop -->
-      <svg viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg class="colorSVG" viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <path id="p1" d="M321.342,231.438c1.247,18.164,16.82,29.531,34.985,28.283c18.165-1.246,32.041-14.633,30.795-32.798 s-36.318-63.804-36.542-50.949C350.271,193.849,320.095,213.273,321.342,231.438z"/>
           <path id="p2" d="M123.587,31.759c-4.533-2.444-10.243-0.734-12.688,3.799L1.115,239.19c-2.444,4.534-0.734,10.243,3.799,12.688 l192.092,103.562c4.534,2.444,10.243,0.734,12.688-3.799l96.69-173.578c2.443-4.533,36.644-26.883,36.644-26.883 c4.143-3.061,3.82-7.565-0.712-10.01L123.587,31.759z"/>
           <clipPath id="c1"><use xlink:href="#p1"/></clipPath>
           <clipPath id="c2"><use xlink:href="#p2"/></clipPath>
         </defs>
-        <use xlink:href="#p1" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c1)"/>
-        <use xlink:href="#p2" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c2)"/>
+        <use xlink:href="#p1" stroke-width="75" stroke="currentColor" clip-path="url(#c1)"/>
+        <use xlink:href="#p2" stroke-width="75" stroke="currentColor" clip-path="url(#c2)"/>
       </svg>
     </label>
   </div>

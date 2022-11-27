@@ -2,6 +2,7 @@
 const choices = Object.keys("choices" in pr ? pr["choices"] : {});
 
 var current_choice = ""; // this gets set to a string of length `choices.length` after update()
+var made_a_choice = false;
 function in_current_choice(str) {
   return current_choice.match(new RegExp("^" + str, "g"));
 }
@@ -48,7 +49,11 @@ function update(choice) {
                      + current_choice.slice(1+i);
     }
   }
-  console.log("Updating to: " + choice + " | Result: " + current_choice);
+  // Log and update URL
+  if (choice !== "") {
+    made_a_choice = true;
+    console.log("Updating to: " + choice + " | Result: " + current_choice);
+  }
   // Add choices to selects
   for (let i = 0; i < choices.length; i++) {
     $(`#cs${i}`).empty();
@@ -89,16 +94,31 @@ function update(choice) {
   }
 }
 
+const ibm_clrs = [/*[255, 213, 51],*/ [255, 215, 128],
+                  /*[255, 176, 0],*/ [255, 176, 128],
+                  /*[254, 97, 0],*/ [255, 165, 165],
+                  /*[220, 38, 127],*/ [255, 153, 202],
+                  /*[120, 94, 240],*/ /*[142, 120, 240],*/ [167, 149, 249],
+                  /*[100, 143, 255]*/ [128, 164, 255]];
+const dark_ibm_clrs = ibm_clrs.map((cs) => cs.map((c) => c < 100 ? 0 : Math.round(c - 100)));
+function ibm_color(p, a) {
+  const i = Math.floor(3*p);
+  const t = 3*p - i;
+  const clrs = $('#dark-checkbox').is(":checked") ? dark_ibm_clrs : ibm_clrs;
+  return `rgba(${clrs[i].map((e,k) => e*(1-t) + clrs[i+1][k]*t).join(", ")}, ${a})`;
+}
+
 function updateHighlighting(ix) {
   const trs_hover = $(`tr[id^="ix${ix}-tr"]`).filter(function () { return $(this).is(":hover"); })
   if ($('#color-checkbox').is(":checked") || trs_hover.length > 0) {
-    const spans_hover = $(`span[id^="ix${ix}-"]`).filter(function () { return $(this).is(":hover"); })
-    const alpha = spans_hover.length == 0 ? 1.0 : 1/3;
+    const spans_hover = $(`span[id^="ix${ix}-"]`).filter(function () { return $(this).is(":hover"); });
+    const hover_alpha = $('#dark-checkbox').is(":checked") ? 1/2 : 1/3;
+    const alpha = spans_hover.length == 0 ? 1.0 : hover_alpha;
     const hover_j = spans_hover.length == 0 ? null : spans_hover[0].id.split("-")[2];
     $(`span[id^="ix${ix}-"]`).addClass("highlighted").each(function () {
       const j = this.id.split("-")[2];
       const this_alpha = j === hover_j ? 1.0 : alpha;
-      $(this).css("background-color", colors[ix+"-"+j].replace(/, [^),]+\)/g, `, ${this_alpha})`));
+      $(this).css("background-color", ibm_color(colors[ix+"-"+j], this_alpha));
     });
   }
   else {
@@ -112,14 +132,24 @@ function updateHighlighting(ix) {
   }
 }
 
+function updateHighlightingAll() {
+  $('tr[id^="ix"]').each(function () {
+    updateHighlighting(this.id.split("-")[0].slice(2));
+  });
+}
+
 function updateCheckboxes(checkbox) {
   const [other1, other2] = ["he-checkbox", "tl-checkbox", "en-checkbox"].filter((id) => id != checkbox.id);
   if (checkbox.checked) {
+    $(`tr[id$="tr${checkbox.id.slice(0,2)}"]`).removeClass("hidden");
     $(`td[id$="${checkbox.id.slice(0,2)}td"]`).removeClass("hidden");
     $(`#${other1}`).removeAttr("disabled");
     $(`#${other2}`).removeAttr("disabled");
   }
   else {
+    if (pr["format"] == "blocks") {
+      $(`tr[id$="tr${checkbox.id.slice(0,2)}"]`).addClass("hidden");
+    }
     $(`td[id$="${checkbox.id.slice(0,2)}td"]`).addClass("hidden");
     const other1_checked = $(`#${other1}`).is(":checked");
     const other2_checked = $(`#${other2}`).is(":checked");
@@ -127,6 +157,80 @@ function updateCheckboxes(checkbox) {
       if (other1_checked) { $(`#${other1}`).attr("disabled", true); }
       if (other2_checked) { $(`#${other2}`).attr("disabled", true); }
     }
+  }
+}
+
+function updateURL() {
+  let params = {"v": "", "he": "", "tl": "", "en": ""};
+  if (made_a_choice) {
+    params["v"] = current_choice;
+  }
+  if (!$('#he-checkbox').is(":checked")) {
+    params["he"] = "0";
+  }
+  if (!$('#tl-checkbox').is(":checked")) {
+    params["tl"] = "0";
+  }
+  if (!$('#en-checkbox').is(":checked")) {
+    params["en"] = "0";
+  }
+  updateURLWithParams(params, true);
+}
+
+function updateURLWithParams(paramsToUpdate, doReplace) {
+  const url = new URL(window.location);
+  for (const [param, val] of Object.entries(paramsToUpdate)) {
+    if (val != undefined && (!val.trim || val.trim() !== "")) {
+      url.searchParams.set(param, val);
+    }
+    else {
+      url.searchParams.delete(param);
+    }
+  }
+  updateURLTo(url, doReplace);
+}
+
+function updateURLTo(newURL, doReplace) {
+  if (doReplace) {
+    console.log(Date.now() + " [replaced] " + newURL.searchParams);
+    history.replaceState({}, "", newURL);
+  }
+  else {
+    console.log(Date.now() + " [pushed] " + newURL.searchParams);
+    history.pushState({}, "", newURL);
+  }
+}
+
+window.onpopstate = function(e) {
+  const url = new URL(window.location);
+  console.log(Date.now() + " [popped] " + url.searchParams);
+  setStateFromURL(e);
+};
+
+function setStateFromURL(e) {
+  const urlParams = new URLSearchParams(window.location.search);
+  setStateFromParams(urlParams, e);
+}
+
+function setStateFromParams(urlParams, e) {
+  if (urlParams.has("v")) {
+    current_choice = urlParams.get("v");
+    update(urlParams.get("v"));
+  }
+  else {
+    update("");
+  }
+  if (urlParams.has("he") && !parseInt(urlParams.get("he"))) {
+    $('#he-checkbox').prop('checked', false);
+    updateCheckboxes({ id: "he-checkbox", checked: false });
+  }
+  if (urlParams.has("tl") && !parseInt(urlParams.get("tl"))) {
+    $('#tl-checkbox').prop('checked', false);
+    updateCheckboxes({ id: "tl-checkbox", checked: false });
+  }
+  if (urlParams.has("en") && !parseInt(urlParams.get("en"))) {
+    $('#en-checkbox').prop('checked', false);
+    updateCheckboxes({ id: "en-checkbox", checked: false });
   }
 }
 
@@ -153,7 +257,7 @@ $(document).ready(function () {
     $(`#csP`).attr("style", `width: ${width}px;`);
   }
   // Initalize everything dependent on choices
-  update("");
+  setStateFromURL();
   // Add highlight functionality
   $('tr[id^="ix"]').each(function () {
     $(this).mouseenter(() => updateHighlighting(this.id.split("-")[0].slice(2)));
@@ -177,14 +281,20 @@ $(document).ready(function () {
     else {
       update(current_choice.slice(0,i) + this.value + current_choice.slice(parseInt(i)+1));
     }
+    updateURL();
   });
   // Add functionality to checkboxes
-  $('#he-checkbox').change(function () { updateCheckboxes(this); });
-  $('#tl-checkbox').change(function () { updateCheckboxes(this); });
-  $('#en-checkbox').change(function () { updateCheckboxes(this); });
-  $('#color-checkbox').change(function () {
-    $('tr[id^="ix"]').each(function () {
-      updateHighlighting(this.id.split("-")[0].slice(2));
-    });
+  $('#dark-checkbox').change(function () {
+    if ($('#dark-checkbox').is(":checked")) {
+      $('body').addClass("dark-mode");
+    }
+    else {
+      $('body').removeClass("dark-mode");
+    }
+    updateHighlightingAll();
   });
+  $('#he-checkbox').change(function () { updateCheckboxes(this); updateURL(); });
+  $('#tl-checkbox').change(function () { updateCheckboxes(this); updateURL(); });
+  $('#en-checkbox').change(function () { updateCheckboxes(this); updateURL(); });
+  $('#color-checkbox').change(function () { updateHighlightingAll(); });
 });

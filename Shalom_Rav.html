@@ -4,8 +4,7 @@
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
 <script>var pr = {"title":["שלום רב","Shalom Rav"],"text":[["","*שָׁלוֹם רָב","[Peace](0) [in plenty](1)",{}],["","עַל יִשְׂרָאֵל עַמְּ_|ךָ","[to](0) [your](3) [people](2) [*Yisrael*](1)",{}],["","תָּשִׂים לְעוֹלָם","– [may you grant](0) [us this](2) [forever](1) –",{}],["","","",{}],["","כִּי אַתָּה הוּא *מֶלֶךְ *אָדוֹן","[for](0) [you](1) [are](2) [*Melech*](3) [*Adon*](4)",{}],["","לְ|כָל~הַ|שָּׁלוֹם","[of](1) [all](2) [peace](3)",{}],["","","",{}],["","*וְ|טוֹב בְּ|עֵינֶי|ךָ","[And so](0) [may it be](5) [good](1) [in](2) [your](4) [eyes](3)",{}],["","לְ|בָרֵךְ אֶת עַמְּ_|ךָ יִשְׂרָאֵל","[to](0) [bless](1) [your](4) [people](3) [*Yisrael*](2)",{}],["","בְּ|כָל עֵת","[in](0) [every](1) [season](2)",{}],["","וּ|בְ|כָל שָׁעָה","[and](0) [in](1) [every](2) [hour](3)",{}],["","בִּ|שְּׁלוֹמֶ_|ךָ","[with](0) [your](2) [peace](1)",{}]]};</script>
-<script>var colors = {"0-0":"rgba(255, 215, 128, 1.0)","0-1":"rgba(255, 153, 202, 1.0)","1-0":"rgba(255, 215, 128, 1.0)","1-1":"rgba(255, 176, 128, 1.0)","1-2":"rgba(255, 165, 165, 1.0)","1-3":"rgba(255, 153, 202, 1.0)","2-0":"rgba(255, 215, 128, 1.0)","2-1":"rgba(255, 153, 202, 1.0)","2-2":"rgba(167, 149, 249, 1.0)","3-0":"rgba(255, 215, 128, 1.0)","4-0":"rgba(255, 215, 128, 1.0)","4-1":"rgba(255, 185.75, 128, 1.0)","4-2":"rgba(255, 170.5, 146.5, 1.0)","4-3":"rgba(255, 162, 174.25, 1.0)","4-4":"rgba(255, 153, 202, 1.0)","5-0":"rgba(255, 215, 128, 1.0)","5-1":"rgba(255, 170.5, 146.5, 1.0)","5-2":"rgba(255, 153, 202, 1.0)","5-3":"rgba(167, 149, 249, 1.0)","6-0":"rgba(255, 215, 128, 1.0)","7-0":"rgba(255, 215, 128, 1.0)","7-1":"rgba(255, 185.75, 128, 1.0)","7-2":"rgba(255, 170.5, 146.5, 1.0)","7-3":"rgba(255, 162, 174.25, 1.0)","7-4":"rgba(255, 153, 202, 1.0)","7-5":"rgba(167, 149, 249, 1.0)","8-0":"rgba(255, 215, 128, 1.0)","8-1":"rgba(255, 191.60000000000002, 128, 1.0)","8-2":"rgba(255, 173.79999999999998, 135.4, 1.0)","8-3":"rgba(255, 167.2, 157.6, 1.0)","8-4":"rgba(255, 160.2, 179.8, 1.0)","8-5":"rgba(255, 153, 202, 1.0)","9-0":"rgba(255, 215, 128, 1.0)","9-1":"rgba(255, 170.5, 146.5, 1.0)","9-2":"rgba(255, 153, 202, 1.0)","10-0":"rgba(255, 215, 128, 1.0)","10-1":"rgba(255, 176, 128, 1.0)","10-2":"rgba(255, 165, 165, 1.0)","10-3":"rgba(255, 153, 202, 1.0)","11-0":"rgba(255, 215, 128, 1.0)","11-1":"rgba(255, 170.5, 146.5, 1.0)","11-2":"rgba(255, 153, 202, 1.0)"};</script>
-<script>var ibm_clrs = [[255,215,128],[255,176,128],[255,165,165],[255,153,202],[167,149,249],[128,164,255]];</script>
+<script>var colors = {"0-0":0,"0-1":1,"1-0":0,"1-1":0.3333333333333333,"1-2":0.6666666666666666,"1-3":1,"2-0":0,"2-1":1,"2-2":1.3333333333333333,"3-0":0,"4-0":0,"4-1":0.25,"4-2":0.5,"4-3":0.75,"4-4":1,"5-0":0,"5-1":0.5,"5-2":1,"5-3":1.3333333333333333,"6-0":0,"7-0":0,"7-1":0.25,"7-2":0.5,"7-3":0.75,"7-4":1,"7-5":1.3333333333333333,"8-0":0,"8-1":0.2,"8-2":0.4,"8-3":0.6,"8-4":0.8,"8-5":1,"9-0":0,"9-1":0.5,"9-2":1,"10-0":0,"10-1":0.3333333333333333,"10-2":0.6666666666666666,"10-3":1,"11-0":0,"11-1":0.5,"11-2":1};</script>
 <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
@@ -19,7 +18,7 @@
 </table>
 <div class="checkboxes">
   <div class="checkboxContainer darkCheckboxContainer">
-    <input id="dark-checkbox" name="dark-checkbox" type="checkbox" disabled/>
+    <input id="dark-checkbox" name="dark-checkbox" type="checkbox"/>
     <label for="dark-checkbox">
       <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->
       <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -39,15 +38,15 @@
     <input id="color-checkbox" name="color-checkbox" type="checkbox"/>
     <label for="color-checkbox">
       <!-- Adapted from: https://www.svgrepo.com/svg/155843/paint-bucket-with-a-paint-drop -->
-      <svg viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg class="colorSVG" viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <path id="p1" d="M321.342,231.438c1.247,18.164,16.82,29.531,34.985,28.283c18.165-1.246,32.041-14.633,30.795-32.798 s-36.318-63.804-36.542-50.949C350.271,193.849,320.095,213.273,321.342,231.438z"/>
           <path id="p2" d="M123.587,31.759c-4.533-2.444-10.243-0.734-12.688,3.799L1.115,239.19c-2.444,4.534-0.734,10.243,3.799,12.688 l192.092,103.562c4.534,2.444,10.243,0.734,12.688-3.799l96.69-173.578c2.443-4.533,36.644-26.883,36.644-26.883 c4.143-3.061,3.82-7.565-0.712-10.01L123.587,31.759z"/>
           <clipPath id="c1"><use xlink:href="#p1"/></clipPath>
           <clipPath id="c2"><use xlink:href="#p2"/></clipPath>
         </defs>
-        <use xlink:href="#p1" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c1)"/>
-        <use xlink:href="#p2" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c2)"/>
+        <use xlink:href="#p1" stroke-width="75" stroke="currentColor" clip-path="url(#c1)"/>
+        <use xlink:href="#p2" stroke-width="75" stroke="currentColor" clip-path="url(#c2)"/>
       </svg>
     </label>
   </div>
