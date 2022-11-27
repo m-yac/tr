@@ -236,19 +236,6 @@ function inlineTransliterate(str, trlit) {
   })
 }
 
-// ...
-const ibm_clrs = [/*[255, 213, 51],*/ [255, 215, 128],
-                  /*[255, 176, 0],*/ [255, 176, 128],
-                  /*[254, 97, 0],*/ [255, 165, 165],
-                  /*[220, 38, 127],*/ [255, 153, 202],
-                  /*[120, 94, 240],*/ /*[142, 120, 240],*/ [167, 149, 249],
-                  /*[100, 143, 255]*/ [128, 164, 255]];
-function ibm_color(p) {
-  const i = Math.floor(3*p);
-  const t = 3*p - i;
-  return "rgba(" + ibm_clrs[i].map((e,k) => e*(1-t) + ibm_clrs[i+1][k]*t).join(", ") + ", 1.0)";
-}
-
 // Generating HTML
 
 function addSpansHeTl(pr, ix, he) {
@@ -297,11 +284,11 @@ function getHeTlEnRowTds(pr, trlit, ix, colors) {
   const [_tl_max_j, tl_html] = addSpansHeTl("tl", ix, tl);
   const [en_js, en_html] = addSpansEn(ix, en);
   for (let j = 0; j <= he_max_j; j++) {
-    colors[ix+"-"+j] = ibm_color(j / (he_max_j == 0 ? 1 : he_max_j));
+    colors[ix+"-"+j] = j / (he_max_j == 0 ? 1 : he_max_j);
   }
   for (const j of en_js) {
     if (!((ix+"-"+j) in colors)) {
-      colors[ix+"-"+j] = ibm_color(4/3);
+      colors[ix+"-"+j] = 4/3;
     }
   }
   const tdHe = `    <td id="ix${ix}-hetd" class="he" dir="rtl">${he_html}</td>\n`;
@@ -338,7 +325,6 @@ index += `<link rel="stylesheet" href="style.css" />\n`;
 index += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
 index += `<script>var pr = ${JSON.stringify(index_pr)};</script>\n`;
 index += `<script>var colors = ${JSON.stringify(index_colors)};</script>\n`;
-index += `<script>var ibm_clrs = ${JSON.stringify(ibm_clrs)};</script>\n`;
 index += `<script type="text/javascript" src="index.js"></script>\n`;
 index += `<script type="text/javascript">$(document).ready(function () { $('td[id$="-tltd"]').addClass("hidden"); });</script>`
 index += `</head>\n<body>\n`;
@@ -422,7 +408,7 @@ for (const pr in prayers) {
   // View controls
   content += `<div class="checkboxes">\n`;
   content += `  <div class="checkboxContainer darkCheckboxContainer">\n`
-  content += `    <input id="dark-checkbox" name="dark-checkbox" type="checkbox" disabled/>\n`
+  content += `    <input id="dark-checkbox" name="dark-checkbox" type="checkbox"/>\n`
   content += `    <label for="dark-checkbox">\n`;
   content += `      <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->\n`;
   content += `      <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">\n`;
@@ -442,15 +428,15 @@ for (const pr in prayers) {
   content += `    <input id="color-checkbox" name="color-checkbox" type="checkbox"/>\n`
   content += `    <label for="color-checkbox">\n`
   content += `      <!-- Adapted from: https://www.svgrepo.com/svg/155843/paint-bucket-with-a-paint-drop -->\n`;
-  content += `      <svg viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">\n`;
+  content += `      <svg class="colorSVG" viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">\n`;
   content += `        <defs>\n`;
   content += `          <path id="p1" d="M321.342,231.438c1.247,18.164,16.82,29.531,34.985,28.283c18.165-1.246,32.041-14.633,30.795-32.798 s-36.318-63.804-36.542-50.949C350.271,193.849,320.095,213.273,321.342,231.438z"/>\n`;
   content += `          <path id="p2" d="M123.587,31.759c-4.533-2.444-10.243-0.734-12.688,3.799L1.115,239.19c-2.444,4.534-0.734,10.243,3.799,12.688 l192.092,103.562c4.534,2.444,10.243,0.734,12.688-3.799l96.69-173.578c2.443-4.533,36.644-26.883,36.644-26.883 c4.143-3.061,3.82-7.565-0.712-10.01L123.587,31.759z"/>\n`;
   content += `          <clipPath id="c1"><use xlink:href="#p1"/></clipPath>\n`;
   content += `          <clipPath id="c2"><use xlink:href="#p2"/></clipPath>\n`;
   content += `        </defs>\n`;
-  content += `        <use xlink:href="#p1" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c1)"/>\n`;
-  content += `        <use xlink:href="#p2" stroke-width="75" stroke="black" fill="currentColor" clip-path="url(#c2)"/>\n`;
+  content += `        <use xlink:href="#p1" stroke-width="75" stroke="currentColor" clip-path="url(#c1)"/>\n`;
+  content += `        <use xlink:href="#p2" stroke-width="75" stroke="currentColor" clip-path="url(#c2)"/>\n`;
   content += `      </svg>\n`;
   content += `    </label>\n`
   content += `  </div>\n`;
@@ -468,13 +454,13 @@ for (const pr in prayers) {
     let [blkHe, blkTl, blkEn] = ["", "", ""];
     for (let ix = 0; ix < prayers[pr]["text"].length; ix++) {
       const [tdHe, tdTl, tdEn, isEmpty, new_colors] = getHeTlEnRowTds(prayers[pr], trlit, ix, colors);
-      blkHe += addRow(tdHe, ix, true, isEmpty, true, "He");
-      blkTl += addRow(tdTl, ix, isEmpty, true, true, "Tl");
-      blkEn += addRow(tdEn, ix, isEmpty, true, true, "En");
+      blkHe += addRow(tdHe, ix, true, isEmpty, true, "he");
+      blkTl += addRow(tdTl, ix, isEmpty, true, true, "tl");
+      blkEn += addRow(tdEn, ix, isEmpty, true, true, "en");
       colors = new_colors;
     }
-    content += blkHe + addRow("", "br", true, true, true, "br");
-    content += blkTl + addRow("", "br", true, true, true, "br");
+    content += blkHe + addRow("", "br0", true, true, true, "he");
+    content += blkTl + addRow("", "br0", true, true, true, "tl");
     content += blkEn;
   }
   content += `</table>\n`;
@@ -525,7 +511,6 @@ for (const pr in prayers) {
   content += `</body></html>`;
   // Finally, stringify `colors`
   header += `<script>var colors = ${JSON.stringify(colors)};</script>\n`;
-  header += `<script>var ibm_clrs = ${JSON.stringify(ibm_clrs)};</script>\n`;
   fs.writeFile("./" + page_name, header + content, err => {
     if (err) { console.error(err); }
   });
