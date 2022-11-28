@@ -213,9 +213,13 @@ function setStateFromURL(e) {
 }
 
 function setStateFromParams(urlParams, e) {
+  let updateURL = false;
   if (urlParams.has("v")) {
     current_choice = urlParams.get("v");
     update(urlParams.get("v"));
+    if (current_choice !== urlParams.get("v")) {
+      updateURL = true;
+    }
   }
   else {
     update("");
@@ -231,6 +235,9 @@ function setStateFromParams(urlParams, e) {
   if (urlParams.has("en") && !parseInt(urlParams.get("en"))) {
     $('#en-checkbox').prop('checked', false);
     updateCheckboxes({ id: "en-checkbox", checked: false });
+  }
+  if (updateURL) {
+    updateURL();
   }
 }
 

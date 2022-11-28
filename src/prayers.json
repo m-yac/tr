@@ -32,9 +32,6 @@
         }
       }
     },
-    "translation-credits": [
-      [".", "Matthew Yacavone and Hannah Chinn"]
-    ],
     "text": [
       [".", "*יִתְ|גַּדַּל", "[Let it be](0) [made high](1)", {}],
       [".", "וְ|יִתְ|קַדַּשׁ", "[and](0) [let it be](1) [made holy](2)", {}],
@@ -108,7 +105,8 @@
       ["[^01]", "הוּא יַעֲשֶׂה שָׁלוֹם", "[let](1) [Him](0) [make](1) [peace](2)", {}],
       ["[^01]", "עָלֵ|ינוּ וְ|עַל כׇּל יִשְׂרָאֵל", "[for](0) [us](1) [and](2) [for](3) [all](4) [*Yisrael*](5).", {}],
       ["[^01]", "*וְ|אִמְרוּ[:] *אָמֵן", "[And](0) [let us say](1): [*Amen*](2).", {"1": [1, "Lit. \"we say\" (imperative)"]}]
-    ]
+    ],
+    "translation-credit": "Translation by Matthew Yacavone and Hannah Chinn"
   },
   "Oseh Shalom": {
     "title": ["עושה שלום", "Oseh Shalom"],
@@ -125,7 +123,7 @@
       ],
       "{מְרוֹמָ_|יו} as": [
         ["..", "His heights"],
-        ["..", "Heaven"]
+        [".[^0]", "Heaven"]
       ]
     },
     "default-choices": {
@@ -165,7 +163,8 @@
       ],[
       "Additionally, the word {מְרוֹמָ_|יו}, meaning \"His heights\" or \"His high places\", is sometimes translated as \"heaven.\"",
       "Although less poetic than the Hebrew, I personally find doing this results in less stilted English."
-    ]]
+    ]],
+    "translation-credit": "Translation by Matthew Yacavone"
   },
   "Shehecheyanu": {
     "title": ["שהחינו", "Shehecheyanu"],
@@ -276,7 +275,8 @@
       "Rabbi Shefa Gold, the composer of the chant for this verse, translates {זִמְרָת} as \"song of (God)\" and takes {עָזִּי}, \"my strength\", to be the subject of the second line.",
       "This latter translation, although likely not what the verse originally meant, is compelling, especially since {זִמְרָת יָהּ} sounds so much like one phrase to modern ears.",
       "Rabbi Gold also takes catering to modern ears one step further and translates {יְהִי} as \"will be\", ignoring the \"vav-consecutive\" grammatical rule from biblical Hebrew that says a verb in future tense becomes past tense when prefixed with a letter {ו/Vav}."
-    ]]
+    ]],
+    "translation-credit": "Translations by Matthew Yacavone"
   },
   "Adonai Sfatai": {
     "title": ["אדני שפתי", "Adonai S'fatai"],
@@ -298,7 +298,8 @@
       ["0", "וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ", "[and](0) [my](2) [mouth](1) [will](3) [sing](4) [your](6) [praise](5)"],
       ["1", "וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ", "[and](0) [let](3) [my](2) [mouth](1) [sing](4) [your](6) [praise](5)"],
       ["2", "וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ", "[and](0) [my](2) [mouth](1) [may you let](3) [sing](4) [your](6) [praise](5)"]
-    ]
+    ],
+    "translation-credit": "Translations by Matthew Yacavone"
   },
   "Pitchu Li": {
     "title": ["פתחו לי", "Pitchu Li"],
@@ -318,11 +319,12 @@
       ["1", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the path](3) [of](4) [righteousness](5),", {}],
       ["1", "אָבֹא-בָם אוֹדֶה יָהּ", "[taking](0) [it](1), [I will thank](2) [God](3)", {}],
       [".", "", "", {}],
-      ["0", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This](0) [is](9) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
+      ["0", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This is](0) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
       ["0", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will enter](1) [it](2)"],
-      ["1", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This](0) [is](9) [the](1) [path](2) [to](3) [*Adonai*](4),", {}],
+      ["1", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This is](0) [the](1) [path](2) [to](3) [*Adonai*](4),", {}],
       ["1", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will take](1) [it](2)"]
-    ]
+    ],
+    "translation-credit": "Translations by Matthew Yacavone and Hannah Chinn"
   },
   "Ldor Vador": {
     "title": ["לדור ודור", "L'dor Vador"],
@@ -340,7 +342,8 @@
       ["", "", "", {}],
       ["", "*כִּי *אֵל *מֶלֶךְ", "[For](0), [God](1) [and](3) [Sovereign](2),", {}],
       ["", "גָּדוֹל וְ|קָדוֹשׁ אָתָּה", "[you](3) [are](4) [great](0) [and](1) [holy](2)", {}]
-    ]
+    ],
+    "translation-credit": "Translation by Matthew Yacavone and Hannah Chinn"
   },
   "Shalom Rav": {
     "title": ["שלום רב", "Shalom Rav"],
@@ -350,14 +353,15 @@
       ["", "תָּשִׂים לְעוֹלָם", "– [may you grant](0) [us this](2) [forever](1) –", {}],
       ["", "", "", {}],
       ["", "כִּי אַתָּה הוּא *מֶלֶךְ *אָדוֹן", "[for](0) [you](1) [are](2) [*Melech*](3) [*Adon*](4)", {}],
-      ["", "לְ|כָל~הַ|שָּׁלוֹם", "[of](1) [all](2) [peace](3)", {}],
+      ["", "לְ|כָל הַ|שָּׁלוֹם", "[of](0) [all](1) [peace](3)", {}],
       ["", "", "", {}],
       ["", "*וְ|טוֹב בְּ|עֵינֶי|ךָ", "[And so](0) [may it be](5) [good](1) [in](2) [your](4) [eyes](3)", {}],
       ["", "לְ|בָרֵךְ אֶת עַמְּ_|ךָ יִשְׂרָאֵל", "[to](0) [bless](1) [your](4) [people](3) [*Yisrael*](2)", {}],
       ["", "בְּ|כָל עֵת", "[in](0) [every](1) [season](2)", {}],
       ["", "וּ|בְ|כָל שָׁעָה", "[and](0) [in](1) [every](2) [hour](3)", {}],
       ["", "בִּ|שְּׁלוֹמֶ_|ךָ", "[with](0) [your](2) [peace](1)", {}]
-    ]
+    ],
+    "translation-credit": "Translation by Matthew Yacavone"
   },
   "Psalm 150": {
     "title": ["תהילים קנ", "Psalm 150 (Hallelu)"],
@@ -378,13 +382,14 @@
       ["", "*הַלְלוּ|הוּ בְ|צִלְצְלֵי שָׁמַע", "[Sing out](0) [with](2) [crashing](4) [cymbals](3),", {}],
       ["", "*הַלְלוּ|הוּ בְּ|צִלְצְלֵי תְרוּעָה", "[Sing out](0) [with](2) [booming](4) [cymbals](3)", {}],
       ["", "", "", {}],
-      ["", "*כֹּל הַ|נְּשָׁמָה תְּהַלֵּל יָהּ", "[All](0) [with breath](2) [sing out in praise to](3) [God](4),", {}],
+      ["", "*כֹּל הַנְּשָׁמָה תְּהַלֵּל יָהּ", "[All](0) [with breath](1) [sing out in praise to](2) [God](3),", {}],
       ["", "*הַלְלוּ-יָהּ", "[Sing out in praise to](0) [God](1)!", {}]
     ],
     "general-notes": [[
       "This final entry in {*תְּהִלִּים}, the Book of Psalms, embodies the word {תְּהִלָּה}, \"song of praise,\" that gives the Book of Psalms its name.",
       "Derived from the same root, {ה-ל-ל}, the command {הַלְלוּ}, \"sing out in praise,\" begins all but one line.",
       "Most translations render {הַלְלוּ} simply as \"praise,\" but leaving out the sonic connotations of the word does a great disservice to this prayer filled with sonic imagery."
-    ]]
+    ]],
+    "translation-credit": "Translation by Matthew Yacavone"
   }
 }

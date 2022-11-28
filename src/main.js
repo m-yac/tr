@@ -496,11 +496,16 @@ for (const pr in prayers) {
     content += `</table>\n`;
   }
   // Translation notes
-  if ("general-notes" in prayers[pr]) {
+  if ("general-notes" in prayers[pr] || "translation-credit" in prayers[pr]) {
     content += `<h2>Translation Notes</h2>\n`;
     content += `<div class="generalNotes">\n`;
-    for (const para of prayers[pr]["general-notes"]) {
-      content += `<p>${inlineTransliterate(para.join(" "), trlit)}</p>`;
+    if ("general-notes" in prayers[pr]) {
+      for (const para of prayers[pr]["general-notes"]) {
+        content += `<p>${inlineTransliterate(para.join(" "), trlit)}</p>`;
+      }
+    }
+    if ("translation-credit" in prayers[pr]) {
+      content += `  <div class="credits">${prayers[pr]["translation-credit"]}</div>`;
     }
     content += `</div>\n`;
   }
