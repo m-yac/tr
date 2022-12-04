@@ -116,7 +116,7 @@ function transliterate(txt, trlit, includeSeps = true) {
           if (curr_vowels_en.length > 0) {
             const last_vowel = curr_vowels_en[curr_vowels_en.length - 1];
             if (last_vowel in trlit["dipthongs"][gp[i]]) {
-              curr_vowels_en += curr_vowels_en.slice(0,-1) + trlit["dipthongs"][gp[i]][last_vowel];
+              curr_vowels_en += trlit["dipthongs"][gp[i]][last_vowel];
               continue;
             }
           }
@@ -314,6 +314,8 @@ function addHeTlEnRow(pr, trlit, ix, colors, line_nos = true) {
 }
 
 prayers = require("./prayers.json");
+blessings = require("./blessings.json");
+allTranslations = _.merge({}, prayers, blessings);
 
 // Make index.html
 const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה", "[May](4) [their](1) [memory](0) [be](4) [for](2) [a blessing](3)"] ] };
@@ -328,7 +330,7 @@ index += `<script>var colors = ${JSON.stringify(index_colors)};</script>\n`;
 index += `<script type="text/javascript" src="index.js"></script>\n`;
 index += `<script type="text/javascript">$(document).ready(function () { $('td[id$="-tltd"]').addClass("hidden"); });</script>`
 index += `</head>\n<body>\n`;
-index += `<div class="titleAndCredits" style="margin-bottom:40px">\n`;
+index += `<div class="titleAndCredits">\n`;
 index += `<h1>Interactive Translations</h1>\n`
 index += `<div class="credits noStyle">\n`;
 index += `  <p>In memory of:</p>\n`;
@@ -338,50 +340,84 @@ index += `  <table class="inheritFontSize">\n${index_row}</table>\n`;
 index += `</div>\n`;
 index += `</div>\n`;
 index += `<table>\n`;
+index += `  <tr>\n`;
+index += `    <td dir="rtl"><h2 class="alignRight heStam">תפלות</h2></td>\n`;
+index += `    <td><h2 class="alignLeft">Prayers</h2></td>\n`;
+index += `  </tr>\n`;
+let allPrayerLinks = [];
 for (const pr of Object.keys(prayers).sort()) {
   const page_name = pr.replace(" ", "_") + ".html";
+  allPrayerLinks.push(`  <a href="${page_name}" class="grey avoidwrap">${prayers[pr]["title"][1]}</a>`)
   index += `  <tr class="aHilight">\n`;
   index += `    <td class="he heStam" dir="rtl"><a href="${page_name}">${prayers[pr]["title"][0]}</a></td>\n`;
   index += `    <td><a href="${page_name}">${prayers[pr]["title"][1]}</a></td>\n`;
   index += `  </tr>\n`;
 }
-index += `</table>\n</body></html>`;
+index += `  <tr>\n`;
+index += `    <td dir="rtl"><h2 class="alignRight heStam">ברכות</h2></td>\n`;
+index += `    <td><h2 class="alignLeft">Blessings</h2></td>\n`;
+index += `  </tr>\n`;
+let allBlessingLinks = [];
+for (const pr of Object.keys(blessings).sort()) {
+  const page_name = pr.replace(" ", "_") + ".html";
+  allBlessingLinks.push(`  <a href="${page_name}" class="grey avoidwrap">${blessings[pr]["title"][1]}</a>`)
+  index += `  <tr class="aHilight">\n`;
+  index += `    <td class="he heStam" dir="rtl"><a href="${page_name}">${blessings[pr]["title"][0]}</a></td>\n`;
+  index += `    <td><a href="${page_name}">${blessings[pr]["title"][1]}</a></td>\n`;
+  index += `  </tr>\n`;
+}
+index += `</table>\n`;
+index += `<div class="footer">\n`;
+index += `  <div class="checkboxes indexCheckboxes">\n`;
+index += `    <div class="checkboxContainer darkCheckboxContainer">\n`
+index += `      <input id="dark-checkbox" name="dark-checkbox" type="checkbox"/>\n`
+index += `      <label for="dark-checkbox">\n`;
+index += `        <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->\n`;
+index += `        <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">\n`;
+index += `          <path fill="currentColor" d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"/>\n`;
+index += `        </svg>\n`;
+index += `      </label>\n`
+index += `    </div>\n`;
+index += `  </div>\n`;
+index += `  <a href="https://yacavone.net" class="grey">Back to my website</a>\n`
+index += `</div>\n`;
+index += `</body></html>`;
 fs.writeFile("./index.html", index, err => {
   if (err) { console.error(err); }
 });
 
-// Make each prayer's page
-for (const pr in prayers) {
+// Make each prayer/blessing's page
+for (const pr in allTranslations) {
   const page_name = pr.replace(" ", "_") + ".html";
   let trlit = trlit_std;
-  if ("transliteration" in prayers[pr] && "standard" in prayers[pr]["transliteration"]) {
-    trlit = _.merge(_.cloneDeep(trlit_std), prayers[pr]["transliteration"]["standard"]);
+  if ("transliteration" in allTranslations[pr] && "standard" in allTranslations[pr]["transliteration"]) {
+    trlit = _.merge(_.cloneDeep(trlit_std), allTranslations[pr]["transliteration"]["standard"]);
   }
   let colors = {};
   // Header (wait to stringify `colors`!)
   let header = `<!DOCTYPE html><html>\n`;
   header += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
-  header += `<title>${prayers[pr]["title"][1]}</title>\n`;
+  header += `<title>${allTranslations[pr]["title"][1]}</title>\n`;
   header += `<link rel="stylesheet" href="style.css" />\n`;
   header += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
-  header += `<script>var pr = ${JSON.stringify(prayers[pr])};</script>\n`;
+  header += `<script>var pr = ${JSON.stringify(allTranslations[pr])};</script>\n`;
   let content = `<script type="text/javascript" src="index.js"></script>\n`;
   content += `</head>\n<body>\n`;
   // Title
   content += `<div class="titleAndCredits">\n`;
-  content += `  <h1>\n`;
-  content += `    <span class="h2He">${prayers[pr]["title"][0]}</span>\n`;
-  content += `    <span class="h2En">${prayers[pr]["title"][1]}</span>\n`;
+  content += `  <h1 id="topHeader" class="aLike">\n`;
+  content += `    <span class="h2He">${allTranslations[pr]["title"][0]}</span>\n`;
+  content += `    <span class="h2En">${allTranslations[pr]["title"][1]}</span>\n`;
   content += `  </h1>\n`;
-  if ("text-credit" in prayers[pr]) {
-    content += `  <div class="credits">${prayers[pr]["text-credit"]}</div>`;
+  if ("text-credit" in allTranslations[pr]) {
+    content += `  <div class="credits">${allTranslations[pr]["text-credit"]}</div>`;
   }
   content += `</div>\n`;
   // Location-0 choices/presets
   content += `<table class="choices">\n`;
   let i = 0;
-  for (const ch in prayers[pr]["choices"]) {
-    if (!("choices-presets-locations" in prayers[pr]) || prayers[pr]["choices-presets-locations"][ch] == 0) {
+  for (const ch in allTranslations[pr]["choices"]) {
+    if (!("choices-presets-locations" in allTranslations[pr]) || allTranslations[pr]["choices-presets-locations"][ch] == 0) {
       content += `  <tr>`;
       content += `    <td class="choiceLabel">${inlineTransliterate(ch, trlit)}:</td>\n`;
       content += `    <td class="choiceSelect">\n`;
@@ -393,8 +429,8 @@ for (const pr in prayers) {
     }
     i++;
   }
-  if ("presets" in prayers[pr] &&
-      (!("choices-presets-locations" in prayers[pr]) || prayers[pr]["choices-presets-locations"]["Preset"] == 0)) {
+  if ("presets" in allTranslations[pr] &&
+      (!("choices-presets-locations" in allTranslations[pr]) || allTranslations[pr]["choices-presets-locations"]["Preset"] == 0)) {
     content += `  <tr>`;
     content += `    <td class="choiceLabel">Preset:</td>\n`;
     content += `    <td class="choiceSelect">\n`;
@@ -443,34 +479,38 @@ for (const pr in prayers) {
   content += `</div>\n`;
   // Text
   content += `<table class="text">\n`;
-  if ([undefined, "columns"].includes(prayers[pr]["format"])) {
-    for (let ix = 0; ix < prayers[pr]["text"].length; ix++) {
-      const [to_add, new_colors] = addHeTlEnRow(prayers[pr], trlit, ix, colors);
+  if ([undefined, "columns"].includes(allTranslations[pr]["format"])) {
+    for (let ix = 0; ix < allTranslations[pr]["text"].length; ix++) {
+      const [to_add, new_colors] = addHeTlEnRow(allTranslations[pr], trlit, ix, colors);
       content += to_add;
       colors = new_colors;
     }
   }
-  else if (["blocks"].includes(prayers[pr]["format"])) {
+  else if (["blocks"].includes(allTranslations[pr]["format"])) {
     let [blkHe, blkTl, blkEn] = ["", "", ""];
-    for (let ix = 0; ix < prayers[pr]["text"].length; ix++) {
-      const [tdHe, tdTl, tdEn, isEmpty, new_colors] = getHeTlEnRowTds(prayers[pr], trlit, ix, colors);
+    for (let ix = 0; ix < allTranslations[pr]["text"].length; ix++) {
+      const [tdHe, tdTl, tdEn, isEmpty, new_colors] = getHeTlEnRowTds(allTranslations[pr], trlit, ix, colors);
       blkHe += addRow(tdHe, ix, true, isEmpty, true, "he");
       blkTl += addRow(tdTl, ix, isEmpty, true, true, "tl");
       blkEn += addRow(tdEn, ix, isEmpty, true, true, "en");
       colors = new_colors;
+      if (isEmpty) {
+        content += blkHe + blkTl + blkEn;
+        [blkHe, blkTl, blkEn] = ["", "", ""];
+      }
     }
-    content += blkHe + addRow("", "br0", true, true, true, "he");
-    content += blkTl + addRow("", "br0", true, true, true, "tl");
-    content += blkEn;
+    if (blkEn !== "") {
+      throw `Block format for ${pr} does not end with a break`;
+    }
   }
   content += `</table>\n`;
   // Location-1 choices and presets
-  if ("choices-presets-locations" in prayers[pr] && Object.values(prayers[pr]["choices-presets-locations"]).some(x => x == 1)) {
+  if ("choices-presets-locations" in allTranslations[pr] && Object.values(allTranslations[pr]["choices-presets-locations"]).some(x => x == 1)) {
     content += `<h2>Translation Options</h2>\n`;
     content += `<table class="choices">\n`;
     i = 0;
-    for (const ch in prayers[pr]["choices"]) {
-      if ("choices-presets-locations" in prayers[pr] && prayers[pr]["choices-presets-locations"][ch] == 1) {
+    for (const ch in allTranslations[pr]["choices"]) {
+      if ("choices-presets-locations" in allTranslations[pr] && allTranslations[pr]["choices-presets-locations"][ch] == 1) {
         content += `  <tr>`;
         content += `    <td class="choiceLabel">${inlineTransliterate(ch, trlit)}:</td>\n`;
         content += `    <td class="choiceSelect">\n`;
@@ -482,8 +522,8 @@ for (const pr in prayers) {
       }
       i++;
     }
-    if ("presets" in prayers[pr] &&
-        (("choices-presets-locations" in prayers[pr]) && prayers[pr]["choices-presets-locations"]["Preset"] == 1)) {
+    if ("presets" in allTranslations[pr] &&
+        (("choices-presets-locations" in allTranslations[pr]) && allTranslations[pr]["choices-presets-locations"]["Preset"] == 1)) {
       content += `  <tr>`;
       content += `    <td class="choiceLabel">Preset:</td>\n`;
       content += `    <td class="choiceSelect">\n`;
@@ -496,19 +536,23 @@ for (const pr in prayers) {
     content += `</table>\n`;
   }
   // Translation notes
-  if ("general-notes" in prayers[pr] || "translation-credit" in prayers[pr]) {
+  if ("general-notes" in allTranslations[pr] || "translation-credit" in allTranslations[pr]) {
     content += `<h2>Translation Notes</h2>\n`;
     content += `<div class="generalNotes">\n`;
-    if ("general-notes" in prayers[pr]) {
-      for (const para of prayers[pr]["general-notes"]) {
+    if ("general-notes" in allTranslations[pr]) {
+      for (const para of allTranslations[pr]["general-notes"]) {
         content += `<p>${inlineTransliterate(para.join(" "), trlit)}</p>`;
       }
     }
-    if ("translation-credit" in prayers[pr]) {
-      content += `  <div class="credits">${prayers[pr]["translation-credit"]}</div>`;
+    if ("translation-credit" in allTranslations[pr]) {
+      content += `  <div class="credits">${allTranslations[pr]["translation-credit"]}</div>`;
     }
     content += `</div>\n`;
   }
+  content += `<div class="allLinks">\n`
+  content += ` <p>Prayers: ${allPrayerLinks.join(" · \n")}</p>\n`
+  content += ` <p>Blessings: ${allBlessingLinks.join(" · \n")}</p>\n`
+  content += `</div>\n`;
   content += `<div class="footer">\n`;
   content += `  <a href="index.html" class="grey">Back to prayer list</a> · \n`
   content += `  <a href="https://yacavone.net" class="grey">Back to my website</a>\n`
@@ -520,26 +564,3 @@ for (const pr in prayers) {
     if (err) { console.error(err); }
   });
 }
-
-
-
-
-// Testing
-
-// console.log("---------")
-// console.log(transliterate("בָעוּתְ", trlit_std));
-
-
-// prayers = require("./prayers.json");
-// for (const pr in prayers) {
-//   console.log("\n" + pr);
-//   console.log("------------------------")
-//   for (const [v, he, en, notes] of prayers[pr]["text"]) {
-//     let trlit = trlit_std;
-//     if ("transliteration" in prayers[pr] && "standard" in prayers[pr]["transliteration"]) {
-//       trlit = _.merge(_.cloneDeep(trlit_std), prayers[pr]["transliteration"]["standard"]);
-//     }
-//     console.log(transliterate(he, trlit , true));
-//   }
-//   console.log("\n");
-// }
