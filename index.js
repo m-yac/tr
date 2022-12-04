@@ -15,7 +15,7 @@ function update(choice) {
     // If choice `i` has yet to be initalized in `current_choice`
     // or choice `i` in `choice` is not valid w.r.t. `current_choice`,
     // set choice `i` in `current_choice` to its default value
-    if (current_choice[i] === undefined ||
+    if (current_choice[i] === undefined || choice[i] == undefined ||
         !in_current_choice(pr["choices"][choices[i]][decodeChoiceVal(choice[i])][0])) {
       // If we have a default choice, calculate it
       if ("default-choices" in pr && choices[i] in pr["default-choices"]) {
@@ -50,9 +50,12 @@ function update(choice) {
     }
   }
   // Log and update URL
-  if (choice !== "") {
-    made_a_choice = true;
+  made_a_choice = (choice !== "");
+  if (made_a_choice) {
     console.log("Updating to: " + choice + " | Result: " + current_choice);
+  }
+  else {
+    console.log("Updating to default: " + current_choice);
   }
   // Add choices to selects
   for (let i = 0; i < choices.length; i++) {
@@ -138,17 +141,28 @@ function updateHighlightingAll() {
   });
 }
 
+function updateDarkMode() {
+  if ($('#dark-checkbox').is(":checked")) {
+    document.cookie = "dark-mode=1";
+    $('body').addClass("dark-mode");
+  }
+  else {
+    document.cookie = "dark-mode=0";
+    $('body').removeClass("dark-mode");
+  }
+}
+
 function updateCheckboxes(checkbox) {
   const [other1, other2] = ["he-checkbox", "tl-checkbox", "en-checkbox"].filter((id) => id != checkbox.id);
   if (checkbox.checked) {
-    $(`tr[id$="tr${checkbox.id.slice(0,2)}"]`).removeClass("hidden");
+    $(`tr[id$="tr${checkbox.id.slice(0,2)}"]`).removeClass("hiddenBlocks");
     $(`td[id$="${checkbox.id.slice(0,2)}td"]`).removeClass("hidden");
     $(`#${other1}`).removeAttr("disabled");
     $(`#${other2}`).removeAttr("disabled");
   }
   else {
     if (pr["format"] == "blocks") {
-      $(`tr[id$="tr${checkbox.id.slice(0,2)}"]`).addClass("hidden");
+      $(`tr[id$="tr${checkbox.id.slice(0,2)}"]`).addClass("hiddenBlocks");
     }
     $(`td[id$="${checkbox.id.slice(0,2)}td"]`).addClass("hidden");
     const other1_checked = $(`#${other1}`).is(":checked");
@@ -210,6 +224,15 @@ window.onpopstate = function(e) {
 function setStateFromURL(e) {
   const urlParams = new URLSearchParams(window.location.search);
   setStateFromParams(urlParams, e);
+  $('#dark-checkbox').prop("checked", getCookie("dark-mode") === "1");
+  updateDarkMode();
+}
+
+function getCookie(param) {
+  const items = document.cookie.split(';').map((item) => item.trim().split("="));
+  const item = items.find(([param_i, val_i]) => param_i === param);
+  if (item === undefined) { return item; }
+  return item[1];
 }
 
 function setStateFromParams(urlParams, e) {
@@ -274,6 +297,17 @@ $(document).ready(function () {
     $(this).mouseenter(() => updateHighlighting(this.id.split("-")[0].slice(2)));
     $(this).mouseleave(() => updateHighlighting(this.id.split("-")[0].slice(2)));
   });
+  // Add header reset functionality
+  $('#topHeader').click(function () {
+    update("");
+    $('#he-checkbox').prop('checked', true);
+    $('#tl-checkbox').prop('checked', true);
+    $('#en-checkbox').prop('checked', true);
+    updateCheckboxes({ id: "he-checkbox", checked: true });
+    updateCheckboxes({ id: "tl-checkbox", checked: true });
+    updateCheckboxes({ id: "en-checkbox", checked: true });
+    updateURL();
+  });
   // Add functionality to selects
   $('select[id^="cs"]').change(function () {
     const [[_full_match, i]] = [...this.id.matchAll(/cs(.)/g)];
@@ -291,15 +325,7 @@ $(document).ready(function () {
     updateURL();
   });
   // Add functionality to checkboxes
-  $('#dark-checkbox').change(function () {
-    if ($('#dark-checkbox').is(":checked")) {
-      $('body').addClass("dark-mode");
-    }
-    else {
-      $('body').removeClass("dark-mode");
-    }
-    updateHighlightingAll();
-  });
+  $('#dark-checkbox').change(function () { updateDarkMode(); updateHighlightingAll(); });
   $('#he-checkbox').change(function () { updateCheckboxes(this); updateURL(); });
   $('#tl-checkbox').change(function () { updateCheckboxes(this); updateURL(); });
   $('#en-checkbox').change(function () { updateCheckboxes(this); updateURL(); });

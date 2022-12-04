@@ -3,13 +3,13 @@
 <title>Adonai S'fatai</title>
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
-<script>var pr = {"title":["אדני שפתי","Adonai S'fatai"],"text-credit":"Psalm 51:17","choices":{"Version":[["","Simple"],["","Jussive"],["","Word Order"]]},"choices-presets-locations":{"Version":1},"text":[[".","*אֲדֹנָ_|י","[My](1) [Lord](0)",{}],["2","שְׂפָ_|תַי תִּפְתָּח","[my](1) [lips](0) [may you open](2)",{}],["[01]","*שְׂפָ_|תַי תִּפְתָּח","[open](2) [my](1) [lips](0)",{}],["0","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [my](2) [mouth](1) [will](3) [sing](4) [your](6) [praise](5)"],["1","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [let](3) [my](2) [mouth](1) [sing](4) [your](6) [praise](5)"],["2","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [my](2) [mouth](1) [may you let](3) [sing](4) [your](6) [praise](5)"]],"translation-credit":"Translations by Matthew Yacavone"};</script>
-<script>var colors = {"0-0":0,"0-1":1,"1-0":0,"1-1":0.5,"1-2":1,"2-0":0,"2-1":0.5,"2-2":1,"3-0":0,"3-1":0.16666666666666666,"3-2":0.3333333333333333,"3-3":0.5,"3-4":0.6666666666666666,"3-5":0.8333333333333334,"3-6":1,"4-0":0,"4-1":0.16666666666666666,"4-2":0.3333333333333333,"4-3":0.5,"4-4":0.6666666666666666,"4-5":0.8333333333333334,"4-6":1,"5-0":0,"5-1":0.16666666666666666,"5-2":0.3333333333333333,"5-3":0.5,"5-4":0.6666666666666666,"5-5":0.8333333333333334,"5-6":1};</script>
+<script>var pr = {"title":["אדני שפתי","Adonai S'fatai"],"text-credit":"Psalm 51:17","choices":{"Word order":[["","Simplest English"],["","Same as Hebrew"]],"{תִּפְתָּח} as":[["0","Open"],[".","May you open"]],"{יַ|גִּיד} as":[["0.","Will sing"],["1.","Will sing"],["..","Let (my mouth) sing"]]},"default-choices":{"Word order":[["",0]],"{תִּפְתָּח} as":[["0",0],["1",1]],"{יַ|גִּיד} as":[["0",0],["1",2]]},"choices-presets-locations":{"Word order":1,"{תִּפְתָּח} as":1,"{יַ|גִּיד} as":1},"text":[["...","*אֲדֹנָ_|י","[My](1) [Lord](0)",{}],["00.","שְׂפָ_|תַי תִּפְתָּח","[open](2) [my](1) [lips](0)",{}],["01.","שְׂפָ_|תַי תִּפְתָּח","[may you open](2) [my](1) [lips](0)",{}],["11.","שְׂפָ_|תַי תִּפְתָּח","[my](1) [lips](0) [may you open](2)",{}],["0.0","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [my](2) [mouth](1) [will](3) [sing](4) [your](6) [praise](5)"],["1.1","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [my](2) [mouth](1) [will](3) [sing](4) [your](6) [praise](5)"],["0.2","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [let](3) [my](2) [mouth](1) [sing](4) [your](6) [praise](5)"],["1.2","וּ|פִ_|י יַ|גִּיד תְּהִלָּ_|תֶךָ","[and](0) [my](2) [mouth](1) [may you let](3) [sing](4) [your](6) [praise](5)"]]};</script>
+<script>var colors = {"0-0":0,"0-1":1,"1-0":0,"1-1":0.5,"1-2":1,"2-0":0,"2-1":0.5,"2-2":1,"3-0":0,"3-1":0.5,"3-2":1,"4-0":0,"4-1":0.16666666666666666,"4-2":0.3333333333333333,"4-3":0.5,"4-4":0.6666666666666666,"4-5":0.8333333333333334,"4-6":1,"5-0":0,"5-1":0.16666666666666666,"5-2":0.3333333333333333,"5-3":0.5,"5-4":0.6666666666666666,"5-5":0.8333333333333334,"5-6":1,"6-0":0,"6-1":0.16666666666666666,"6-2":0.3333333333333333,"6-3":0.5,"6-4":0.6666666666666666,"6-5":0.8333333333333334,"6-6":1,"7-0":0,"7-1":0.16666666666666666,"7-2":0.3333333333333333,"7-3":0.5,"7-4":0.6666666666666666,"7-5":0.8333333333333334,"7-6":1};</script>
 <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
 <div class="titleAndCredits">
-  <h1>
+  <h1 id="topHeader" class="aLike">
     <span class="h2He">אדני שפתי</span>
     <span class="h2En">Adonai S'fatai</span>
   </h1>
@@ -61,47 +61,83 @@
   <tr id="ix1-tr">    <td id="ix1-lnoL" class="line_no">/</td>
     <td id="ix1-hetd" class="he" dir="rtl"><span id="ix1-he-0">שְׂפָ</span><span id="ix1-he-1">תַי</span> <span id="ix1-he-2">תִּפְתָּח</span></td>
     <td id="ix1-tltd" class="tl"><span id="ix1-tl-0">s’f</span><span id="ix1-tl-1">atai</span> <span id="ix1-tl-2">tif’tach</span></td>
-    <td id="ix1-entd" class="en"><span id="ix1-en-1">my</span> <span id="ix1-en-0">lips</span> <span id="ix1-en-2">may you open</span></td>
+    <td id="ix1-entd" class="en"><span id="ix1-en-2">open</span> <span id="ix1-en-1">my</span> <span id="ix1-en-0">lips</span></td>
     <td id="ix1-lnoR" class="line_no">/</td>
   </tr>
   <tr id="ix2-tr">    <td id="ix2-lnoL" class="line_no">/</td>
     <td id="ix2-hetd" class="he" dir="rtl"><span id="ix2-he-0">שְׂפָ</span><span id="ix2-he-1">תַי</span> <span id="ix2-he-2">תִּפְתָּח</span></td>
-    <td id="ix2-tltd" class="tl"><span id="ix2-tl-0">S’f</span><span id="ix2-tl-1">atai</span> <span id="ix2-tl-2">tif’tach</span></td>
-    <td id="ix2-entd" class="en"><span id="ix2-en-2">open</span> <span id="ix2-en-1">my</span> <span id="ix2-en-0">lips</span></td>
+    <td id="ix2-tltd" class="tl"><span id="ix2-tl-0">s’f</span><span id="ix2-tl-1">atai</span> <span id="ix2-tl-2">tif’tach</span></td>
+    <td id="ix2-entd" class="en"><span id="ix2-en-2">may you open</span> <span id="ix2-en-1">my</span> <span id="ix2-en-0">lips</span></td>
     <td id="ix2-lnoR" class="line_no">/</td>
   </tr>
   <tr id="ix3-tr">    <td id="ix3-lnoL" class="line_no">/</td>
-    <td id="ix3-hetd" class="he" dir="rtl"><span id="ix3-he-0">וּ</span><span id="ix3-he-1">פִ</span><span id="ix3-he-2">י</span> <span id="ix3-he-3">יַ</span><span id="ix3-he-4">גִּיד</span> <span id="ix3-he-5">תְּהִלָּ</span><span id="ix3-he-6">תֶךָ</span></td>
-    <td id="ix3-tltd" class="tl"><span id="ix3-tl-0">u</span><span id="ix3-tl-1">f</span><span id="ix3-tl-2">i</span> <span id="ix3-tl-3">ya</span><span id="ix3-tl-4">gid</span> <span id="ix3-tl-5">t’hil</span><span id="ix3-tl-6">atecha</span></td>
-    <td id="ix3-entd" class="en"><span id="ix3-en-0">and</span> <span id="ix3-en-2">my</span> <span id="ix3-en-1">mouth</span> <span id="ix3-en-3">will</span> <span id="ix3-en-4">sing</span> <span id="ix3-en-6">your</span> <span id="ix3-en-5">praise</span></td>
+    <td id="ix3-hetd" class="he" dir="rtl"><span id="ix3-he-0">שְׂפָ</span><span id="ix3-he-1">תַי</span> <span id="ix3-he-2">תִּפְתָּח</span></td>
+    <td id="ix3-tltd" class="tl"><span id="ix3-tl-0">s’f</span><span id="ix3-tl-1">atai</span> <span id="ix3-tl-2">tif’tach</span></td>
+    <td id="ix3-entd" class="en"><span id="ix3-en-1">my</span> <span id="ix3-en-0">lips</span> <span id="ix3-en-2">may you open</span></td>
     <td id="ix3-lnoR" class="line_no">/</td>
   </tr>
   <tr id="ix4-tr">    <td id="ix4-lnoL" class="line_no">/</td>
     <td id="ix4-hetd" class="he" dir="rtl"><span id="ix4-he-0">וּ</span><span id="ix4-he-1">פִ</span><span id="ix4-he-2">י</span> <span id="ix4-he-3">יַ</span><span id="ix4-he-4">גִּיד</span> <span id="ix4-he-5">תְּהִלָּ</span><span id="ix4-he-6">תֶךָ</span></td>
     <td id="ix4-tltd" class="tl"><span id="ix4-tl-0">u</span><span id="ix4-tl-1">f</span><span id="ix4-tl-2">i</span> <span id="ix4-tl-3">ya</span><span id="ix4-tl-4">gid</span> <span id="ix4-tl-5">t’hil</span><span id="ix4-tl-6">atecha</span></td>
-    <td id="ix4-entd" class="en"><span id="ix4-en-0">and</span> <span id="ix4-en-3">let</span> <span id="ix4-en-2">my</span> <span id="ix4-en-1">mouth</span> <span id="ix4-en-4">sing</span> <span id="ix4-en-6">your</span> <span id="ix4-en-5">praise</span></td>
+    <td id="ix4-entd" class="en"><span id="ix4-en-0">and</span> <span id="ix4-en-2">my</span> <span id="ix4-en-1">mouth</span> <span id="ix4-en-3">will</span> <span id="ix4-en-4">sing</span> <span id="ix4-en-6">your</span> <span id="ix4-en-5">praise</span></td>
     <td id="ix4-lnoR" class="line_no">/</td>
   </tr>
   <tr id="ix5-tr">    <td id="ix5-lnoL" class="line_no">/</td>
     <td id="ix5-hetd" class="he" dir="rtl"><span id="ix5-he-0">וּ</span><span id="ix5-he-1">פִ</span><span id="ix5-he-2">י</span> <span id="ix5-he-3">יַ</span><span id="ix5-he-4">גִּיד</span> <span id="ix5-he-5">תְּהִלָּ</span><span id="ix5-he-6">תֶךָ</span></td>
     <td id="ix5-tltd" class="tl"><span id="ix5-tl-0">u</span><span id="ix5-tl-1">f</span><span id="ix5-tl-2">i</span> <span id="ix5-tl-3">ya</span><span id="ix5-tl-4">gid</span> <span id="ix5-tl-5">t’hil</span><span id="ix5-tl-6">atecha</span></td>
-    <td id="ix5-entd" class="en"><span id="ix5-en-0">and</span> <span id="ix5-en-2">my</span> <span id="ix5-en-1">mouth</span> <span id="ix5-en-3">may you let</span> <span id="ix5-en-4">sing</span> <span id="ix5-en-6">your</span> <span id="ix5-en-5">praise</span></td>
+    <td id="ix5-entd" class="en"><span id="ix5-en-0">and</span> <span id="ix5-en-2">my</span> <span id="ix5-en-1">mouth</span> <span id="ix5-en-3">will</span> <span id="ix5-en-4">sing</span> <span id="ix5-en-6">your</span> <span id="ix5-en-5">praise</span></td>
     <td id="ix5-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix6-tr">    <td id="ix6-lnoL" class="line_no">/</td>
+    <td id="ix6-hetd" class="he" dir="rtl"><span id="ix6-he-0">וּ</span><span id="ix6-he-1">פִ</span><span id="ix6-he-2">י</span> <span id="ix6-he-3">יַ</span><span id="ix6-he-4">גִּיד</span> <span id="ix6-he-5">תְּהִלָּ</span><span id="ix6-he-6">תֶךָ</span></td>
+    <td id="ix6-tltd" class="tl"><span id="ix6-tl-0">u</span><span id="ix6-tl-1">f</span><span id="ix6-tl-2">i</span> <span id="ix6-tl-3">ya</span><span id="ix6-tl-4">gid</span> <span id="ix6-tl-5">t’hil</span><span id="ix6-tl-6">atecha</span></td>
+    <td id="ix6-entd" class="en"><span id="ix6-en-0">and</span> <span id="ix6-en-3">let</span> <span id="ix6-en-2">my</span> <span id="ix6-en-1">mouth</span> <span id="ix6-en-4">sing</span> <span id="ix6-en-6">your</span> <span id="ix6-en-5">praise</span></td>
+    <td id="ix6-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix7-tr">    <td id="ix7-lnoL" class="line_no">/</td>
+    <td id="ix7-hetd" class="he" dir="rtl"><span id="ix7-he-0">וּ</span><span id="ix7-he-1">פִ</span><span id="ix7-he-2">י</span> <span id="ix7-he-3">יַ</span><span id="ix7-he-4">גִּיד</span> <span id="ix7-he-5">תְּהִלָּ</span><span id="ix7-he-6">תֶךָ</span></td>
+    <td id="ix7-tltd" class="tl"><span id="ix7-tl-0">u</span><span id="ix7-tl-1">f</span><span id="ix7-tl-2">i</span> <span id="ix7-tl-3">ya</span><span id="ix7-tl-4">gid</span> <span id="ix7-tl-5">t’hil</span><span id="ix7-tl-6">atecha</span></td>
+    <td id="ix7-entd" class="en"><span id="ix7-en-0">and</span> <span id="ix7-en-2">my</span> <span id="ix7-en-1">mouth</span> <span id="ix7-en-3">may you let</span> <span id="ix7-en-4">sing</span> <span id="ix7-en-6">your</span> <span id="ix7-en-5">praise</span></td>
+    <td id="ix7-lnoR" class="line_no">/</td>
   </tr>
 </table>
 <h2>Translation Options</h2>
 <table class="choices">
-  <tr>    <td class="choiceLabel">Version:</td>
+  <tr>    <td class="choiceLabel">Word order:</td>
     <td class="choiceSelect">
       <div id="cc0" class="selectContainer">
-        <select id="cs0" title="Version" aria-label="Version"></select>
+        <select id="cs0" title="Word order" aria-label="Word order"></select>
+      </div>
+    </td>
+  </tr>
+  <tr>    <td class="choiceLabel"><span class="avoidwrap"><span class="inlineHe">תִּפְתָּח</span> (<i>tif’tach</i>)</span> as:</td>
+    <td class="choiceSelect">
+      <div id="cc1" class="selectContainer">
+        <select id="cs1" title="{תִּפְתָּח} as" aria-label="{תִּפְתָּח} as"></select>
+      </div>
+    </td>
+  </tr>
+  <tr>    <td class="choiceLabel"><span class="avoidwrap"><span class="inlineHe">יַגִּיד</span> (<i>yagid</i>)</span> as:</td>
+    <td class="choiceSelect">
+      <div id="cc2" class="selectContainer">
+        <select id="cs2" title="{יַ|גִּיד} as" aria-label="{יַ|גִּיד} as"></select>
       </div>
     </td>
   </tr>
 </table>
-<h2>Translation Notes</h2>
-<div class="generalNotes">
-  <div class="credits">Translations by Matthew Yacavone</div></div>
+<div class="allLinks">
+ <p>Prayers:   <a href="Adonai_Sfatai.html" class="grey avoidwrap">Adonai S'fatai</a> · 
+  <a href="Kaddish.html" class="grey avoidwrap">Kaddish</a> · 
+  <a href="Ldor_Vador.html" class="grey avoidwrap">L'dor Vador</a> · 
+  <a href="Oseh_Shalom.html" class="grey avoidwrap">Oseh Shalom</a> · 
+  <a href="Ozi.html" class="grey avoidwrap">Ozi V'Zim'rat Yah</a> · 
+  <a href="Pitchu_Li.html" class="grey avoidwrap">Pitchu Li</a> · 
+  <a href="Psalm_150.html" class="grey avoidwrap">Psalm 150 (Hallelu)</a> · 
+  <a href="Shalom_Rav.html" class="grey avoidwrap">Shalom Rav</a></p>
+ <p>Blessings:   <a href="Candle_Lighting.html" class="grey avoidwrap">Candle Lighting</a> · 
+  <a href="Kiddush.html" class="grey avoidwrap">Kiddush</a> · 
+  <a href="Shehecheyanu.html" class="grey avoidwrap">Shehecheyanu</a></p>
+</div>
 <div class="footer">
   <a href="index.html" class="grey">Back to prayer list</a> · 
   <a href="https://yacavone.net" class="grey">Back to my website</a>

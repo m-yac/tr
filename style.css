@@ -58,11 +58,29 @@
 
 html {
   font-family: bitter, serif;
+  --bg-color: white;
+  --fg-color: black;
+  --link-color: #0645AD;
+  --hover-link-color: #F3470F;
+  --grey-link-color: #555;
+  --button-focus-color: #6AF;
+  --button-border-color: #666;
+  --button-bg-color: #EEE;
+  --button-light-bg-color: #DDD;
 }
 
 .dark-mode {
-  background-color: #111;
-  color: white;
+  --bg-color: #191919;
+  --fg-color: #E2E2E2;
+  --link-color: #5392f9;
+  --hover-link-color: #f45c2a;
+  --grey-link-color: #BBB;
+  --button-focus-color: #049;
+  --button-border-color: #999;
+  --button-bg-color: var(--bg-color);
+  --button-light-bg-color: #333;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
 }
 
 h1, h2, h3, h4 {
@@ -85,13 +103,7 @@ h1 {
 
 a,
 a:visited  {
-  color: #0645AD;
-  text-decoration: none;
-  cursor: pointer;
-}
-.dark-mode a,
-.dark-mode a:visited  {
-  color: #5392f9;
+  color: var(--link-color);
   text-decoration: none;
   cursor: pointer;
 }
@@ -99,26 +111,29 @@ a:hover,
 a:focus,
 a:visited:hover,
 a:visited:focus {
-  color: #F3470F;
+  color: var(--hover-link-color);
 }
 
 .aHilight:hover a {
-  color: #F3470F;
+  color: var(--hover-link-color);
 }
 
 a.grey,
 a.grey:visited {
-  color: #555;
-}
-.dark-mode a.grey,
-.dark-mode a.grey:visited {
-  color: #AAA;
+  color: var(--grey-link-color);
 }
 a.grey:hover,
 a.grey:focus,
 a.grey:visited:hover,
 a.grey:visited:focus {
-  color: #F3470F;
+  color: var(--hover-link-color);
+}
+
+.aLike {
+  cursor: pointer;
+}
+.aLike:hover {
+  color: var(--hover-link-color);
 }
 
 .credits {
@@ -168,19 +183,12 @@ a.grey:visited:focus {
   padding-left: 5px;
   font-family: bitter, serif;
   font-size: 85%;
-  color: black;
-}
-.dark-mode .selectContainer select {
-  color: white;
+  color: var(--fg-color);
 }
 .selectContainer:hover,
 .selectContainer:focus {
-  box-shadow: 0 0 2pt 1pt #6AF;
+  box-shadow: 0 0 2pt 1pt var(--button-focus-color);
   /* # outline: 2px solid #6AF; */
-}
-.dark-mode .selectContainer:hover,
-.dark-mode .selectContainer:focus {
-  box-shadow: 0 0 2pt 1pt #049;
 }
 .selectContainer {
   /* margin: 50px; */
@@ -190,7 +198,7 @@ a.grey:visited:focus {
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
-  background-color: #DDD;
+  background-color: var(--button-light-bg-color);
   display: inline-block;
   vertical-align: middle;
   text-align: left;
@@ -204,7 +212,6 @@ a.grey:visited:focus {
 }
 .dark-mode .selectContainer {
   background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-  background-color: #333;
 }
 
 .checkboxes {
@@ -212,6 +219,11 @@ a.grey:visited:focus {
   margin-right: auto;
   margin-bottom: 40px;
   text-align: center;
+}
+
+.indexCheckboxes {
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 .checkboxContainer input {
@@ -223,7 +235,7 @@ a.grey:visited:focus {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-style: solid;
-  border-color: #DDD;
+  border-color: var(--button-light-bg-color);
   border-width: 1px;
   margin: 2px;
   padding: 4px;
@@ -231,28 +243,19 @@ a.grey:visited:focus {
   background-color: transparent;
   text-align: center;
 }
-.dark-mode .checkboxContainer input + label {
-  border-color: #333;
+.indexCheckboxes .checkboxContainer input + label {
+  border-color: transparent;
 }
 .checkboxContainer input:checked + label {
-  border-color: #666;
-  background-color: #EEE;
-}
-.dark-mode .checkboxContainer input:checked + label {
-  border-color: #999;
-  background-color: #111;
+  border-color: var(--button-border-color);
+  background-color: var(--button-bg-color);
 }
 .checkboxContainer input + label:hover,
 .checkboxContainer input + label:focus {
-  border-color: #666;
+  border-color: var(--button-border-color);
   border-width: 1px;
-  box-shadow: 0 0 2pt 1pt #6AF;
+  box-shadow: 0 0 2pt 1pt var(--button-focus-color);
   /* # outline: 2px solid #6AF; */
-}
-.dark-mode .checkboxContainer input + label:hover,
-.dark-mode .checkboxContainer input + label:focus {
-  border-color: #999;
-  box-shadow: 0 0 2pt 1pt #049;
 }
 .checkboxContainer {
   margin-left: 3px;
@@ -260,30 +263,24 @@ a.grey:visited:focus {
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
-  background-color: #DDD;
+  background-color: var(--button-light-bg-color);
   display: inline-block;
   vertical-align: middle;
   text-align: left;
   position: relative;
   padding: 4px;
 }
-.dark-mode .checkboxContainer {
-  background-color: #333;
+.indexCheckboxes .checkboxContainer {
+  background-color: transparent;
 }
 
 .colorCheckboxContainer input + label {
   width: 19px;
   height: 19px;
-  color: black;
-}
-.dark-mode .colorCheckboxContainer input + label {
-  color: white;
+  color: var(--fg-color);
 }
 .colorCheckboxContainer input + label .colorSVG {
-  fill: black
-}
-.dark-mode .colorCheckboxContainer input + label .colorSVG {
-  fill: white
+  fill: var(--fg-color);
 }
 .colorCheckboxContainer input:checked + label {
   background-image: linear-gradient(to right, rgb(255, 215, 128), rgb(255, 176, 128), rgb(255, 165, 165), rgb(255, 153, 202));
@@ -298,12 +295,7 @@ a.grey:visited:focus {
 .darkCheckboxContainer input + label {
   width: 19px;
   height: 19px;
-  color: black;
-}
-.dark-mode .darkCheckboxContainer input + label {
-  width: 19px;
-  height: 19px;
-  color: white;
+  color: var(--fg-color);
 }
 
 .layoutContainer {
@@ -354,6 +346,12 @@ td {
   font-family: shlomoStam, shlomo, bitter, serif;
 }
 
+.enMatchingHe {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 125%;
+}
+
 .line_no, .line_no_empty {
   padding-left: 10px;
   padding-right: 10px;
@@ -376,9 +374,17 @@ td {
   max-width: 850px;
 }
 
+.allLinks {
+  margin-top: 40pt;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+}
+
 .footer {
   text-align: center;
-  margin-top: 35pt;
+  margin-top: 10pt;
   margin-bottom: 20pt;
 }
 
@@ -389,9 +395,19 @@ td {
 .hidden {
   display: none;
 }
+.hiddenBlocks {
+  display: none;
+}
 
 .avoidwrap {
   display: inline-block;
+}
+
+.alignLeft {
+  text-align: left;
+}
+.alignRight {
+  text-align: right;
 }
 
 .highlighted {

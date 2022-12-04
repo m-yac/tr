@@ -3,13 +3,13 @@
 <title>Shehecheyanu</title>
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
-<script>var pr = {"title":["שהחינו","Shehecheyanu"],"choices":{},"format":"blocks","text":[["","*בָּרוּךְ אַתָּה *יְיָ *אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[Blessed](0) [are you](1) [*Adonai*](2), [our](4) [God](3), [Ruler of](5) [the](6) [Universe](7),",{}],["","שֶׁ|הֶחֱיָ_|נוּ וְ|קִיְּמָ_|נוּ וְ|הִגִּיעָ_|נוּ לַ|זְּמַן הַזֶּה","[who](0) [has given](1) [us](2) [life](1), [sustained](4) [us](5), [and](6) [brought](7) [us](8) [to](9) [this](11) [time](10).",{}]]};</script>
-<script>var colors = {"0-0":0,"0-1":0.14285714285714285,"0-2":0.2857142857142857,"0-3":0.42857142857142855,"0-4":0.5714285714285714,"0-5":0.7142857142857143,"0-6":0.8571428571428571,"0-7":1,"1-0":0,"1-1":0.09090909090909091,"1-2":0.18181818181818182,"1-3":0.2727272727272727,"1-4":0.36363636363636365,"1-5":0.45454545454545453,"1-6":0.5454545454545454,"1-7":0.6363636363636364,"1-8":0.7272727272727273,"1-9":0.8181818181818182,"1-10":0.9090909090909091,"1-11":1};</script>
+<script>var pr = {"title":["שהחינו","Shehecheyanu"],"choices":{},"format":"blocks","text":[["","*בָּרוּךְ אַתָּה *יְיָ *אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[Blessed](0) [are you](1) [*Adonai*](2), [our](4) [God](3), [Ruler of](5) [the](6) [Universe](7),",{}],["","שֶׁ|הֶחֱיָ_|נוּ וְ|קִיְּמָ_|נוּ וְ|הִגִּיעָ_|נוּ לַ|זְּמַן הַזֶּה","[who](0) [has given](1) [us](2) [life](1), [sustained](4) [us](5), [and](6) [brought](7) [us](8) [to](9) [this](11) [time](10).",{}],["","","",{}]]};</script>
+<script>var colors = {"0-0":0,"0-1":0.14285714285714285,"0-2":0.2857142857142857,"0-3":0.42857142857142855,"0-4":0.5714285714285714,"0-5":0.7142857142857143,"0-6":0.8571428571428571,"0-7":1,"1-0":0,"1-1":0.09090909090909091,"1-2":0.18181818181818182,"1-3":0.2727272727272727,"1-4":0.36363636363636365,"1-5":0.45454545454545453,"1-6":0.5454545454545454,"1-7":0.6363636363636364,"1-8":0.7272727272727273,"1-9":0.8181818181818182,"1-10":0.9090909090909091,"1-11":1,"2-0":0};</script>
 <script type="text/javascript" src="index.js"></script>
 </head>
 <body>
 <div class="titleAndCredits">
-  <h1>
+  <h1 id="topHeader" class="aLike">
     <span class="h2He">שהחינו</span>
     <span class="h2En">Shehecheyanu</span>
   </h1>
@@ -60,8 +60,9 @@
     <td id="ix1-hetd" class="he" dir="rtl"><span id="ix1-he-0">שֶׁ</span><span id="ix1-he-1">הֶחֱיָ</span><span id="ix1-he-2">נוּ</span> <span id="ix1-he-3">וְ</span><span id="ix1-he-4">קִיְּמָ</span><span id="ix1-he-5">נוּ</span> <span id="ix1-he-6">וְ</span><span id="ix1-he-7">הִגִּיעָ</span><span id="ix1-he-8">נוּ</span> <span id="ix1-he-9">לַ</span><span id="ix1-he-10">זְּמַן</span> <span id="ix1-he-11">הַזֶּה</span></td>
     <td id="ix1-lnoRhe" class="line_no">/</td>
   </tr>
-  <tr id="ixbr0-trhe">    <td id="ixbr0-lnoLhe" class="line_no_empty">/</td>
-    <td id="ixbr0-lnoRhe" class="line_no_empty">/</td>
+  <tr id="ix2-trhe">    <td id="ix2-lnoLhe" class="line_no_empty">/</td>
+    <td id="ix2-hetd" class="he" dir="rtl"><span id="ix2-he-0"></span></td>
+    <td id="ix2-lnoRhe" class="line_no_empty">/</td>
   </tr>
   <tr id="ix0-trtl">    <td id="ix0-lnoLtl" class="line_no">/</td>
     <td id="ix0-tltd" class="tl"><span id="ix0-tl-0">Baruch</span> <span id="ix0-tl-1">atah</span> <span id="ix0-tl-2">Adonai</span> <span id="ix0-tl-3">Eloh</span><span id="ix0-tl-4">einu</span> <span id="ix0-tl-5">Melech</span> <span id="ix0-tl-6">Ha</span><span id="ix0-tl-7">’olam</span></td>
@@ -71,8 +72,9 @@
     <td id="ix1-tltd" class="tl"><span id="ix1-tl-0">she</span><span id="ix1-tl-1">hechey</span><span id="ix1-tl-2">anu</span> <span id="ix1-tl-3">v’</span><span id="ix1-tl-4">kiy’m</span><span id="ix1-tl-5">anu</span> <span id="ix1-tl-6">v’</span><span id="ix1-tl-7">higi</span><span id="ix1-tl-8">’anu</span> <span id="ix1-tl-9">la</span><span id="ix1-tl-10">z’man</span> <span id="ix1-tl-11">hazeh</span></td>
     <td id="ix1-lnoRtl" class="line_no_empty">/</td>
   </tr>
-  <tr id="ixbr0-trtl">    <td id="ixbr0-lnoLtl" class="line_no_empty">/</td>
-    <td id="ixbr0-lnoRtl" class="line_no_empty">/</td>
+  <tr id="ix2-trtl">    <td id="ix2-lnoLtl" class="line_no_empty">/</td>
+    <td id="ix2-tltd" class="tl"><span id="ix2-tl-0"></span></td>
+    <td id="ix2-lnoRtl" class="line_no_empty">/</td>
   </tr>
   <tr id="ix0-tren">    <td id="ix0-lnoLen" class="line_no">/</td>
     <td id="ix0-entd" class="en"><span id="ix0-en-0">Blessed</span> <span id="ix0-en-1">are you</span> <span id="ix0-en-2"><i>Adonai</i></span>, <span id="ix0-en-4">our</span> <span id="ix0-en-3">God</span>, <span id="ix0-en-5">Ruler of</span> <span id="ix0-en-6">the</span> <span id="ix0-en-7">Universe</span>,</td>
@@ -82,7 +84,24 @@
     <td id="ix1-entd" class="en"><span id="ix1-en-0">who</span> <span id="ix1-en-1">has given</span> <span id="ix1-en-2">us</span> <span id="ix1-en-1">life</span>, <span id="ix1-en-4">sustained</span> <span id="ix1-en-5">us</span>, <span id="ix1-en-6">and</span> <span id="ix1-en-7">brought</span> <span id="ix1-en-8">us</span> <span id="ix1-en-9">to</span> <span id="ix1-en-11">this</span> <span id="ix1-en-10">time</span>.</td>
     <td id="ix1-lnoRen" class="line_no_empty">/</td>
   </tr>
+  <tr id="ix2-tren">    <td id="ix2-lnoLen" class="line_no_empty">/</td>
+    <td id="ix2-entd" class="en"></td>
+    <td id="ix2-lnoRen" class="line_no_empty">/</td>
+  </tr>
 </table>
+<div class="allLinks">
+ <p>Prayers:   <a href="Adonai_Sfatai.html" class="grey avoidwrap">Adonai S'fatai</a> · 
+  <a href="Kaddish.html" class="grey avoidwrap">Kaddish</a> · 
+  <a href="Ldor_Vador.html" class="grey avoidwrap">L'dor Vador</a> · 
+  <a href="Oseh_Shalom.html" class="grey avoidwrap">Oseh Shalom</a> · 
+  <a href="Ozi.html" class="grey avoidwrap">Ozi V'Zim'rat Yah</a> · 
+  <a href="Pitchu_Li.html" class="grey avoidwrap">Pitchu Li</a> · 
+  <a href="Psalm_150.html" class="grey avoidwrap">Psalm 150 (Hallelu)</a> · 
+  <a href="Shalom_Rav.html" class="grey avoidwrap">Shalom Rav</a></p>
+ <p>Blessings:   <a href="Candle_Lighting.html" class="grey avoidwrap">Candle Lighting</a> · 
+  <a href="Kiddush.html" class="grey avoidwrap">Kiddush</a> · 
+  <a href="Shehecheyanu.html" class="grey avoidwrap">Shehecheyanu</a></p>
+</div>
 <div class="footer">
   <a href="index.html" class="grey">Back to prayer list</a> · 
   <a href="https://yacavone.net" class="grey">Back to my website</a>
