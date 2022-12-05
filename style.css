@@ -92,13 +92,21 @@ h1 {
   font-size: 30pt;
 }
 
-.h2He {
+.h1He {
   margin-right: 4px;
   font-family: shlomoStam, shlomo, bitter, serif;
 }
-
-.h2En {
+.h1En {
   margin-left: 4px;
+}
+
+.h2He {
+  text-align: right;
+  width: 100%;
+}
+.h2En {
+  text-align: left;
+  width: 100%;
 }
 
 a,
@@ -401,13 +409,6 @@ td {
 
 .avoidwrap {
   display: inline-block;
-}
-
-.alignLeft {
-  text-align: left;
-}
-.alignRight {
-  text-align: right;
 }
 
 .highlighted {

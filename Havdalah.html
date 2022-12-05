@@ -1,0 +1,477 @@
+<!DOCTYPE html><html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Havdalah</title>
+<link rel="stylesheet" href="style.css" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script>var pr = {"title":["הבדלה","Havdalah"],"choices":{"End of":[["","Shabbat"],["","Yom Kippur"],["","Other Holiday"]],"Introductory Verses":[["0","All"],["0","Pre-19th Century"],[".","None"]],"Final Blessing":[["..","Full"],["..","Shortened"]]},"default-choices":{"End of":[["",0]],"Introductory Verses":[["0",0],[".",2]],"Final Blessing":[["..",0]]},"text":[[".[01].","*הִנֵּה אֵל יְשׁוּעָתִ_|י","\"[*Hinei*](0)! [God](1) [is](4) [my](3) [salvation](2)",{}],[".[01].","אֶבְטַח וְ|לֹא אֶפְחָד","[I will have faith](0) [and](1) [not](2) [fear](3)",{}],[".[01].","כִּי עׇזִּ_|י וְ|זִמְרָת יָהּ~יְיָ","[for](0) [my](2) [strength](1) [and](3) [song](4) [are](6) [God](5)",{}],[".[01].","וַ|יְהִי-לִי~לִי|שׁוּעָה","[and](0) [God](4) [has become](1) [my](2) [salvation](3)",{}],[".[01].","וּ|שְׁאַבְתֶּם מַיִם בְּ|שָׂשׂוֹן","[and](0) [you will draw](1) [water](2) [with](3) [joy](4)",{}],[".[01].","מִ|מַּעַיְנֵ_|י הַ|יְשׁוּעָה","[from](0) [the](3) [springs](1) [of](2) [salvation](4)\"",{}],[".[01].","","",{}],[".[01].","*לַ|יְיָ הַ|יְשׁוּעָה","\"[To](0) [*Adonai*](1) [belongs](4) [salvation](3)",{}],[".[01].","עַל עַמְּ_|ךָ בִרְכָתֶ_|ךָ","[to](0) [your](2) [people](1) [is](6) [your](4) [blessing](3)",{}],[".[01].","*סֶּלָה","[*Selah*](0)\"",{}],[".[01].","","",{}],[".[01].","יְיָ צְבָאֹות עִמָּ_|נוּ","\"[*Adonai* of](0) [hosts](1) [is](4) [with](2) [us](3)",{}],[".[01].","מִשְׂגָּב לָ_|נוּ *אֱלֹהֵ_|י יַעֲקֹב","[a stronghold](0) [for](1) [us](2), [God](3) [of](4) [Jacob](5)",{}],[".[01].","*סֶּלָה","[*Selah*](0)\"",{}],[".[01].","","",{}],[".0.","יְיָ צְבָאֹות","\"[*Adonai* of](0) [hosts](1),",{}],[".0.","אַשְׁרֵ_|י אָדָם בֹּטֵחַ בָּ_|ךְ","[a happy](0) [person](2) [trusts](3) [in](4) [you](5)\"",{}],[".0.","","",{}],[".0.","יְיָ צְבָאֹות הוֹשִׁיעָה","\"[*Adonai* of](0) [hosts](1), [save](2) [us](3),",{}],[".0.","הַ|מֶּלֶךְ יַעֲנֵ_|נוּ","[the](0) [King](1) [will answer](2) [us](3)",{}],[".0.","בְ|יוֹם קָרְאֵ_|נוּ","[on](0) [the day](1) [we](3) [call](2)\"",{}],[".0.","","",{}],[".[01].","*לַ|יְּהוּדִים הָיְתָה אוֹרָה","\"[For](0) [the Jews](1) [there was](2) [light](3)",{}],[".[01].","וְ|שִׂמְחָה","[and](0) [happiness](1)",{}],[".[01].","וְ|שָׂשֹׂן","[and](0) [joy](1)",{}],[".[01].","וִ_|יקָר","[and](0) [honor](1)\"",{}],[".[01].","*כֵּן תִּהְיֶה לָּ_|נוּ","[Thus](0) [there will be](1) [for](2) [us](3)",{}],[".[01].","","",{}],[".[01].","*כּוֹס יְשׁוּעֹות אֶשָּׂא","\"[I will raise](2) [the cup of](0) [salvation](1)",{}],[".[01].","וּ|בְ|שֵׁם יְיָ אֶקְרָא","[and](0) [in the](1) [name of](2) [*Adonai*](3) [call out](4):\"",{}],[".[01].","","",{}],[".[01].","","",{}],["...","*בָּרוּךְ אַתָּה *יְיָ","[Blessed](0) [are you](1) [*Adonai*](2),",{}],["...","*אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[our](1) [God](0), [Ruler of](2) [the](3) [Universe](4),",{}],["...","בּוֹרֵא פְּרִ_|י הַ|גָּפֶן","[creator of](0) [the](3) [fruit](1) [of](2) [the](3) [vine](4).",{}],["...","","",{}],[".[01].","","",{}],["0..","*בָּרוּךְ אַתָּה *יְיָ","[Blessed](0) [are you](1) [*Adonai*](2),",{}],["0..","*אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[our](1) [God](0), [Ruler of](2) [the](3) [Universe](4),",{}],["0..","בּוֹרֵא מִינֵ_|י בְשָׂמִים","[creator of](0) [varieties](1) [of](2) [spices](3).",{}],["0..","","",{}],["0[01].","","",{}],["[01]..","*בָּרוּךְ אַתָּה *יְיָ","[Blessed](0) [are you](1) [*Adonai*](2),",{}],["[01]..","*אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[our](1) [God](0), [Ruler of](2) [the](3) [Universe](4),",{}],["[01]..","בּוֹרֵא מְאוֹרֵ_|י הָ|אֵשׁ","[creator of](0) [the](3) [lights](1) [of](2) [fire](4).",{}],["[01]..","","",{}],["[01][01].","","",{}],["...","*בָּרוּךְ אַתָּה *יְיָ","[Blessed](0) [are you](1) [*Adonai*](2),",{}],["...","*אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם","[our](1) [God](0), [Ruler of](2) [the](3) [Universe](4),",{}],["..0","הַ|מַבְדִּיל","[the](0) [one who sets apart](1):",{}],["..0","בֵּין קֹדֶשׁ לְ|חוֹל","[the holy](1) [from](2) [the ordinary](3),",{}],["..0","בֵּין אוֹר לְ|חשֶׁךְ","[the light](1) [from](2) [the dark](3),",{}],["..0","בֵּין יִשְׂרָאֵל לָ|עַמִּים","[*Yisrael*](1) [from](2) [the other](4) [peoples](3),",{}],["..0","בֵּין יוֹם הַ|שְּׁבִיעִי","[and](4) [the](2) [seventh](3) [day](1)",{}],["..0","לְ|שֵׁשֶׁת יְמֵ_|י הַ|מַּעֲשֶׂה","[from](0) [the](4) [six](1) [days](2) [of](3) [work](5).",{}],["..0","","",{}],[".[01]0","","",{}],["..0","*בָּרוּךְ אַתָּה *יְיָ","[Blessed](0) [are you](1) [*Adonai*](2),",{}],["...","הַ|מַבְדִּיל","[the](0) [one who sets apart](1)",{}],["...","בֵּין קֹדֶשׁ לְ|חוֹל","[the holy](1) [from](2) [the ordinary](3).",{}],["0..","","",{}],["0[01].","","",{}],["0..","*שָׁבוּעַ טוֹב[!]","[Have a](2) [good](1) [week](0)!"]],"general-notes":[["The quotes in the introductory verses are from Isaiah 12:2-3 (<a href=\"Ozi.html?v=100\">Ozi V'zimrat Yah</a>), Psalm 3:9, Psalm 46:8/12, Esther 8:16, and Psalm 116:13, respectively.","In prayer books starting in the 19th Century, verses from Psalms 84:13 and Psalms 20:10 are added between the verse from Psalm 46 and the verse from Esther."]],"translation-credit":"Translations by Matthew Yacavone"};</script>
+<script>var colors = {"0-0":0,"0-1":0.3333333333333333,"0-2":0.6666666666666666,"0-3":1,"0-4":1.3333333333333333,"1-0":0,"1-1":0.3333333333333333,"1-2":0.6666666666666666,"1-3":1,"2-0":0,"2-1":0.2,"2-2":0.4,"2-3":0.6,"2-4":0.8,"2-5":1,"2-6":1.3333333333333333,"3-0":0,"3-1":0.3333333333333333,"3-2":0.6666666666666666,"3-3":1,"3-4":1.3333333333333333,"4-0":0,"4-1":0.25,"4-2":0.5,"4-3":0.75,"4-4":1,"5-0":0,"5-1":0.25,"5-2":0.5,"5-3":0.75,"5-4":1,"6-0":0,"7-0":0,"7-1":0.3333333333333333,"7-2":0.6666666666666666,"7-3":1,"7-4":1.3333333333333333,"8-0":0,"8-1":0.25,"8-2":0.5,"8-3":0.75,"8-4":1,"8-6":1.3333333333333333,"9-0":0,"10-0":0,"11-0":0,"11-1":0.3333333333333333,"11-2":0.6666666666666666,"11-3":1,"11-4":1.3333333333333333,"12-0":0,"12-1":0.2,"12-2":0.4,"12-3":0.6,"12-4":0.8,"12-5":1,"13-0":0,"14-0":0,"15-0":0,"15-1":1,"16-0":0,"16-1":0.2,"16-2":0.4,"16-3":0.6,"16-4":0.8,"16-5":1,"17-0":0,"18-0":0,"18-1":0.5,"18-2":1,"18-3":1.3333333333333333,"19-0":0,"19-1":0.3333333333333333,"19-2":0.6666666666666666,"19-3":1,"20-0":0,"20-1":0.3333333333333333,"20-2":0.6666666666666666,"20-3":1,"21-0":0,"22-0":0,"22-1":0.3333333333333333,"22-2":0.6666666666666666,"22-3":1,"23-0":0,"23-1":1,"24-0":0,"24-1":1,"25-0":0,"25-1":1,"26-0":0,"26-1":0.3333333333333333,"26-2":0.6666666666666666,"26-3":1,"27-0":0,"28-0":0,"28-1":0.5,"28-2":1,"29-0":0,"29-1":0.25,"29-2":0.5,"29-3":0.75,"29-4":1,"30-0":0,"31-0":0,"32-0":0,"32-1":0.5,"32-2":1,"33-0":0,"33-1":0.25,"33-2":0.5,"33-3":0.75,"33-4":1,"34-0":0,"34-1":0.25,"34-2":0.5,"34-3":0.75,"34-4":1,"35-0":0,"36-0":0,"37-0":0,"37-1":0.5,"37-2":1,"38-0":0,"38-1":0.25,"38-2":0.5,"38-3":0.75,"38-4":1,"39-0":0,"39-1":0.3333333333333333,"39-2":0.6666666666666666,"39-3":1,"40-0":0,"41-0":0,"42-0":0,"42-1":0.5,"42-2":1,"43-0":0,"43-1":0.25,"43-2":0.5,"43-3":0.75,"43-4":1,"44-0":0,"44-1":0.25,"44-2":0.5,"44-3":0.75,"44-4":1,"45-0":0,"46-0":0,"47-0":0,"47-1":0.5,"47-2":1,"48-0":0,"48-1":0.25,"48-2":0.5,"48-3":0.75,"48-4":1,"49-0":0,"49-1":1,"50-0":0,"50-1":0.3333333333333333,"50-2":0.6666666666666666,"50-3":1,"51-0":0,"51-1":0.3333333333333333,"51-2":0.6666666666666666,"51-3":1,"52-0":0,"52-1":0.3333333333333333,"52-2":0.6666666666666666,"52-3":1,"52-4":1.3333333333333333,"53-0":0,"53-1":0.3333333333333333,"53-2":0.6666666666666666,"53-3":1,"53-4":1.3333333333333333,"54-0":0,"54-1":0.2,"54-2":0.4,"54-3":0.6,"54-4":0.8,"54-5":1,"55-0":0,"56-0":0,"57-0":0,"57-1":0.5,"57-2":1,"58-0":0,"58-1":1,"59-0":0,"59-1":0.3333333333333333,"59-2":0.6666666666666666,"59-3":1,"60-0":0,"61-0":0,"62-0":0,"62-1":1,"62-2":1.3333333333333333};</script>
+<script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+<div class="titleAndCredits">
+  <h1 id="topHeader" class="aLike">
+    <span class="h1He">הבדלה</span>
+    <span class="h1En">Havdalah</span>
+  </h1>
+</div>
+<table class="choices">
+  <tr>    <td class="choiceLabel">End of:</td>
+    <td class="choiceSelect">
+      <div id="cc0" class="selectContainer">
+        <select id="cs0" title="End of" aria-label="End of"></select>
+      </div>
+    </td>
+  </tr>
+  <tr>    <td class="choiceLabel">Introductory Verses:</td>
+    <td class="choiceSelect">
+      <div id="cc1" class="selectContainer">
+        <select id="cs1" title="Introductory Verses" aria-label="Introductory Verses"></select>
+      </div>
+    </td>
+  </tr>
+  <tr>    <td class="choiceLabel">Final Blessing:</td>
+    <td class="choiceSelect">
+      <div id="cc2" class="selectContainer">
+        <select id="cs2" title="Final Blessing" aria-label="Final Blessing"></select>
+      </div>
+    </td>
+  </tr>
+</table>
+<div class="checkboxes">
+  <div class="checkboxContainer darkCheckboxContainer">
+    <input id="dark-checkbox" name="dark-checkbox" type="checkbox"/>
+    <label for="dark-checkbox">
+      <!-- Adapted from: https://www.veryicon.com/icons/miscellaneous/eva-icon-fill/moon-20.html -->
+      <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <path fill="currentColor" d="M524.8 938.666667h-4.266667a439.893333 439.893333 0 0 1-313.173333-134.4 446.293333 446.293333 0 0 1-11.093333-597.333334 432.213333 432.213333 0 0 1 170.666666-116.906666 42.666667 42.666667 0 0 1 45.226667 9.386666 42.666667 42.666667 0 0 1 10.24 42.666667 358.4 358.4 0 0 0 82.773333 375.893333 361.386667 361.386667 0 0 0 376.746667 82.773334 42.666667 42.666667 0 0 1 54.186667 55.04A433.493333 433.493333 0 0 1 836.266667 810.666667a438.613333 438.613333 0 0 1-311.466667 128z"/>
+      </svg>
+    </label>
+  </div>
+  <div class="checkboxContainer">
+    <input id="he-checkbox" name="he-checkbox" type="checkbox" checked/>
+    <label for="he-checkbox">עב</label>
+    <input id="tl-checkbox" name="tl-checkbox" type="checkbox" checked/>
+    <label for="tl-checkbox"><i>Trl</i></label>
+    <input id="en-checkbox" name="en-checkbox" type="checkbox" checked/>
+    <label for="en-checkbox">En</label>
+  </div>
+  <div class="checkboxContainer colorCheckboxContainer">
+    <input id="color-checkbox" name="color-checkbox" type="checkbox"/>
+    <label for="color-checkbox">
+      <!-- Adapted from: https://www.svgrepo.com/svg/155843/paint-bucket-with-a-paint-drop -->
+      <svg class="colorSVG" viewBox="0 0 387.2 387.2" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <path id="p1" d="M321.342,231.438c1.247,18.164,16.82,29.531,34.985,28.283c18.165-1.246,32.041-14.633,30.795-32.798 s-36.318-63.804-36.542-50.949C350.271,193.849,320.095,213.273,321.342,231.438z"/>
+          <path id="p2" d="M123.587,31.759c-4.533-2.444-10.243-0.734-12.688,3.799L1.115,239.19c-2.444,4.534-0.734,10.243,3.799,12.688 l192.092,103.562c4.534,2.444,10.243,0.734,12.688-3.799l96.69-173.578c2.443-4.533,36.644-26.883,36.644-26.883 c4.143-3.061,3.82-7.565-0.712-10.01L123.587,31.759z"/>
+          <clipPath id="c1"><use xlink:href="#p1"/></clipPath>
+          <clipPath id="c2"><use xlink:href="#p2"/></clipPath>
+        </defs>
+        <use xlink:href="#p1" stroke-width="75" stroke="currentColor" clip-path="url(#c1)"/>
+        <use xlink:href="#p2" stroke-width="75" stroke="currentColor" clip-path="url(#c2)"/>
+      </svg>
+    </label>
+  </div>
+</div>
+<table class="text">
+  <tr id="ix0-tr">    <td id="ix0-lnoL" class="line_no">/</td>
+    <td id="ix0-hetd" class="he" dir="rtl"><span id="ix0-he-0">הִנֵּה</span> <span id="ix0-he-1">אֵל</span> <span id="ix0-he-2">יְשׁוּעָתִ</span><span id="ix0-he-3">י</span></td>
+    <td id="ix0-tltd" class="tl"><span id="ix0-tl-0">Hinei</span> <span id="ix0-tl-1">el</span> <span id="ix0-tl-2">y’shu’at</span><span id="ix0-tl-3">i</span></td>
+    <td id="ix0-entd" class="en">"<span id="ix0-en-0"><i>Hinei</i></span>! <span id="ix0-en-1">God</span> <span id="ix0-en-4">is</span> <span id="ix0-en-3">my</span> <span id="ix0-en-2">salvation</span></td>
+    <td id="ix0-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix1-tr">    <td id="ix1-lnoL" class="line_no">/</td>
+    <td id="ix1-hetd" class="he" dir="rtl"><span id="ix1-he-0">אֶבְטַח</span> <span id="ix1-he-1">וְ</span><span id="ix1-he-2">לֹא</span> <span id="ix1-he-3">אֶפְחָד</span></td>
+    <td id="ix1-tltd" class="tl"><span id="ix1-tl-0">ev’tach</span> <span id="ix1-tl-1">v’</span><span id="ix1-tl-2">lo</span> <span id="ix1-tl-3">ef’chad</span></td>
+    <td id="ix1-entd" class="en"><span id="ix1-en-0">I will have faith</span> <span id="ix1-en-1">and</span> <span id="ix1-en-2">not</span> <span id="ix1-en-3">fear</span></td>
+    <td id="ix1-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix2-tr">    <td id="ix2-lnoL" class="line_no">/</td>
+    <td id="ix2-hetd" class="he" dir="rtl"><span id="ix2-he-0">כִּי</span> <span id="ix2-he-1">עׇזִּ</span><span id="ix2-he-2">י</span> <span id="ix2-he-3">וְ</span><span id="ix2-he-4">זִמְרָת</span> <span id="ix2-he-5">יָהּ יְיָ</span></td>
+    <td id="ix2-tltd" class="tl"><span id="ix2-tl-0">ki</span> <span id="ix2-tl-1">oz</span><span id="ix2-tl-2">i</span> <span id="ix2-tl-3">v’</span><span id="ix2-tl-4">zim’rat</span> <span id="ix2-tl-5">Yah Adonai</span></td>
+    <td id="ix2-entd" class="en"><span id="ix2-en-0">for</span> <span id="ix2-en-2">my</span> <span id="ix2-en-1">strength</span> <span id="ix2-en-3">and</span> <span id="ix2-en-4">song</span> <span id="ix2-en-6">are</span> <span id="ix2-en-5">God</span></td>
+    <td id="ix2-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix3-tr">    <td id="ix3-lnoL" class="line_no">/</td>
+    <td id="ix3-hetd" class="he" dir="rtl"><span id="ix3-he-0">וַ</span><span id="ix3-he-1">יְהִי</span>-<span id="ix3-he-2">לִי לִי</span><span id="ix3-he-3">שׁוּעָה</span></td>
+    <td id="ix3-tltd" class="tl"><span id="ix3-tl-0">va</span><span id="ix3-tl-1">y’hi</span>-<span id="ix3-tl-2">li li</span><span id="ix3-tl-3">shu’ah</span></td>
+    <td id="ix3-entd" class="en"><span id="ix3-en-0">and</span> <span id="ix3-en-4">God</span> <span id="ix3-en-1">has become</span> <span id="ix3-en-2">my</span> <span id="ix3-en-3">salvation</span></td>
+    <td id="ix3-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix4-tr">    <td id="ix4-lnoL" class="line_no">/</td>
+    <td id="ix4-hetd" class="he" dir="rtl"><span id="ix4-he-0">וּ</span><span id="ix4-he-1">שְׁאַבְתֶּם</span> <span id="ix4-he-2">מַיִם</span> <span id="ix4-he-3">בְּ</span><span id="ix4-he-4">שָׂשׂוֹן</span></td>
+    <td id="ix4-tltd" class="tl"><span id="ix4-tl-0">u</span><span id="ix4-tl-1">sh’av’tem</span> <span id="ix4-tl-2">mayim</span> <span id="ix4-tl-3">b’</span><span id="ix4-tl-4">sason</span></td>
+    <td id="ix4-entd" class="en"><span id="ix4-en-0">and</span> <span id="ix4-en-1">you will draw</span> <span id="ix4-en-2">water</span> <span id="ix4-en-3">with</span> <span id="ix4-en-4">joy</span></td>
+    <td id="ix4-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix5-tr">    <td id="ix5-lnoL" class="line_no">/</td>
+    <td id="ix5-hetd" class="he" dir="rtl"><span id="ix5-he-0">מִ</span><span id="ix5-he-1">מַּעַיְנֵ</span><span id="ix5-he-2">י</span> <span id="ix5-he-3">הַ</span><span id="ix5-he-4">יְשׁוּעָה</span></td>
+    <td id="ix5-tltd" class="tl"><span id="ix5-tl-0">mi</span><span id="ix5-tl-1">ma’ay’n</span><span id="ix5-tl-2">ei</span> <span id="ix5-tl-3">ha</span><span id="ix5-tl-4">y’shu’ah</span></td>
+    <td id="ix5-entd" class="en"><span id="ix5-en-0">from</span> <span id="ix5-en-3">the</span> <span id="ix5-en-1">springs</span> <span id="ix5-en-2">of</span> <span id="ix5-en-4">salvation</span>"</td>
+    <td id="ix5-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix6-tr">    <td id="ix6-lnoL" class="line_no_empty">/</td>
+    <td id="ix6-hetd" class="he" dir="rtl"><span id="ix6-he-0"></span></td>
+    <td id="ix6-tltd" class="tl"><span id="ix6-tl-0"></span></td>
+    <td id="ix6-entd" class="en"></td>
+    <td id="ix6-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix7-tr">    <td id="ix7-lnoL" class="line_no">/</td>
+    <td id="ix7-hetd" class="he" dir="rtl"><span id="ix7-he-0">לַ</span><span id="ix7-he-1">יְיָ</span> <span id="ix7-he-2">הַ</span><span id="ix7-he-3">יְשׁוּעָה</span></td>
+    <td id="ix7-tltd" class="tl"><span id="ix7-tl-0">La</span><span id="ix7-tl-1">’Adonai</span> <span id="ix7-tl-2">ha</span><span id="ix7-tl-3">y’shu’ah</span></td>
+    <td id="ix7-entd" class="en">"<span id="ix7-en-0">To</span> <span id="ix7-en-1"><i>Adonai</i></span> <span id="ix7-en-4">belongs</span> <span id="ix7-en-3">salvation</span></td>
+    <td id="ix7-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix8-tr">    <td id="ix8-lnoL" class="line_no">/</td>
+    <td id="ix8-hetd" class="he" dir="rtl"><span id="ix8-he-0">עַל</span> <span id="ix8-he-1">עַמְּ</span><span id="ix8-he-2">ךָ</span> <span id="ix8-he-3">בִרְכָתֶ</span><span id="ix8-he-4">ךָ</span></td>
+    <td id="ix8-tltd" class="tl"><span id="ix8-tl-0">al</span> <span id="ix8-tl-1">am</span><span id="ix8-tl-2">’cha</span> <span id="ix8-tl-3">vir’chat</span><span id="ix8-tl-4">echa</span></td>
+    <td id="ix8-entd" class="en"><span id="ix8-en-0">to</span> <span id="ix8-en-2">your</span> <span id="ix8-en-1">people</span> <span id="ix8-en-6">is</span> <span id="ix8-en-4">your</span> <span id="ix8-en-3">blessing</span></td>
+    <td id="ix8-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix9-tr">    <td id="ix9-lnoL" class="line_no">/</td>
+    <td id="ix9-hetd" class="he" dir="rtl"><span id="ix9-he-0">סֶּלָה</span></td>
+    <td id="ix9-tltd" class="tl"><span id="ix9-tl-0">Selah</span></td>
+    <td id="ix9-entd" class="en"><span id="ix9-en-0"><i>Selah</i></span>"</td>
+    <td id="ix9-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix10-tr">    <td id="ix10-lnoL" class="line_no_empty">/</td>
+    <td id="ix10-hetd" class="he" dir="rtl"><span id="ix10-he-0"></span></td>
+    <td id="ix10-tltd" class="tl"><span id="ix10-tl-0"></span></td>
+    <td id="ix10-entd" class="en"></td>
+    <td id="ix10-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix11-tr">    <td id="ix11-lnoL" class="line_no">/</td>
+    <td id="ix11-hetd" class="he" dir="rtl"><span id="ix11-he-0">יְיָ</span> <span id="ix11-he-1">צְבָאֹות</span> <span id="ix11-he-2">עִמָּ</span><span id="ix11-he-3">נוּ</span></td>
+    <td id="ix11-tltd" class="tl"><span id="ix11-tl-0">Adonai</span> <span id="ix11-tl-1">tz’va’ovt</span> <span id="ix11-tl-2">im</span><span id="ix11-tl-3">anu</span></td>
+    <td id="ix11-entd" class="en">"<span id="ix11-en-0"><i>Adonai</i> of</span> <span id="ix11-en-1">hosts</span> <span id="ix11-en-4">is</span> <span id="ix11-en-2">with</span> <span id="ix11-en-3">us</span></td>
+    <td id="ix11-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix12-tr">    <td id="ix12-lnoL" class="line_no">/</td>
+    <td id="ix12-hetd" class="he" dir="rtl"><span id="ix12-he-0">מִשְׂגָּב</span> <span id="ix12-he-1">לָ</span><span id="ix12-he-2">נוּ</span> <span id="ix12-he-3">אֱלֹהֵ</span><span id="ix12-he-4">י</span> <span id="ix12-he-5">יַעֲקֹב</span></td>
+    <td id="ix12-tltd" class="tl"><span id="ix12-tl-0">mis’gav</span> <span id="ix12-tl-1">l</span><span id="ix12-tl-2">anu</span> <span id="ix12-tl-3">Eloh</span><span id="ix12-tl-4">ei</span> <span id="ix12-tl-5">ya’akov</span></td>
+    <td id="ix12-entd" class="en"><span id="ix12-en-0">a stronghold</span> <span id="ix12-en-1">for</span> <span id="ix12-en-2">us</span>, <span id="ix12-en-3">God</span> <span id="ix12-en-4">of</span> <span id="ix12-en-5">Jacob</span></td>
+    <td id="ix12-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix13-tr">    <td id="ix13-lnoL" class="line_no">/</td>
+    <td id="ix13-hetd" class="he" dir="rtl"><span id="ix13-he-0">סֶּלָה</span></td>
+    <td id="ix13-tltd" class="tl"><span id="ix13-tl-0">Selah</span></td>
+    <td id="ix13-entd" class="en"><span id="ix13-en-0"><i>Selah</i></span>"</td>
+    <td id="ix13-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix14-tr">    <td id="ix14-lnoL" class="line_no_empty">/</td>
+    <td id="ix14-hetd" class="he" dir="rtl"><span id="ix14-he-0"></span></td>
+    <td id="ix14-tltd" class="tl"><span id="ix14-tl-0"></span></td>
+    <td id="ix14-entd" class="en"></td>
+    <td id="ix14-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix15-tr">    <td id="ix15-lnoL" class="line_no">/</td>
+    <td id="ix15-hetd" class="he" dir="rtl"><span id="ix15-he-0">יְיָ</span> <span id="ix15-he-1">צְבָאֹות</span></td>
+    <td id="ix15-tltd" class="tl"><span id="ix15-tl-0">Adonai</span> <span id="ix15-tl-1">tz’va’ovt</span></td>
+    <td id="ix15-entd" class="en">"<span id="ix15-en-0"><i>Adonai</i> of</span> <span id="ix15-en-1">hosts</span>,</td>
+    <td id="ix15-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix16-tr">    <td id="ix16-lnoL" class="line_no">/</td>
+    <td id="ix16-hetd" class="he" dir="rtl"><span id="ix16-he-0">אַשְׁרֵ</span><span id="ix16-he-1">י</span> <span id="ix16-he-2">אָדָם</span> <span id="ix16-he-3">בֹּטֵחַ</span> <span id="ix16-he-4">בָּ</span><span id="ix16-he-5">ךְ</span></td>
+    <td id="ix16-tltd" class="tl"><span id="ix16-tl-0">ash’r</span><span id="ix16-tl-1">ei</span> <span id="ix16-tl-2">adam</span> <span id="ix16-tl-3">botecha</span> <span id="ix16-tl-4">b</span><span id="ix16-tl-5">ach</span></td>
+    <td id="ix16-entd" class="en"><span id="ix16-en-0">a happy</span> <span id="ix16-en-2">person</span> <span id="ix16-en-3">trusts</span> <span id="ix16-en-4">in</span> <span id="ix16-en-5">you</span>"</td>
+    <td id="ix16-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix17-tr">    <td id="ix17-lnoL" class="line_no_empty">/</td>
+    <td id="ix17-hetd" class="he" dir="rtl"><span id="ix17-he-0"></span></td>
+    <td id="ix17-tltd" class="tl"><span id="ix17-tl-0"></span></td>
+    <td id="ix17-entd" class="en"></td>
+    <td id="ix17-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix18-tr">    <td id="ix18-lnoL" class="line_no">/</td>
+    <td id="ix18-hetd" class="he" dir="rtl"><span id="ix18-he-0">יְיָ</span> <span id="ix18-he-1">צְבָאֹות</span> <span id="ix18-he-2">הוֹשִׁיעָה</span></td>
+    <td id="ix18-tltd" class="tl"><span id="ix18-tl-0">Adonai</span> <span id="ix18-tl-1">tz’va’ovt</span> <span id="ix18-tl-2">hoshi’ah</span></td>
+    <td id="ix18-entd" class="en">"<span id="ix18-en-0"><i>Adonai</i> of</span> <span id="ix18-en-1">hosts</span>, <span id="ix18-en-2">save</span> <span id="ix18-en-3">us</span>,</td>
+    <td id="ix18-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix19-tr">    <td id="ix19-lnoL" class="line_no">/</td>
+    <td id="ix19-hetd" class="he" dir="rtl"><span id="ix19-he-0">הַ</span><span id="ix19-he-1">מֶּלֶךְ</span> <span id="ix19-he-2">יַעֲנֵ</span><span id="ix19-he-3">נוּ</span></td>
+    <td id="ix19-tltd" class="tl"><span id="ix19-tl-0">ha</span><span id="ix19-tl-1">melech</span> <span id="ix19-tl-2">ya’an</span><span id="ix19-tl-3">enu</span></td>
+    <td id="ix19-entd" class="en"><span id="ix19-en-0">the</span> <span id="ix19-en-1">King</span> <span id="ix19-en-2">will answer</span> <span id="ix19-en-3">us</span></td>
+    <td id="ix19-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix20-tr">    <td id="ix20-lnoL" class="line_no">/</td>
+    <td id="ix20-hetd" class="he" dir="rtl"><span id="ix20-he-0">בְ</span><span id="ix20-he-1">יוֹם</span> <span id="ix20-he-2">קָרְאֵ</span><span id="ix20-he-3">נוּ</span></td>
+    <td id="ix20-tltd" class="tl"><span id="ix20-tl-0">v’</span><span id="ix20-tl-1">yom</span> <span id="ix20-tl-2">kar’</span><span id="ix20-tl-3">enu</span></td>
+    <td id="ix20-entd" class="en"><span id="ix20-en-0">on</span> <span id="ix20-en-1">the day</span> <span id="ix20-en-3">we</span> <span id="ix20-en-2">call</span>"</td>
+    <td id="ix20-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix21-tr">    <td id="ix21-lnoL" class="line_no_empty">/</td>
+    <td id="ix21-hetd" class="he" dir="rtl"><span id="ix21-he-0"></span></td>
+    <td id="ix21-tltd" class="tl"><span id="ix21-tl-0"></span></td>
+    <td id="ix21-entd" class="en"></td>
+    <td id="ix21-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix22-tr">    <td id="ix22-lnoL" class="line_no">/</td>
+    <td id="ix22-hetd" class="he" dir="rtl"><span id="ix22-he-0">לַ</span><span id="ix22-he-1">יְּהוּדִים</span> <span id="ix22-he-2">הָיְתָה</span> <span id="ix22-he-3">אוֹרָה</span></td>
+    <td id="ix22-tltd" class="tl"><span id="ix22-tl-0">La</span><span id="ix22-tl-1">y’hudim</span> <span id="ix22-tl-2">hay’tah</span> <span id="ix22-tl-3">orah</span></td>
+    <td id="ix22-entd" class="en">"<span id="ix22-en-0">For</span> <span id="ix22-en-1">the Jews</span> <span id="ix22-en-2">there was</span> <span id="ix22-en-3">light</span></td>
+    <td id="ix22-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix23-tr">    <td id="ix23-lnoL" class="line_no">/</td>
+    <td id="ix23-hetd" class="he" dir="rtl"><span id="ix23-he-0">וְ</span><span id="ix23-he-1">שִׂמְחָה</span></td>
+    <td id="ix23-tltd" class="tl"><span id="ix23-tl-0">v’</span><span id="ix23-tl-1">sim’chah</span></td>
+    <td id="ix23-entd" class="en"><span id="ix23-en-0">and</span> <span id="ix23-en-1">happiness</span></td>
+    <td id="ix23-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix24-tr">    <td id="ix24-lnoL" class="line_no">/</td>
+    <td id="ix24-hetd" class="he" dir="rtl"><span id="ix24-he-0">וְ</span><span id="ix24-he-1">שָׂשֹׂן</span></td>
+    <td id="ix24-tltd" class="tl"><span id="ix24-tl-0">v’</span><span id="ix24-tl-1">sason</span></td>
+    <td id="ix24-entd" class="en"><span id="ix24-en-0">and</span> <span id="ix24-en-1">joy</span></td>
+    <td id="ix24-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix25-tr">    <td id="ix25-lnoL" class="line_no">/</td>
+    <td id="ix25-hetd" class="he" dir="rtl"><span id="ix25-he-0">וִ</span><span id="ix25-he-1">יקָר</span></td>
+    <td id="ix25-tltd" class="tl"><span id="ix25-tl-0">v</span><span id="ix25-tl-1">ikar</span></td>
+    <td id="ix25-entd" class="en"><span id="ix25-en-0">and</span> <span id="ix25-en-1">honor</span>"</td>
+    <td id="ix25-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix26-tr">    <td id="ix26-lnoL" class="line_no">/</td>
+    <td id="ix26-hetd" class="he" dir="rtl"><span id="ix26-he-0">כֵּן</span> <span id="ix26-he-1">תִּהְיֶה</span> <span id="ix26-he-2">לָּ</span><span id="ix26-he-3">נוּ</span></td>
+    <td id="ix26-tltd" class="tl"><span id="ix26-tl-0">Ken</span> <span id="ix26-tl-1">tih’yeh</span> <span id="ix26-tl-2">l</span><span id="ix26-tl-3">anu</span></td>
+    <td id="ix26-entd" class="en"><span id="ix26-en-0">Thus</span> <span id="ix26-en-1">there will be</span> <span id="ix26-en-2">for</span> <span id="ix26-en-3">us</span></td>
+    <td id="ix26-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix27-tr">    <td id="ix27-lnoL" class="line_no_empty">/</td>
+    <td id="ix27-hetd" class="he" dir="rtl"><span id="ix27-he-0"></span></td>
+    <td id="ix27-tltd" class="tl"><span id="ix27-tl-0"></span></td>
+    <td id="ix27-entd" class="en"></td>
+    <td id="ix27-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix28-tr">    <td id="ix28-lnoL" class="line_no">/</td>
+    <td id="ix28-hetd" class="he" dir="rtl"><span id="ix28-he-0">כּוֹס</span> <span id="ix28-he-1">יְשׁוּעֹות</span> <span id="ix28-he-2">אֶשָּׂא</span></td>
+    <td id="ix28-tltd" class="tl"><span id="ix28-tl-0">Kos</span> <span id="ix28-tl-1">y’shu’ovt</span> <span id="ix28-tl-2">esa</span></td>
+    <td id="ix28-entd" class="en">"<span id="ix28-en-2">I will raise</span> <span id="ix28-en-0">the cup of</span> <span id="ix28-en-1">salvation</span></td>
+    <td id="ix28-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix29-tr">    <td id="ix29-lnoL" class="line_no">/</td>
+    <td id="ix29-hetd" class="he" dir="rtl"><span id="ix29-he-0">וּ</span><span id="ix29-he-1">בְ</span><span id="ix29-he-2">שֵׁם</span> <span id="ix29-he-3">יְיָ</span> <span id="ix29-he-4">אֶקְרָא</span></td>
+    <td id="ix29-tltd" class="tl"><span id="ix29-tl-0">u</span><span id="ix29-tl-1">v’</span><span id="ix29-tl-2">shem</span> <span id="ix29-tl-3">Adonai</span> <span id="ix29-tl-4">ek’ra</span></td>
+    <td id="ix29-entd" class="en"><span id="ix29-en-0">and</span> <span id="ix29-en-1">in the</span> <span id="ix29-en-2">name of</span> <span id="ix29-en-3"><i>Adonai</i></span> <span id="ix29-en-4">call out</span>:"</td>
+    <td id="ix29-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix30-tr">    <td id="ix30-lnoL" class="line_no_empty">/</td>
+    <td id="ix30-hetd" class="he" dir="rtl"><span id="ix30-he-0"></span></td>
+    <td id="ix30-tltd" class="tl"><span id="ix30-tl-0"></span></td>
+    <td id="ix30-entd" class="en"></td>
+    <td id="ix30-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix31-tr">    <td id="ix31-lnoL" class="line_no_empty">/</td>
+    <td id="ix31-hetd" class="he" dir="rtl"><span id="ix31-he-0"></span></td>
+    <td id="ix31-tltd" class="tl"><span id="ix31-tl-0"></span></td>
+    <td id="ix31-entd" class="en"></td>
+    <td id="ix31-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix32-tr">    <td id="ix32-lnoL" class="line_no">/</td>
+    <td id="ix32-hetd" class="he" dir="rtl"><span id="ix32-he-0">בָּרוּךְ</span> <span id="ix32-he-1">אַתָּה</span> <span id="ix32-he-2">יְיָ</span></td>
+    <td id="ix32-tltd" class="tl"><span id="ix32-tl-0">Baruch</span> <span id="ix32-tl-1">atah</span> <span id="ix32-tl-2">Adonai</span></td>
+    <td id="ix32-entd" class="en"><span id="ix32-en-0">Blessed</span> <span id="ix32-en-1">are you</span> <span id="ix32-en-2"><i>Adonai</i></span>,</td>
+    <td id="ix32-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix33-tr">    <td id="ix33-lnoL" class="line_no">/</td>
+    <td id="ix33-hetd" class="he" dir="rtl"><span id="ix33-he-0">אֱלֹהֵ</span><span id="ix33-he-1">ינוּ</span> <span id="ix33-he-2">מֶלֶךְ</span> <span id="ix33-he-3">הָ</span><span id="ix33-he-4">עוֹלָם</span></td>
+    <td id="ix33-tltd" class="tl"><span id="ix33-tl-0">Eloh</span><span id="ix33-tl-1">einu</span> <span id="ix33-tl-2">Melech</span> <span id="ix33-tl-3">Ha</span><span id="ix33-tl-4">’olam</span></td>
+    <td id="ix33-entd" class="en"><span id="ix33-en-1">our</span> <span id="ix33-en-0">God</span>, <span id="ix33-en-2">Ruler of</span> <span id="ix33-en-3">the</span> <span id="ix33-en-4">Universe</span>,</td>
+    <td id="ix33-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix34-tr">    <td id="ix34-lnoL" class="line_no">/</td>
+    <td id="ix34-hetd" class="he" dir="rtl"><span id="ix34-he-0">בּוֹרֵא</span> <span id="ix34-he-1">פְּרִ</span><span id="ix34-he-2">י</span> <span id="ix34-he-3">הַ</span><span id="ix34-he-4">גָּפֶן</span></td>
+    <td id="ix34-tltd" class="tl"><span id="ix34-tl-0">borei</span> <span id="ix34-tl-1">p’r</span><span id="ix34-tl-2">i</span> <span id="ix34-tl-3">ha</span><span id="ix34-tl-4">gafen</span></td>
+    <td id="ix34-entd" class="en"><span id="ix34-en-0">creator of</span> <span id="ix34-en-3">the</span> <span id="ix34-en-1">fruit</span> <span id="ix34-en-2">of</span> <span id="ix34-en-3">the</span> <span id="ix34-en-4">vine</span>.</td>
+    <td id="ix34-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix35-tr">    <td id="ix35-lnoL" class="line_no_empty">/</td>
+    <td id="ix35-hetd" class="he" dir="rtl"><span id="ix35-he-0"></span></td>
+    <td id="ix35-tltd" class="tl"><span id="ix35-tl-0"></span></td>
+    <td id="ix35-entd" class="en"></td>
+    <td id="ix35-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix36-tr">    <td id="ix36-lnoL" class="line_no_empty">/</td>
+    <td id="ix36-hetd" class="he" dir="rtl"><span id="ix36-he-0"></span></td>
+    <td id="ix36-tltd" class="tl"><span id="ix36-tl-0"></span></td>
+    <td id="ix36-entd" class="en"></td>
+    <td id="ix36-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix37-tr">    <td id="ix37-lnoL" class="line_no">/</td>
+    <td id="ix37-hetd" class="he" dir="rtl"><span id="ix37-he-0">בָּרוּךְ</span> <span id="ix37-he-1">אַתָּה</span> <span id="ix37-he-2">יְיָ</span></td>
+    <td id="ix37-tltd" class="tl"><span id="ix37-tl-0">Baruch</span> <span id="ix37-tl-1">atah</span> <span id="ix37-tl-2">Adonai</span></td>
+    <td id="ix37-entd" class="en"><span id="ix37-en-0">Blessed</span> <span id="ix37-en-1">are you</span> <span id="ix37-en-2"><i>Adonai</i></span>,</td>
+    <td id="ix37-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix38-tr">    <td id="ix38-lnoL" class="line_no">/</td>
+    <td id="ix38-hetd" class="he" dir="rtl"><span id="ix38-he-0">אֱלֹהֵ</span><span id="ix38-he-1">ינוּ</span> <span id="ix38-he-2">מֶלֶךְ</span> <span id="ix38-he-3">הָ</span><span id="ix38-he-4">עוֹלָם</span></td>
+    <td id="ix38-tltd" class="tl"><span id="ix38-tl-0">Eloh</span><span id="ix38-tl-1">einu</span> <span id="ix38-tl-2">Melech</span> <span id="ix38-tl-3">Ha</span><span id="ix38-tl-4">’olam</span></td>
+    <td id="ix38-entd" class="en"><span id="ix38-en-1">our</span> <span id="ix38-en-0">God</span>, <span id="ix38-en-2">Ruler of</span> <span id="ix38-en-3">the</span> <span id="ix38-en-4">Universe</span>,</td>
+    <td id="ix38-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix39-tr">    <td id="ix39-lnoL" class="line_no">/</td>
+    <td id="ix39-hetd" class="he" dir="rtl"><span id="ix39-he-0">בּוֹרֵא</span> <span id="ix39-he-1">מִינֵ</span><span id="ix39-he-2">י</span> <span id="ix39-he-3">בְשָׂמִים</span></td>
+    <td id="ix39-tltd" class="tl"><span id="ix39-tl-0">borei</span> <span id="ix39-tl-1">min</span><span id="ix39-tl-2">ei</span> <span id="ix39-tl-3">v’samim</span></td>
+    <td id="ix39-entd" class="en"><span id="ix39-en-0">creator of</span> <span id="ix39-en-1">varieties</span> <span id="ix39-en-2">of</span> <span id="ix39-en-3">spices</span>.</td>
+    <td id="ix39-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix40-tr">    <td id="ix40-lnoL" class="line_no_empty">/</td>
+    <td id="ix40-hetd" class="he" dir="rtl"><span id="ix40-he-0"></span></td>
+    <td id="ix40-tltd" class="tl"><span id="ix40-tl-0"></span></td>
+    <td id="ix40-entd" class="en"></td>
+    <td id="ix40-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix41-tr">    <td id="ix41-lnoL" class="line_no_empty">/</td>
+    <td id="ix41-hetd" class="he" dir="rtl"><span id="ix41-he-0"></span></td>
+    <td id="ix41-tltd" class="tl"><span id="ix41-tl-0"></span></td>
+    <td id="ix41-entd" class="en"></td>
+    <td id="ix41-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix42-tr">    <td id="ix42-lnoL" class="line_no">/</td>
+    <td id="ix42-hetd" class="he" dir="rtl"><span id="ix42-he-0">בָּרוּךְ</span> <span id="ix42-he-1">אַתָּה</span> <span id="ix42-he-2">יְיָ</span></td>
+    <td id="ix42-tltd" class="tl"><span id="ix42-tl-0">Baruch</span> <span id="ix42-tl-1">atah</span> <span id="ix42-tl-2">Adonai</span></td>
+    <td id="ix42-entd" class="en"><span id="ix42-en-0">Blessed</span> <span id="ix42-en-1">are you</span> <span id="ix42-en-2"><i>Adonai</i></span>,</td>
+    <td id="ix42-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix43-tr">    <td id="ix43-lnoL" class="line_no">/</td>
+    <td id="ix43-hetd" class="he" dir="rtl"><span id="ix43-he-0">אֱלֹהֵ</span><span id="ix43-he-1">ינוּ</span> <span id="ix43-he-2">מֶלֶךְ</span> <span id="ix43-he-3">הָ</span><span id="ix43-he-4">עוֹלָם</span></td>
+    <td id="ix43-tltd" class="tl"><span id="ix43-tl-0">Eloh</span><span id="ix43-tl-1">einu</span> <span id="ix43-tl-2">Melech</span> <span id="ix43-tl-3">Ha</span><span id="ix43-tl-4">’olam</span></td>
+    <td id="ix43-entd" class="en"><span id="ix43-en-1">our</span> <span id="ix43-en-0">God</span>, <span id="ix43-en-2">Ruler of</span> <span id="ix43-en-3">the</span> <span id="ix43-en-4">Universe</span>,</td>
+    <td id="ix43-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix44-tr">    <td id="ix44-lnoL" class="line_no">/</td>
+    <td id="ix44-hetd" class="he" dir="rtl"><span id="ix44-he-0">בּוֹרֵא</span> <span id="ix44-he-1">מְאוֹרֵ</span><span id="ix44-he-2">י</span> <span id="ix44-he-3">הָ</span><span id="ix44-he-4">אֵשׁ</span></td>
+    <td id="ix44-tltd" class="tl"><span id="ix44-tl-0">borei</span> <span id="ix44-tl-1">m’or</span><span id="ix44-tl-2">ei</span> <span id="ix44-tl-3">ha</span><span id="ix44-tl-4">’esh</span></td>
+    <td id="ix44-entd" class="en"><span id="ix44-en-0">creator of</span> <span id="ix44-en-3">the</span> <span id="ix44-en-1">lights</span> <span id="ix44-en-2">of</span> <span id="ix44-en-4">fire</span>.</td>
+    <td id="ix44-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix45-tr">    <td id="ix45-lnoL" class="line_no_empty">/</td>
+    <td id="ix45-hetd" class="he" dir="rtl"><span id="ix45-he-0"></span></td>
+    <td id="ix45-tltd" class="tl"><span id="ix45-tl-0"></span></td>
+    <td id="ix45-entd" class="en"></td>
+    <td id="ix45-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix46-tr">    <td id="ix46-lnoL" class="line_no_empty">/</td>
+    <td id="ix46-hetd" class="he" dir="rtl"><span id="ix46-he-0"></span></td>
+    <td id="ix46-tltd" class="tl"><span id="ix46-tl-0"></span></td>
+    <td id="ix46-entd" class="en"></td>
+    <td id="ix46-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix47-tr">    <td id="ix47-lnoL" class="line_no">/</td>
+    <td id="ix47-hetd" class="he" dir="rtl"><span id="ix47-he-0">בָּרוּךְ</span> <span id="ix47-he-1">אַתָּה</span> <span id="ix47-he-2">יְיָ</span></td>
+    <td id="ix47-tltd" class="tl"><span id="ix47-tl-0">Baruch</span> <span id="ix47-tl-1">atah</span> <span id="ix47-tl-2">Adonai</span></td>
+    <td id="ix47-entd" class="en"><span id="ix47-en-0">Blessed</span> <span id="ix47-en-1">are you</span> <span id="ix47-en-2"><i>Adonai</i></span>,</td>
+    <td id="ix47-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix48-tr">    <td id="ix48-lnoL" class="line_no">/</td>
+    <td id="ix48-hetd" class="he" dir="rtl"><span id="ix48-he-0">אֱלֹהֵ</span><span id="ix48-he-1">ינוּ</span> <span id="ix48-he-2">מֶלֶךְ</span> <span id="ix48-he-3">הָ</span><span id="ix48-he-4">עוֹלָם</span></td>
+    <td id="ix48-tltd" class="tl"><span id="ix48-tl-0">Eloh</span><span id="ix48-tl-1">einu</span> <span id="ix48-tl-2">Melech</span> <span id="ix48-tl-3">Ha</span><span id="ix48-tl-4">’olam</span></td>
+    <td id="ix48-entd" class="en"><span id="ix48-en-1">our</span> <span id="ix48-en-0">God</span>, <span id="ix48-en-2">Ruler of</span> <span id="ix48-en-3">the</span> <span id="ix48-en-4">Universe</span>,</td>
+    <td id="ix48-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix49-tr">    <td id="ix49-lnoL" class="line_no">/</td>
+    <td id="ix49-hetd" class="he" dir="rtl"><span id="ix49-he-0">הַ</span><span id="ix49-he-1">מַבְדִּיל</span></td>
+    <td id="ix49-tltd" class="tl"><span id="ix49-tl-0">ha</span><span id="ix49-tl-1">mav’dil</span></td>
+    <td id="ix49-entd" class="en"><span id="ix49-en-0">the</span> <span id="ix49-en-1">one who sets apart</span>:</td>
+    <td id="ix49-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix50-tr">    <td id="ix50-lnoL" class="line_no">/</td>
+    <td id="ix50-hetd" class="he" dir="rtl"><span id="ix50-he-0">בֵּין</span> <span id="ix50-he-1">קֹדֶשׁ</span> <span id="ix50-he-2">לְ</span><span id="ix50-he-3">חוֹל</span></td>
+    <td id="ix50-tltd" class="tl"><span id="ix50-tl-0">bein</span> <span id="ix50-tl-1">kodesh</span> <span id="ix50-tl-2">l’</span><span id="ix50-tl-3">chol</span></td>
+    <td id="ix50-entd" class="en"><span id="ix50-en-1">the holy</span> <span id="ix50-en-2">from</span> <span id="ix50-en-3">the ordinary</span>,</td>
+    <td id="ix50-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix51-tr">    <td id="ix51-lnoL" class="line_no">/</td>
+    <td id="ix51-hetd" class="he" dir="rtl"><span id="ix51-he-0">בֵּין</span> <span id="ix51-he-1">אוֹר</span> <span id="ix51-he-2">לְ</span><span id="ix51-he-3">חשֶׁךְ</span></td>
+    <td id="ix51-tltd" class="tl"><span id="ix51-tl-0">bein</span> <span id="ix51-tl-1">or</span> <span id="ix51-tl-2">l’</span><span id="ix51-tl-3">chshech</span></td>
+    <td id="ix51-entd" class="en"><span id="ix51-en-1">the light</span> <span id="ix51-en-2">from</span> <span id="ix51-en-3">the dark</span>,</td>
+    <td id="ix51-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix52-tr">    <td id="ix52-lnoL" class="line_no">/</td>
+    <td id="ix52-hetd" class="he" dir="rtl"><span id="ix52-he-0">בֵּין</span> <span id="ix52-he-1">יִשְׂרָאֵל</span> <span id="ix52-he-2">לָ</span><span id="ix52-he-3">עַמִּים</span></td>
+    <td id="ix52-tltd" class="tl"><span id="ix52-tl-0">bein</span> <span id="ix52-tl-1">Yisrael</span> <span id="ix52-tl-2">la</span><span id="ix52-tl-3">’amim</span></td>
+    <td id="ix52-entd" class="en"><span id="ix52-en-1"><i>Yisrael</i></span> <span id="ix52-en-2">from</span> <span id="ix52-en-4">the other</span> <span id="ix52-en-3">peoples</span>,</td>
+    <td id="ix52-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix53-tr">    <td id="ix53-lnoL" class="line_no">/</td>
+    <td id="ix53-hetd" class="he" dir="rtl"><span id="ix53-he-0">בֵּין</span> <span id="ix53-he-1">יוֹם</span> <span id="ix53-he-2">הַ</span><span id="ix53-he-3">שְּׁבִיעִי</span></td>
+    <td id="ix53-tltd" class="tl"><span id="ix53-tl-0">bein</span> <span id="ix53-tl-1">yom</span> <span id="ix53-tl-2">ha</span><span id="ix53-tl-3">sh’vi’i</span></td>
+    <td id="ix53-entd" class="en"><span id="ix53-en-4">and</span> <span id="ix53-en-2">the</span> <span id="ix53-en-3">seventh</span> <span id="ix53-en-1">day</span></td>
+    <td id="ix53-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix54-tr">    <td id="ix54-lnoL" class="line_no">/</td>
+    <td id="ix54-hetd" class="he" dir="rtl"><span id="ix54-he-0">לְ</span><span id="ix54-he-1">שֵׁשֶׁת</span> <span id="ix54-he-2">יְמֵ</span><span id="ix54-he-3">י</span> <span id="ix54-he-4">הַ</span><span id="ix54-he-5">מַּעֲשֶׂה</span></td>
+    <td id="ix54-tltd" class="tl"><span id="ix54-tl-0">l’</span><span id="ix54-tl-1">sheshet</span> <span id="ix54-tl-2">y’m</span><span id="ix54-tl-3">ei</span> <span id="ix54-tl-4">ha</span><span id="ix54-tl-5">ma’aseh</span></td>
+    <td id="ix54-entd" class="en"><span id="ix54-en-0">from</span> <span id="ix54-en-4">the</span> <span id="ix54-en-1">six</span> <span id="ix54-en-2">days</span> <span id="ix54-en-3">of</span> <span id="ix54-en-5">work</span>.</td>
+    <td id="ix54-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix55-tr">    <td id="ix55-lnoL" class="line_no_empty">/</td>
+    <td id="ix55-hetd" class="he" dir="rtl"><span id="ix55-he-0"></span></td>
+    <td id="ix55-tltd" class="tl"><span id="ix55-tl-0"></span></td>
+    <td id="ix55-entd" class="en"></td>
+    <td id="ix55-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix56-tr">    <td id="ix56-lnoL" class="line_no_empty">/</td>
+    <td id="ix56-hetd" class="he" dir="rtl"><span id="ix56-he-0"></span></td>
+    <td id="ix56-tltd" class="tl"><span id="ix56-tl-0"></span></td>
+    <td id="ix56-entd" class="en"></td>
+    <td id="ix56-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix57-tr">    <td id="ix57-lnoL" class="line_no">/</td>
+    <td id="ix57-hetd" class="he" dir="rtl"><span id="ix57-he-0">בָּרוּךְ</span> <span id="ix57-he-1">אַתָּה</span> <span id="ix57-he-2">יְיָ</span></td>
+    <td id="ix57-tltd" class="tl"><span id="ix57-tl-0">Baruch</span> <span id="ix57-tl-1">atah</span> <span id="ix57-tl-2">Adonai</span></td>
+    <td id="ix57-entd" class="en"><span id="ix57-en-0">Blessed</span> <span id="ix57-en-1">are you</span> <span id="ix57-en-2"><i>Adonai</i></span>,</td>
+    <td id="ix57-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix58-tr">    <td id="ix58-lnoL" class="line_no">/</td>
+    <td id="ix58-hetd" class="he" dir="rtl"><span id="ix58-he-0">הַ</span><span id="ix58-he-1">מַבְדִּיל</span></td>
+    <td id="ix58-tltd" class="tl"><span id="ix58-tl-0">ha</span><span id="ix58-tl-1">mav’dil</span></td>
+    <td id="ix58-entd" class="en"><span id="ix58-en-0">the</span> <span id="ix58-en-1">one who sets apart</span></td>
+    <td id="ix58-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix59-tr">    <td id="ix59-lnoL" class="line_no">/</td>
+    <td id="ix59-hetd" class="he" dir="rtl"><span id="ix59-he-0">בֵּין</span> <span id="ix59-he-1">קֹדֶשׁ</span> <span id="ix59-he-2">לְ</span><span id="ix59-he-3">חוֹל</span></td>
+    <td id="ix59-tltd" class="tl"><span id="ix59-tl-0">bein</span> <span id="ix59-tl-1">kodesh</span> <span id="ix59-tl-2">l’</span><span id="ix59-tl-3">chol</span></td>
+    <td id="ix59-entd" class="en"><span id="ix59-en-1">the holy</span> <span id="ix59-en-2">from</span> <span id="ix59-en-3">the ordinary</span>.</td>
+    <td id="ix59-lnoR" class="line_no">/</td>
+  </tr>
+  <tr id="ix60-tr">    <td id="ix60-lnoL" class="line_no_empty">/</td>
+    <td id="ix60-hetd" class="he" dir="rtl"><span id="ix60-he-0"></span></td>
+    <td id="ix60-tltd" class="tl"><span id="ix60-tl-0"></span></td>
+    <td id="ix60-entd" class="en"></td>
+    <td id="ix60-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix61-tr">    <td id="ix61-lnoL" class="line_no_empty">/</td>
+    <td id="ix61-hetd" class="he" dir="rtl"><span id="ix61-he-0"></span></td>
+    <td id="ix61-tltd" class="tl"><span id="ix61-tl-0"></span></td>
+    <td id="ix61-entd" class="en"></td>
+    <td id="ix61-lnoR" class="line_no_empty">/</td>
+  </tr>
+  <tr id="ix62-tr">    <td id="ix62-lnoL" class="line_no">/</td>
+    <td id="ix62-hetd" class="he" dir="rtl"><span id="ix62-he-0">שָׁבוּעַ</span> <span id="ix62-he-1">טוֹב</span></td>
+    <td id="ix62-tltd" class="tl"><span id="ix62-tl-0">Shavu’a</span> <span id="ix62-tl-1">tov!</span></td>
+    <td id="ix62-entd" class="en"><span id="ix62-en-2">Have a</span> <span id="ix62-en-1">good</span> <span id="ix62-en-0">week</span>!</td>
+    <td id="ix62-lnoR" class="line_no">/</td>
+  </tr>
+</table>
+<h2>Translation Notes</h2>
+<div class="generalNotes">
+<p>The quotes in the introductory verses are from Isaiah 12:2-3 (<a href="Ozi.html?v=100">Ozi V'zimrat Yah</a>), Psalm 3:9, Psalm 46:8/12, Esther 8:16, and Psalm 116:13, respectively. In prayer books starting in the 19th Century, verses from Psalms 84:13 and Psalms 20:10 are added between the verse from Psalm 46 and the verse from Esther.</p>  <div class="credits">Translations by Matthew Yacavone</div></div>
+<div class="allLinks">
+ <p>Prayers:   <a href="Adonai_Sfatai.html" class="grey avoidwrap">Adonai S'fatai</a> · 
+  <a href="Kaddish.html" class="grey avoidwrap">Kaddish</a> · 
+  <a href="Ldor_Vador.html" class="grey avoidwrap">L'dor Vador</a> · 
+  <a href="Mah_Tovu.html" class="grey avoidwrap">Mah Tovu</a> · 
+  <a href="Oseh_Shalom.html" class="grey avoidwrap">Oseh Shalom</a> · 
+  <a href="Ozi.html" class="grey avoidwrap">Ozi V'Zim'rat Yah</a> · 
+  <a href="Pitchu_Li.html" class="grey avoidwrap">Pitchu Li</a> · 
+  <a href="Psalm_150.html" class="grey avoidwrap">Psalm 150 (Hallelu)</a> · 
+  <a href="Shalom_Rav.html" class="grey avoidwrap">Shalom Rav</a></p>
+ <p>Blessings:   <a href="Candle_Lighting.html" class="grey avoidwrap">Candle Lighting</a> · 
+  <a href="Havdalah.html" class="grey avoidwrap">Havdalah</a> · 
+  <a href="Kiddush.html" class="grey avoidwrap">Kiddush</a> · 
+  <a href="Shehecheyanu.html" class="grey avoidwrap">Shehecheyanu</a></p>
+</div>
+<div class="footer">
+  <a href="index.html" class="grey">Back to Interactive Translations</a> · 
+  <a href="https://yacavone.net" class="grey">Back to my website</a>
+</div>
+</body></html>
