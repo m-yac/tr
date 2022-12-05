@@ -341,8 +341,8 @@ index += `</div>\n`;
 index += `</div>\n`;
 index += `<table>\n`;
 index += `  <tr>\n`;
-index += `    <td dir="rtl"><h2 class="alignRight heStam">תפלות</h2></td>\n`;
-index += `    <td><h2 class="alignLeft">Prayers</h2></td>\n`;
+index += `    <td dir="rtl"><h2 class="h2He heStam">תפלות</h2></td>\n`;
+index += `    <td><h2 class="h2En">Prayers</h2></td>\n`;
 index += `  </tr>\n`;
 let allPrayerLinks = [];
 for (const pr of Object.keys(prayers).sort()) {
@@ -354,8 +354,8 @@ for (const pr of Object.keys(prayers).sort()) {
   index += `  </tr>\n`;
 }
 index += `  <tr>\n`;
-index += `    <td dir="rtl"><h2 class="alignRight heStam">ברכות</h2></td>\n`;
-index += `    <td><h2 class="alignLeft">Blessings</h2></td>\n`;
+index += `    <td dir="rtl"><h2 class="h2He heStam">ברכות</h2></td>\n`;
+index += `    <td><h2 class="h2En">Blessings</h2></td>\n`;
 index += `  </tr>\n`;
 let allBlessingLinks = [];
 for (const pr of Object.keys(blessings).sort()) {
@@ -406,8 +406,8 @@ for (const pr in allTranslations) {
   // Title
   content += `<div class="titleAndCredits">\n`;
   content += `  <h1 id="topHeader" class="aLike">\n`;
-  content += `    <span class="h2He">${allTranslations[pr]["title"][0]}</span>\n`;
-  content += `    <span class="h2En">${allTranslations[pr]["title"][1]}</span>\n`;
+  content += `    <span class="h1He">${allTranslations[pr]["title"][0]}</span>\n`;
+  content += `    <span class="h1En">${allTranslations[pr]["title"][1]}</span>\n`;
   content += `  </h1>\n`;
   if ("text-credit" in allTranslations[pr]) {
     content += `  <div class="credits">${allTranslations[pr]["text-credit"]}</div>`;
@@ -554,7 +554,7 @@ for (const pr in allTranslations) {
   content += ` <p>Blessings: ${allBlessingLinks.join(" · \n")}</p>\n`
   content += `</div>\n`;
   content += `<div class="footer">\n`;
-  content += `  <a href="index.html" class="grey">Back to prayer list</a> · \n`
+  content += `  <a href="index.html" class="grey">Back to Interactive Translations</a> · \n`
   content += `  <a href="https://yacavone.net" class="grey">Back to my website</a>\n`
   content += `</div>\n`;
   content += `</body></html>`;

@@ -63,4 +63,8 @@ Psalm 150 (Hallelu)
 - Robert Alter: https://ldorvdor.org/images/worship/cantor/Psalm-150-Halleluyah.pdf
 - https://www.zemirotdatabase.org/view_song.php?id=189
 
+Havdalah:
+- https://en.wikipedia.org/wiki/Havdalah
+- https://www.sefaria.org/sheets/366246.97?lang=bi&lookup=Psalms%2020%3A10&with=Lexicon&lang2=en
+
 -------------------------------------------------------------------------------
