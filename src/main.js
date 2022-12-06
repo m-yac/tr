@@ -18,7 +18,7 @@ function load_transliteration(filename) {
 
 // ...
 function transliterate(txt, trlit, includeSeps = true) {
-  const seps = /([ |~*-]|\[[^\]]*\])/g;
+  const seps = /([ |/~*-]|\[[^\]]*\])/g;
   let result = "";
   let last_char = "";
   let last_was_en_exception = false;
@@ -26,7 +26,7 @@ function transliterate(txt, trlit, includeSeps = true) {
   for (let gp of txt.split(seps)) {
     // Separators
     if (gp.match(seps)) {
-      if (gp == " ") {
+      if ([" ", "/", "-"].includes(gp)) {
         // Final exceptions (1/3)
         if (!last_was_en_exception) {
           for (const exn in trlit["final-exceptions"]) {
@@ -35,7 +35,7 @@ function transliterate(txt, trlit, includeSeps = true) {
             }
           }
         }
-        result += " ";
+        result += gp;
         last_char = " ";
         last_was_en_exception = false;
       }
@@ -63,11 +63,6 @@ function transliterate(txt, trlit, includeSeps = true) {
       }
       else if (gp[0] == "[") {
         result += gp.slice(1, gp.length - 1);
-        last_was_en_exception = false;
-      }
-      else if (gp[0] == "-") {
-        result += "-";
-        last_char = " ";
         last_was_en_exception = false;
       }
       else {
@@ -241,8 +236,8 @@ function inlineTransliterate(str, trlit) {
 function addSpansHeTl(pr, ix, he) {
   let j = 0;
   let he_html = `<span id="ix${ix}-${pr}-${j}">`;
-  for (let gp of he.replace(/([*_]|\[[^\]]*\])/g, "").split(/([ |~-])/g)) {
-    if (gp === " " || gp === "-") {
+  for (let gp of he.replace(/([*_]|\[[^\]]*\])/g, "").split(/([ |/~-])/g)) {
+    if ([" ", "-", "/"].includes(gp)) {
       j++;
       he_html += `</span>` + gp + `<span id="ix${ix}-${pr}-${j}">`;
     }
@@ -313,9 +308,10 @@ function addHeTlEnRow(pr, trlit, ix, colors, line_nos = true) {
   return [content, new_colors];
 }
 
-prayers = require("./prayers.json");
-blessings = require("./blessings.json");
-allTranslations = _.merge({}, prayers, blessings);
+translations = [["תפלות", "Prayers", require("./prayers.json")],
+                ["ברכות", "Blessings", require("./blessings.json")],
+                ["לימים נוראים", "For the High Holidays", require("./for_the_high_holidays.json")]];
+allTranslations = _.merge({}, ...translations.map((tr) => tr[2]));
 
 // Make index.html
 const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה", "[May](4) [their](1) [memory](0) [be](4) [for](2) [a blessing](3)"] ] };
@@ -335,38 +331,31 @@ index += `<h1>Interactive Translations</h1>\n`
 index += `<div class="credits noStyle">\n`;
 index += `  <p>In memory of:</p>\n`;
 index += `  <p><i>Chazan</i> Ilan Mamber, who gave my family our love of Jewish music</p>\n`;
-index += `  <p>Susan Amy Yacavone, my mother, whose favorite prayers will all be here</p>\n`;
+index += `  <p>Susan Amy Yacavone, my mother, whose favorite prayers are all here</p>\n`;
 index += `  <table class="inheritFontSize">\n${index_row}</table>\n`;
 index += `</div>\n`;
 index += `</div>\n`;
-index += `<table>\n`;
-index += `  <tr>\n`;
-index += `    <td dir="rtl"><h2 class="h2He heStam">תפלות</h2></td>\n`;
-index += `    <td><h2 class="h2En">Prayers</h2></td>\n`;
-index += `  </tr>\n`;
-let allPrayerLinks = [];
-for (const pr of Object.keys(prayers).sort()) {
-  const page_name = pr.replace(" ", "_") + ".html";
-  allPrayerLinks.push(`  <a href="${page_name}" class="grey avoidwrap">${prayers[pr]["title"][1]}</a>`)
-  index += `  <tr class="aHilight">\n`;
-  index += `    <td class="he heStam" dir="rtl"><a href="${page_name}">${prayers[pr]["title"][0]}</a></td>\n`;
-  index += `    <td><a href="${page_name}">${prayers[pr]["title"][1]}</a></td>\n`;
+index += `<div class="flexContainer">\n`;
+let allLinks = [];
+for (const [titleHe, titleEn, prayers] of translations) {
+  index += `<div class="flexBox"><table>\n`;
+  index += `  <tr>\n`;
+  index += `    <td dir="rtl"><h2 class="h2He heStam h2${titleEn.replace(/ /g, "")}">${titleHe}</h2></td>\n`;
+  index += `    <td><h2 class="h2En h2${titleEn.replace(/ /g, "")}">${titleEn}</h2></td>\n`;
   index += `  </tr>\n`;
+  let links_to_add = [];
+  for (const pr of Object.keys(prayers).sort()) {
+    const page_name = pr.replace(" ", "_") + ".html";
+    links_to_add.push(`  <a href="${page_name}" class="grey avoidwrap">${prayers[pr]["title"][1]}</a>`)
+    index += `  <tr class="aHilight">\n`;
+    index += `    <td class="he heStam" dir="rtl"><a href="${page_name}">${prayers[pr]["title"][0]}</a></td>\n`;
+    index += `    <td><a href="${page_name}">${prayers[pr]["title"][1]}</a></td>\n`;
+    index += `  </tr>\n`;
+  }
+  index += `</table></div>\n`;
+  allLinks.push(links_to_add);
 }
-index += `  <tr>\n`;
-index += `    <td dir="rtl"><h2 class="h2He heStam">ברכות</h2></td>\n`;
-index += `    <td><h2 class="h2En">Blessings</h2></td>\n`;
-index += `  </tr>\n`;
-let allBlessingLinks = [];
-for (const pr of Object.keys(blessings).sort()) {
-  const page_name = pr.replace(" ", "_") + ".html";
-  allBlessingLinks.push(`  <a href="${page_name}" class="grey avoidwrap">${blessings[pr]["title"][1]}</a>`)
-  index += `  <tr class="aHilight">\n`;
-  index += `    <td class="he heStam" dir="rtl"><a href="${page_name}">${blessings[pr]["title"][0]}</a></td>\n`;
-  index += `    <td><a href="${page_name}">${blessings[pr]["title"][1]}</a></td>\n`;
-  index += `  </tr>\n`;
-}
-index += `</table>\n`;
+index += `</div>\n`;
 index += `<div class="footer">\n`;
 index += `  <div class="checkboxes indexCheckboxes">\n`;
 index += `    <div class="checkboxContainer darkCheckboxContainer">\n`
@@ -397,7 +386,7 @@ for (const pr in allTranslations) {
   // Header (wait to stringify `colors`!)
   let header = `<!DOCTYPE html><html>\n`;
   header += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
-  header += `<title>${allTranslations[pr]["title"][1]}</title>\n`;
+  header += `<title>${allTranslations[pr]["title"][1]} | Interactive Translation</title>\n`;
   header += `<link rel="stylesheet" href="style.css" />\n`;
   header += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
   header += `<script>var pr = ${JSON.stringify(allTranslations[pr])};</script>\n`;
@@ -481,9 +470,16 @@ for (const pr in allTranslations) {
   content += `<table class="text">\n`;
   if ([undefined, "columns"].includes(allTranslations[pr]["format"])) {
     for (let ix = 0; ix < allTranslations[pr]["text"].length; ix++) {
-      const [to_add, new_colors] = addHeTlEnRow(allTranslations[pr], trlit, ix, colors);
-      content += to_add;
-      colors = new_colors;
+      if (allTranslations[pr]["text"][ix].length === 2) {
+        const tdHe = `    <td id="ix${ix}-hetd" class="he" dir="rtl"><span class="invisible">ם</span></td>\n`;
+        const tdEn = `    <td id="ix${ix}-enOnly" class="enOnly">${allTranslations[pr]["text"][ix][1]}</td>\n`;
+        content += addRow(tdHe + tdEn, ix, false, false);
+      }
+      else {
+        const [to_add, new_colors] = addHeTlEnRow(allTranslations[pr], trlit, ix, colors);
+        content += to_add;
+        colors = new_colors;
+      }
     }
   }
   else if (["blocks"].includes(allTranslations[pr]["format"])) {
@@ -550,8 +546,9 @@ for (const pr in allTranslations) {
     content += `</div>\n`;
   }
   content += `<div class="allLinks">\n`
-  content += ` <p>Prayers: ${allPrayerLinks.join(" · \n")}</p>\n`
-  content += ` <p>Blessings: ${allBlessingLinks.join(" · \n")}</p>\n`
+  for (let i = 0; i < allLinks.length; i++) {
+    content += ` <p>${translations[i][1]}: ${allLinks[i].join(" · \n")}</p>\n`
+  }
   content += `</div>\n`;
   content += `<div class="footer">\n`;
   content += `  <a href="index.html" class="grey">Back to Interactive Translations</a> · \n`

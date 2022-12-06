@@ -102,11 +102,30 @@ h1 {
 
 .h2He {
   text-align: right;
-  width: 100%;
 }
 .h2En {
   text-align: left;
-  width: 100%;
+}
+.h2Prayers {
+  min-width: 150px;
+}
+.h2Blessings {
+  min-width: 150px;
+}
+.h2FortheHighHolidays {
+  min-width: 272px;
+}
+
+.flexContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 670px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.flexBox {
+  margin-bottom: 10px;
 }
 
 a,
@@ -403,8 +422,8 @@ td {
 .hidden {
   display: none;
 }
-.hiddenBlocks {
-  display: none;
+.invisible {
+  visibility: hidden;
 }
 
 .avoidwrap {
