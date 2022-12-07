@@ -321,11 +321,11 @@ const [index_row, index_colors] = addHeTlEnRow(index_pr, trlit_std, 0, {}, false
 let index = `<!DOCTYPE html><html>\n`;
 index += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
 index += `<title>Interactive Translations</title>\n`;
-index += `<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">\n`;
-index += `<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">\n`;
-index += `<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">\n`;
-index += `<link rel="manifest" href="/site.webmanifest">\n`;
-index += `<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">\n`;
+index += `<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">\n`;
+index += `<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">\n`;
+index += `<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">\n`;
+index += `<link rel="manifest" href="site.webmanifest">\n`;
+index += `<link rel="mask-icon" href="safari-pinned-tab.svg" color="#000000">\n`;
 index += `<meta name="msapplication-TileColor" content="#da532c">\n`;
 index += `<meta name="theme-color" content="#ffffff"></meta>\n`;
 index += `<link rel="stylesheet" href="style.css" />\n`;
