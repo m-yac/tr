@@ -314,7 +314,9 @@ translations = [["תפלות", "Prayers", require("./prayers.json")],
 allTranslations = _.merge({}, ...translations.map((tr) => tr[2]));
 
 // Make index.html
-const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה", "[May](4) [their](1) [memory](0) [be](4) [for](2) [a blessing](3)"] ] };
+const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה",
+  "<span class=\"avoidWrap\">[May](4) [their](1) [memory](0)</span> " +
+  "<span class=\"avoidWrap\">[be](4) [for](2) [a blessing](3)</span>"] ] };
 const [index_row, index_colors] = addHeTlEnRow(index_pr, trlit_std, 0, {}, false);
 let index = `<!DOCTYPE html><html>\n`;
 index += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
@@ -324,7 +326,20 @@ index += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
 index += `<script>var pr = ${JSON.stringify(index_pr)};</script>\n`;
 index += `<script>var colors = ${JSON.stringify(index_colors)};</script>\n`;
 index += `<script type="text/javascript" src="index.js"></script>\n`;
-index += `<script type="text/javascript">$(document).ready(function () { $('td[id$="-tltd"]').addClass("hidden"); });</script>`
+index += `<script type="text/javascript">\n`;
+index += `  $(document).ready(function () {\n`;
+index += `    $('td[id$="-tltd"]').addClass("hidden");\n`;
+index += `    $('td[id^="maintd-en"]').each(function () {\n`;
+index += `      const titleEn = this.id.split("-")[2];\n`;
+index += `      const widthHe = $(\`#maintd-he-\${titleEn}\`).outerWidth(true);\n`;
+index += `      const widthEn = $(\`#maintd-en-\${titleEn}\`).outerWidth(true);\n`;
+index += `      const width = Math.max(widthHe, widthEn) + 20;\n`;
+index += `      console.log(titleEn, widthHe, widthEn, width)\n`;
+index += `      $(\`#maintd-he-\${titleEn}\`).attr("style", \`width: \${width}px;\`);\n`;
+index += `      $(\`#maintd-en-\${titleEn}\`).attr("style", \`width: \${width}px;\`);\n`;
+index += `    })\n`;
+index += `  });\n`;
+index += `</script>\n`;
 index += `</head>\n<body>\n`;
 index += `<div class="titleAndCredits">\n`;
 index += `<h1>Interactive Translations</h1>\n`
@@ -340,8 +355,8 @@ let allLinks = [];
 for (const [titleHe, titleEn, prayers] of translations) {
   index += `<div class="flexBox"><table>\n`;
   index += `  <tr>\n`;
-  index += `    <td dir="rtl"><h2 class="h2He heStam h2${titleEn.replace(/ /g, "")}">${titleHe}</h2></td>\n`;
-  index += `    <td><h2 class="h2En h2${titleEn.replace(/ /g, "")}">${titleEn}</h2></td>\n`;
+  index += `    <td id="maintd-he-${titleEn.replace(/ /g, "")}" class="h2td" dir="rtl"><h2 class="h2He heStam">${titleHe}</h2></td>\n`;
+  index += `    <td id="maintd-en-${titleEn.replace(/ /g, "")}" class="h2td"><h2 class="h2En">${titleEn}</h2></td>\n`;
   index += `  </tr>\n`;
   let links_to_add = [];
   for (const pr of Object.keys(prayers).sort()) {
