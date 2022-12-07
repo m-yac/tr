@@ -3,10 +3,24 @@
 <title>Interactive Translations</title>
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
-<script>var pr = {"text":[["","זִכְרוֹנָ_|ם לִ|בְרָכָה","[May](4) [their](1) [memory](0) [be](4) [for](2) [a blessing](3)"]]};</script>
+<script>var pr = {"text":[["","זִכְרוֹנָ_|ם לִ|בְרָכָה","<span class=\"avoidWrap\">[May](4) [their](1) [memory](0)</span> <span class=\"avoidWrap\">[be](4) [for](2) [a blessing](3)</span>"]]};</script>
 <script>var colors = {"0-0":0,"0-1":0.3333333333333333,"0-2":0.6666666666666666,"0-3":1,"0-4":1.3333333333333333};</script>
 <script type="text/javascript" src="index.js"></script>
-<script type="text/javascript">$(document).ready(function () { $('td[id$="-tltd"]').addClass("hidden"); });</script></head>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('td[id$="-tltd"]').addClass("hidden");
+    $('td[id^="maintd-en"]').each(function () {
+      const titleEn = this.id.split("-")[2];
+      const widthHe = $(`#maintd-he-${titleEn}`).outerWidth(true);
+      const widthEn = $(`#maintd-en-${titleEn}`).outerWidth(true);
+      const width = Math.max(widthHe, widthEn) + 20;
+      console.log(titleEn, widthHe, widthEn, width)
+      $(`#maintd-he-${titleEn}`).attr("style", `width: ${width}px;`);
+      $(`#maintd-en-${titleEn}`).attr("style", `width: ${width}px;`);
+    })
+  });
+</script>
+</head>
 <body>
 <div class="titleAndCredits">
 <h1>Interactive Translations</h1>
@@ -17,7 +31,7 @@
   <table class="inheritFontSize">
   <tr id="ix0-tr">    <td id="ix0-hetd" class="he" dir="rtl"><span id="ix0-he-0">זִכְרוֹנָ</span><span id="ix0-he-1">ם</span> <span id="ix0-he-2">לִ</span><span id="ix0-he-3">בְרָכָה</span></td>
     <td id="ix0-tltd" class="tl"><span id="ix0-tl-0">zich’ron</span><span id="ix0-tl-1">am</span> <span id="ix0-tl-2">li</span><span id="ix0-tl-3">v’rachah</span></td>
-    <td id="ix0-entd" class="en"><span id="ix0-en-4">May</span> <span id="ix0-en-1">their</span> <span id="ix0-en-0">memory</span> <span id="ix0-en-4">be</span> <span id="ix0-en-2">for</span> <span id="ix0-en-3">a blessing</span></td>
+    <td id="ix0-entd" class="en"><span class="avoidWrap"><span id="ix0-en-4">May</span> <span id="ix0-en-1">their</span> <span id="ix0-en-0">memory</span></span> <span class="avoidWrap"><span id="ix0-en-4">be</span> <span id="ix0-en-2">for</span> <span id="ix0-en-3">a blessing</span></span></td>
   </tr>
 </table>
 </div>
@@ -25,8 +39,8 @@
 <div class="flexContainer">
 <div class="flexBox"><table>
   <tr>
-    <td dir="rtl"><h2 class="h2He heStam h2Prayers">תפלות</h2></td>
-    <td><h2 class="h2En h2Prayers">Prayers</h2></td>
+    <td id="maintd-he-Prayers" class="h2td" dir="rtl"><h2 class="h2He heStam">תפלות</h2></td>
+    <td id="maintd-en-Prayers" class="h2td"><h2 class="h2En">Prayers</h2></td>
   </tr>
   <tr class="aHilight">
     <td class="he heStam" dir="rtl"><a href="Adonai_Sfatai.html">אדני שפתי</a></td>
@@ -71,8 +85,8 @@
 </table></div>
 <div class="flexBox"><table>
   <tr>
-    <td dir="rtl"><h2 class="h2He heStam h2Blessings">ברכות</h2></td>
-    <td><h2 class="h2En h2Blessings">Blessings</h2></td>
+    <td id="maintd-he-Blessings" class="h2td" dir="rtl"><h2 class="h2He heStam">ברכות</h2></td>
+    <td id="maintd-en-Blessings" class="h2td"><h2 class="h2En">Blessings</h2></td>
   </tr>
   <tr class="aHilight">
     <td class="he heStam" dir="rtl"><a href="Candle_Lighting.html">הדלקת נרות</a></td>
@@ -97,8 +111,8 @@
 </table></div>
 <div class="flexBox"><table>
   <tr>
-    <td dir="rtl"><h2 class="h2He heStam h2FortheHighHolidays">לימים נוראים</h2></td>
-    <td><h2 class="h2En h2FortheHighHolidays">For the High Holidays</h2></td>
+    <td id="maintd-he-FortheHighHolidays" class="h2td" dir="rtl"><h2 class="h2He heStam">לימים נוראים</h2></td>
+    <td id="maintd-en-FortheHighHolidays" class="h2td"><h2 class="h2En">For the High Holidays</h2></td>
   </tr>
   <tr class="aHilight">
     <td class="he heStam" dir="rtl"><a href="Brosh_Hashanah.html">ברש השנה</a></td>
