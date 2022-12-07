@@ -1,6 +1,13 @@
 <!DOCTYPE html><html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Interactive Translations</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"></meta>
 <link rel="stylesheet" href="style.css" />
 <script type="text/javascript" src="jquery.min.js"></script>
 <script>var pr = {"text":[["","זִכְרוֹנָ_|ם לִ|בְרָכָה","<span class=\"avoidWrap\">[May](4) [their](1) [memory](0)</span> <span class=\"avoidWrap\">[be](4) [for](2) [a blessing](3)</span>"]]};</script>
@@ -14,7 +21,6 @@
       const widthHe = $(`#maintd-he-${titleEn}`).outerWidth(true);
       const widthEn = $(`#maintd-en-${titleEn}`).outerWidth(true);
       const width = Math.max(widthHe, widthEn) + 20;
-      console.log(titleEn, widthHe, widthEn, width)
       $(`#maintd-he-${titleEn}`).attr("style", `width: ${width}px;`);
       $(`#maintd-en-${titleEn}`).attr("style", `width: ${width}px;`);
     })
