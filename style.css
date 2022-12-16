@@ -70,8 +70,8 @@ html {
 }
 
 .dark-mode {
-  --bg-color: #191919;
-  --fg-color: #E2E2E2;
+  --bg-color: #161616;
+  --fg-color: #EBEBEB;
   --link-color: #5392f9;
   --hover-link-color: #f45c2a;
   --grey-link-color: #BBB;
