@@ -1,222 +1,7 @@
 
 const fs = require('fs');
 const _ = require("./lodash.js")
-const hebrew_exceptions = require("./hebrew-exceptions.json");
-const trlit_std = load_transliteration('./transliterations/standard.json');
-
-// ...
-function load_transliteration(filename) {
-  trlit = require(filename);
-  for (const sec of ["modifiers", "vowels"]) {
-    for (const k in trlit[sec]) {
-      trlit[sec][k[1]] = trlit[sec][k]
-      delete trlit[sec][k]
-    }
-  }
-  return trlit;
-}
-
-// ...
-function transliterate(txt, trlit, includeSeps = true) {
-  const seps = /([ |/~*-]|\[[^\]]*\])/g;
-  let result = "";
-  let last_char = "";
-  let last_was_en_exception = false;
-  let sep_was_moved = false;
-  for (let gp of txt.split(seps)) {
-    // Separators
-    if (gp.match(seps)) {
-      if ([" ", "/", "-"].includes(gp)) {
-        // Final exceptions (1/3)
-        if (!last_was_en_exception) {
-          for (const exn in trlit["final-exceptions"]) {
-            if (result.slice(result.length - exn.length) == exn) {
-              result = result.slice(0, result.length - exn.length) + trlit["final-exceptions"][exn];
-            }
-          }
-        }
-        result += gp;
-        last_char = " ";
-        last_was_en_exception = false;
-      }
-      else if (gp === "~") {
-        // Final exceptions (2/3)
-        if (!last_was_en_exception) {
-          for (const exn in trlit["final-exceptions"]) {
-            if (result.slice(result.length - exn.length) == exn) {
-              result = result.slice(0, result.length - exn.length) + trlit["final-exceptions"][exn];
-            }
-          }
-        }
-        result += includeSeps ? gp : " ";
-        last_char = " ";
-        last_was_en_exception = false;
-      }
-      else if (gp === "|") {
-        result += includeSeps && !sep_was_moved ? gp : "";
-        last_was_en_exception = false;
-        sep_was_moved = false;
-      }
-      else if (gp == "*") {
-        result += gp;
-        last_was_en_exception = false;
-      }
-      else if (gp[0] == "[") {
-        result += gp.slice(1, gp.length - 1);
-        last_was_en_exception = false;
-      }
-      else {
-        throw `Unimplemented separator: ${gp}`
-      }
-    }
-    // English Exceptions
-    else if (gp.replace("_", "") in trlit["exceptions"]) {
-      let to_add = trlit["exceptions"][gp.replace("_", "")];
-      if (to_add[0].match(/[aeiou]/i) && last_char.match(/[aeiou]/i)) {
-        to_add = trlit["multi-vowel-character"] + to_add;
-      }
-      result += to_add;
-      last_char = result[result.length - 1];
-      last_was_en_exception = true;
-    }
-    else {
-      // Hebrew Exceptions
-      if (gp.replace("_", "") in hebrew_exceptions) {
-        gp = hebrew_exceptions[gp.replace("_", "")] + (gp.includes("_") ? "_" : "");
-      }
-      let gp_result = "";
-      let consonants = 0;
-      let curr_consonant_he = "";
-      let curr_consonant_en_with_vowel = "";
-      let curr_consonant_en_without_vowel = "";
-      let curr_vowels_en = "";
-      for (let i = 0; i < gp.length; i++) {
-        if (gp[i] === "_") {
-          if (includeSeps) {
-            curr_consonant_en_with_vowel += "|";
-            curr_consonant_en_without_vowel += "|";
-          }
-          sep_was_moved = true;
-          continue;
-        }
-        const in_dipthongs  = gp[i] in trlit["dipthongs"];
-        const in_consonants = gp[i] in trlit["consonants"];
-        const in_modifiers  = gp[i] in trlit["modifiers"];
-        const in_vowels     = gp[i] in trlit["vowels"];
-        if (!in_dipthongs && !in_consonants && !in_modifiers && !in_vowels) {
-          throw `Unknown character: ${gp[i]}`
-        }
-        // Dipthongs (with lookahead!)
-        if (in_dipthongs && (i == gp.length-1 || gp[i+1] in trlit["consonants"])) {
-          if (curr_vowels_en.length > 0) {
-            const last_vowel = curr_vowels_en[curr_vowels_en.length - 1];
-            if (last_vowel in trlit["dipthongs"][gp[i]]) {
-              curr_vowels_en += trlit["dipthongs"][gp[i]][last_vowel];
-              continue;
-            }
-          }
-          else if (curr_consonant_en_with_vowel in trlit["dipthongs"][gp[i]]) {
-            curr_consonant_en_with_vowel += trlit["dipthongs"][gp[i]][curr_consonant_en_with_vowel];
-            continue;
-          }
-          else if (curr_consonant_en_without_vowel in trlit["dipthongs"][gp[i]]) {
-            curr_consonant_en_without_vowel += trlit["dipthongs"][gp[i]][curr_consonant_en_without_vowel];
-            continue;
-          }
-          else if (last_char in trlit["dipthongs"][gp[i]]) {
-            gp_result += trlit["dipthongs"][gp[i]][last_char];
-            continue;
-          }
-        }
-        // Consonants
-        if (in_consonants) {
-          let consonant_to_add = curr_vowels_en.length > 0 ? curr_consonant_en_with_vowel : curr_consonant_en_without_vowel;
-          if (consonant_to_add.match(/[aeiou]/i) && last_char.match(/[aeiou]/i)) {
-            consonant_to_add = trlit["multi-vowel-character"] + consonant_to_add;
-          }
-          gp_result += consonant_to_add + curr_vowels_en;
-          if (gp_result.length > 0) {
-            last_char = gp_result[gp_result.length - 1];
-            last_was_en_exception = false;
-          }
-          consonants++;
-          curr_consonant_he = gp[i];
-          curr_consonant_en_with_vowel    = trlit["consonants"][gp[i]];
-          curr_consonant_en_without_vowel = trlit["consonants"][gp[i]];
-          curr_vowels_en = "";
-        }
-        // Modifiers
-        if (in_modifiers) {
-          if (curr_consonant_he in trlit["modifiers"][gp[i]]["rules"]) {
-            const mod = trlit["modifiers"][gp[i]]["rules"][curr_consonant_he];
-            if (mod == null) { }
-            else if (typeof mod === "string") {
-              curr_consonant_en_with_vowel    = mod;
-              curr_consonant_en_without_vowel = mod;
-            }
-            else if (typeof mod === "object" && "with-vowel" in mod && "without-vowel" in mod) {
-              curr_consonant_en_with_vowel    = mod["with-vowel"];
-              curr_consonant_en_without_vowel = mod["without-vowel"];
-            }
-            else {
-              throw `Malformed modifier in transliteration specification: ${mod}`;
-            }
-          }
-          else if (trlit["modifiers"][gp[i]] === "must-match") {
-            throw `Unexpected modifier combination: ${curr_consonant_he + gp[i]}`;
-          }
-        }
-        // Vowels
-        if (in_vowels) {
-          let in_prog_last_char = last_char;
-          if (curr_vowels_en.length > 0) {
-            in_prog_last_char = curr_vowels_en[curr_vowels_en.length - 1];
-          }
-          else if (curr_consonant_en_with_vowel.length > 0) {
-            in_prog_last_char = curr_consonant_en_with_vowel[curr_consonant_en_with_vowel.length - 1];
-          }
-          if (in_prog_last_char.match(/[aeiou]/i)) {
-            curr_vowels_en += trlit["multi-vowel-character"];
-            if (trlit["vowels"][gp[i]] !== trlit["multi-vowel-character"]) {
-              curr_vowels_en += trlit["vowels"][gp[i]];
-            }
-          }
-          else {
-            curr_vowels_en += trlit["vowels"][gp[i]];
-          }
-        }
-      }
-      let consonant_to_add = curr_vowels_en.length > 0 ? curr_consonant_en_with_vowel : curr_consonant_en_without_vowel;
-      if (consonant_to_add.match(/[aeiou]/i) && last_char.match(/[aeiou]/i)) {
-        consonant_to_add = trlit["multi-vowel-character"] + consonant_to_add;
-      }
-      gp_result += consonant_to_add + curr_vowels_en;
-      // Prefix consonants
-      if (trlit["prefix-character"].length > 0
-            && consonants == 1
-            && trlit["prefix-consonants"].includes(curr_consonant_he)
-            && curr_vowels_en[curr_vowels_en.length - 1] !== trlit["prefix-character"]) {
-        gp_result += trlit["prefix-character"];
-      }
-      result += gp_result;
-      if (result.length > 0) {
-        last_char = result[result.length - 1];
-        last_was_en_exception = false;
-      }
-    }
-  }
-  // Final exceptions (3/3)
-  if (!last_was_en_exception) {
-    for (const exn in trlit["final-exceptions"]) {
-      if (result.slice(result.length - exn.length) == exn) {
-        result = result.slice(0, result.length - exn.length) + trlit["final-exceptions"][exn];
-      }
-    }
-  }
-  // Final cleanup
-  result = result.replace(/\*[a-z]/g, function(v) { return v.toUpperCase().slice(1); });
-  return result;
-}
+const {encodeToArray, default_trlit, transliterateFromArray, transliterate} = require('./transliterate.js');
 
 function inlineTransliterate(str, trlit) {
   return str.replace(/\{([^\}]+)\}/g, function (_full_match, gp) {
@@ -226,7 +11,8 @@ function inlineTransliterate(str, trlit) {
     }
     else {
       const he = gp.replace(/([|*_]|\[[^\]]*\])/g, "").replace(/([~])/g, " ");
-      return `<span class="avoidwrap"><span class="inlineHe">${he}</span> (<i>${transliterate(gp, trlit, false)}</i>)</span>`;
+      const tl = transliterate(gp, trlit).replace("|", "");
+      return `<span class="avoidwrap"><span class="inlineHe">${he}</span> (<i>${tl}</i>)</span>`;
     }
   })
 }
@@ -274,7 +60,7 @@ function addSpansEn(ix, en) {
 
 function getHeTlEnRowTds(pr, trlit, ix, colors) {
   const [_v, he, en, notes] = pr["text"][ix];
-  const tl = transliterate(he, trlit, true);
+  const tl = transliterate(he, trlit);
   const [he_max_j, he_html] = addSpansHeTl("he", ix, he);
   const [_tl_max_j, tl_html] = addSpansHeTl("tl", ix, tl);
   const [en_js, en_html] = addSpansEn(ix, en);
@@ -317,7 +103,7 @@ allTranslations = _.merge({}, ...translations.map((tr) => tr[2]));
 const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה",
   "<span class=\"avoidWrap\">[May](4) [their](1) [memory](0)</span> " +
   "<span class=\"avoidWrap\">[be](4) [for](2) [a blessing](3)</span>"] ] };
-const [index_row, index_colors] = addHeTlEnRow(index_pr, trlit_std, 0, {}, false);
+const [index_row, index_colors] = addHeTlEnRow(index_pr, default_trlit, 0, {}, false);
 let index = `<!DOCTYPE html><html>\n`;
 index += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
 index += `<title>Interactive Translations</title>\n`;
@@ -399,9 +185,9 @@ fs.writeFile("./index.html", index, err => {
 // Make each prayer/blessing's page
 for (const pr in allTranslations) {
   const page_name = pr.replace(" ", "_") + ".html";
-  let trlit = trlit_std;
-  if ("transliteration" in allTranslations[pr] && "standard" in allTranslations[pr]["transliteration"]) {
-    trlit = _.merge(_.cloneDeep(trlit_std), allTranslations[pr]["transliteration"]["standard"]);
+  let trlit = default_trlit;
+  if ("transliteration" in allTranslations[pr]) {
+    trlit = trlit.copy().addAll(allTranslations[pr]["transliteration"]);
   }
   let colors = {};
   // Header (wait to stringify `colors`!)

@@ -17,20 +17,11 @@
       "Version": [ ["", 2] ]
     },
     "transliteration": {
-      "standard": {
-        "exceptions": {
-          "עַלֶּה": "aleh",
-          "לְעֵלָּא": "l’eyla",
-          "עוֹשֶׂה": "oseh",
-          "יַעֲשֶׂה": "ya’aseh"
-        },
-        "final-exceptions": {
-          "e": "ey",
-          "ei": "ey",
-          "eh": "ey",
-          "ah": "a"
-        }
-      }
+      "_": [
+        ["([34])[EgJ]$", ".$1i"],
+        ["1G", ".1"],
+        ["^lvo3L0g$", ".lvo3iL0g"]
+      ]
     },
     "text": [
       [".", "*יִתְ|גַּדַּל", "[Let it be](0) [made high](1)", {}],
@@ -201,28 +192,28 @@
       "Preset": 1
     },
     "text": [
-      ["00.", "*עׇזִּ_|י וְ|זִמְרָת יָהּ", "[My](1) [strength](0) [and](2) [song](3) [are](5) [God](4)", {"5": 3}],
-      ["01.", "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ", "[My](1) [strength](0) [and](2) [its](4) [song](3) [are](6) [God](5)", {"4": 0, "6": 3}],
-      ["02.", "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ", "[My](1) [strength](0) [with](2) [the song](3) [of](4) [God](5)", {"2": 1}],
-      ["03.", "*עׇזִּ_|י וְ|זִמְרָת יָהּ", "[My](1) [strength](0) [and](2) [power](3) [are](5) [God](4)", {"5": 3}],
-      ["04.", "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ", "[My](1) [strength](0) [and](2) [its](4) [power](3) [are](6) [God](5)", {"4": 2, "6": 3}],
-      ["05.", "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ", "[My](1) [strength](0) [with](2) [the power](3) [of](4) [God](5)", {"2": 1}],
+      ["00.", "*עׇזִּ_|י וְ|זִמְרָת *יָהּ", "[My](1) [strength](0) [and](2) [song](3) [are](5) [God](4)", {"5": 3}],
+      ["01.", "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ", "[My](1) [strength](0) [and](2) [its](4) [song](3) [are](6) [God](5)", {"4": 0, "6": 3}],
+      ["02.", "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ", "[My](1) [strength](0) [with](2) [the song](3) [of](4) [God](5)", {"2": 1}],
+      ["03.", "*עׇזִּ_|י וְ|זִמְרָת *יָהּ", "[My](1) [strength](0) [and](2) [power](3) [are](5) [God](4)", {"5": 3}],
+      ["04.", "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ", "[My](1) [strength](0) [and](2) [its](4) [power](3) [are](6) [God](5)", {"4": 2, "6": 3}],
+      ["05.", "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ", "[My](1) [strength](0) [with](2) [the power](3) [of](4) [God](5)", {"2": 1}],
 
-      ["10.",    "*עׇזִּ_|י וְ|זִמְרָת יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [song](3) [are](5) [God](4)", {"5": 3}],
-      ["11.",    "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [its](4) [song](3) [are](6) [God](5)", {"4": 0, "6": 3}],
-      ["120",    "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ יְיָ", "[My](1) [strength](0) [and](2) [the song](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"7": 3}],
-      ["12[12]", "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ יְיָ", "[My](1) [strength](0) [with](2) [the song](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"2": 1, "7": 3}],
-      ["13.",    "*עׇזִּ_|י וְ|זִמְרָת יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [power](3) [are](5) [God](4)", {"5": 3}],
-      ["14.",    "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [its](4) [power](3) [are](6) [God](5)", {"4": 2, "6": 3}],
-      ["150",    "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ יְיָ", "[My](1) [strength](0) [and](2) [the power](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"7": 3}],
-      ["15[12]", "*עׇזִּ_|י וְ|זִמְרָ|ת יָהּ יְיָ", "[My](1) [strength](0) [with](2) [the power](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"2": 1, "7": 3}],
+      ["10.",    "*עׇזִּ_|י וְ|זִמְרָת *יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [song](3) [are](5) [God](4)", {"5": 3}],
+      ["11.",    "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [its](4) [song](3) [are](6) [God](5)", {"4": 0, "6": 3}],
+      ["120",    "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ יְיָ", "[My](1) [strength](0) [and](2) [the song](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"7": 3}],
+      ["12[12]", "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ יְיָ", "[My](1) [strength](0) [with](2) [the song](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"2": 1, "7": 3}],
+      ["13.",    "*עׇזִּ_|י וְ|זִמְרָת *יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [power](3) [are](5) [God](4)", {"5": 3}],
+      ["14.",    "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ~יְיָ", "[My](1) [strength](0) [and](2) [its](4) [power](3) [are](6) [God](5)", {"4": 2, "6": 3}],
+      ["150",    "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ יְיָ", "[My](1) [strength](0) [and](2) [the power](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"7": 3}],
+      ["15[12]", "*עׇזִּ_|י וְ|זִמְרָ|ת *יָהּ יְיָ", "[My](1) [strength](0) [with](2) [the power](3) [of](4) [God](5) [is](7) [*Adonai*](6)", {"2": 1, "7": 3}],
 
-      ["0[25]0", "*וַ|יְהִי-לִי~לִי|שׁוּעָה", "[God](4) [has become](1) [my](2) [salvation](3)", {"0": 4, "2": 5, "4": 6}],
-      ["(?!0[25])..0", "וַ|יְהִי-לִי~לִי|שׁוּעָה", "[and](0) [God](4) [has become](1) [my](2) [salvation](3)", {"2": 5, "4": 6}],
-      ["0[25]1", "*וַ|יְהִי-לִי~לִי|שׁוּעָה", "[It](4) [has become](1) [my](2) [salvation](3)", {"0": 4, "2": 5, "4": 7}],
-      ["1[25]1", "וַ|יְהִי-לִי~לִי|שׁוּעָה", "[and](0) [it has become](1) [my](2) [salvation](3)", {"2": 5, "4": 7}],
-      ["0[25]2", "*וַ|יְהִי-לִי~לִי|שׁוּעָה", "[It](4) [will be](1) [my](2) [salvation](3)", {"0": 4, "2": 5, "4": 7}],
-      ["1[25]2", "וַ|יְהִי-לִי~לִי|שׁוּעָה", "[and](0) [it](4) [will be](1) [my](2) [salvation](3)", {"2": 5, "4": 7}]
+      ["0[25]0", "*וַ|יְהִי-לִ_|י לִ_|ישׁוּעָה", "[God](6) [has become](1) [my](3) [salvation](5)", {"0": 4, "2": 5, "4": 6}],
+      ["(?!0[25])..0", "וַ|יְהִי-לִ_|י לִ_|ישׁוּעָה", "[and](0) [God](6) [has become](1) [my](3) [salvation](5)", {"2": 5, "4": 6}],
+      ["0[25]1", "*וַ|יְהִי-לִ_|י לִ_|ישׁוּעָה", "[It](6) [has become](1) [my](3) [salvation](5)", {"0": 4, "2": 5, "4": 7}],
+      ["1[25]1", "וַ|יְהִי-לִ_|י לִ_|ישׁוּעָה", "[and](0) [it has become](1) [my](3) [salvation](5)", {"2": 5, "4": 7}],
+      ["0[25]2", "*וַ|יְהִי-לִ_|י לִ_|ישׁוּעָה", "[It](6) [will be](1) [my](3) [salvation](5)", {"0": 4, "2": 5, "4": 7}],
+      ["1[25]2", "וַ|יְהִי-לִ_|י לִ_|ישׁוּעָה", "[and](0) [it](6) [will be](1) [my](3) [salvation](5)", {"2": 5, "4": 7}]
     ],
     "intertextual-notes": [
       [1, "Lit. \"of\" but referring back to \"my strength\", as in: \"My strength and (this) song of (my strength)\""],
@@ -245,14 +236,14 @@
       "However, the presence of a final letter {ת/Tav} in {זִמְרָת} should not be ignored.",
       "In Hebrew, a final {ת/Tav} may indicate that the word is in construct form, a way of indicating possession.",
       "Thus, with this interpretation, this word should really be translated as \"song of\" or \"power of\".",
-      "The medieval commentator Ibn Ezra argues this possessive poetically refers to the previous word {עׇזִּ|י}, \"my strength\", making \"song of my strength\" or \"power of my strength\".",
-      "A more direct interpretation would be that the possessive refers to the next word {יָהּ}, \"God\", making \"song of God\" or \"power of God\" – but this causes other problems, as discussed below."
+      "The medieval commentator Ibn Ezra argues this possessive poetically refers to the previous word {עׇזִּ_|י}, \"my strength\", making \"song of my strength\" or \"power of my strength\".",
+      "A more direct interpretation would be that the possessive refers to the next word {*יָהּ}, \"God\", making \"song of God\" or \"power of God\" – but this causes other problems, as discussed below."
       ],[
       "Another difficulty is that the first line has no verb.",
-      "Most often, an implicit \"to be\" is inserted, with {יָהּ}, \"God\", either being the subject or object – the former resulting in the most common English translation, but the latter being more likely correct due to word order.",
-      "However, if {זִמְרָת יָהּ} is taken to be one phrase, \"song of God\" or \"might of God\", then there is no word left to be the implicit subject/object.",
+      "Most often, an implicit \"to be\" is inserted, with {*יָהּ}, \"God\", either being the subject or object – the former resulting in the most common English translation, but the latter being more likely correct due to word order.",
+      "However, if {זִמְרָת *יָהּ} is taken to be one phrase, \"song of God\" or \"might of God\", then there is no word left to be the implicit subject/object.",
       "One option is to simply translate this first verse poetically as having no verb.",
-      "The other is to use the version of this verse from Isaiah, which renders {יָהּ} as {יָהּ יְיָ}, and take {יְיָ} to be the subject/object."
+      "The other is to use the version of this verse from Isaiah, which renders {*יָהּ} as {*יָהּ יְיָ}, and take {יְיָ} to be the subject/object."
       ],[
       "The final difficulty I will discuss here is that the second sentence has no subject.",
       "Most likely, and in most translations, the subject is taken to be God.",
@@ -260,7 +251,7 @@
       ],[
       "As argued by Ibn Ezra, the translation which is mostly likely correct takes {זִמְרָת} as \"song of (my strength)\" and God as the subject of the second line – though by default, this page translates {זִמְרָת} simply as \"song\", for brevity.",
       "Rabbi Shefa Gold, the composer of the chant for this verse, translates {זִמְרָת} as \"song of (God)\" and takes {עׇזִּ_|י}, \"my strength\", to be the subject of the second line.",
-      "This latter translation, although likely not what the verse originally meant, is compelling, especially since {זִמְרָת יָהּ} sounds so much like one phrase to modern ears.",
+      "This latter translation, although likely not what the verse originally meant, is compelling, especially since {זִמְרָת *יָהּ} sounds so much like one phrase to modern ears.",
       "Rabbi Gold also takes catering to modern ears one step further and translates {יְהִי} as \"will be\", ignoring the \"vav-consecutive\" grammatical rule from biblical Hebrew that says a verb in future tense becomes past tense when prefixed with a letter {ו/Vav}."
     ]],
     "translation-credit": "Translations by Matthew Yacavone"
@@ -318,9 +309,9 @@
     },
     "text": [
       ["0", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the gates](3) [of](4) [righteousness](5),", {}],
-      ["0", "אָבֹא-בָם אוֹדֶה יָהּ", "[I will enter](0) [them](1), [I will thank](2) [God](3)", {}],
+      ["0", "אָבֹא-בָם אוֹדֶה *יָהּ", "[I will enter](0) [them](1), [I will thank](2) [God](3)", {}],
       ["1", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the path](3) [of](4) [righteousness](5),", {}],
-      ["1", "אָבֹא-בָם אוֹדֶה יָהּ", "[taking](0) [it](1), [I will thank](2) [God](3)", {}],
+      ["1", "אָבֹא-בָם אוֹדֶה *יָהּ", "[taking](0) [it](1), [I will thank](2) [God](3)", {}],
       [".", "", "", {}],
       ["0", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This is](0) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
       ["0", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will enter](1) [it](2)"],
@@ -379,7 +370,7 @@
   "Psalm 150": {
     "title": ["תהילים קנ", "Psalm 150 (Hallelu)"],
     "text": [
-      ["", "*הַלְלוּ-יָהּ", "[Sing out in praise to](0) [God](1)!", {}],
+      ["", "*הַלְלוּ-*יָהּ", "[Sing out in praise to](0) [God](1)!", {}],
       ["", "*הַלְלוּ-*אֵל בְּ|קׇדְשׁ|וֹ", "[Sing out to](0) [God](1) [in](2) [his](4) [sanctuary](3),", {}],
       ["", "*הַלְלוּ|הוּ בִּ|רְקִיעַ עֻזּ|וֹ", "[Sing out to](0) [Him](1) [in](2) [his](5) [mighty](4) [heavens](3)", {}],
       ["", "", "", {}],
@@ -395,8 +386,8 @@
       ["", "*הַלְלוּ|הוּ בְ|צִלְצְלֵי שָׁמַע", "[Sing out](0) [with](2) [crashing](4) [cymbals](3),", {}],
       ["", "*הַלְלוּ|הוּ בְּ|צִלְצְלֵי תְרוּעָה", "[Sing out](0) [with](2) [booming](4) [cymbals](3)", {}],
       ["", "", "", {}],
-      ["", "*כֹּל הַנְּשָׁמָה תְּהַלֵּל יָהּ", "[All](0) [with breath](1) [sing out in praise to](2) [God](3),", {}],
-      ["", "*הַלְלוּ-יָהּ", "[Sing out in praise to](0) [God](1)!", {}]
+      ["", "*כֹּל הַנְּשָׁמָה תְּהַלֵּל *יָהּ", "[All](0) [with breath](1) [sing out in praise to](2) [God](3),", {}],
+      ["", "*הַלְלוּ-*יָהּ", "[Sing out in praise to](0) [God](1)!", {}]
     ],
     "general-notes": [[
       "This final entry in {*תְּהִלִּים}, the Book of Psalms, embodies the word {תְּהִלָּה}, \"song of praise,\" that gives the Book of Psalms its name.",
@@ -484,10 +475,14 @@
       ["11.", "לְ|הַחֲלִימ|וֹ", "[to](0) [give](1) [him](2) [recovery](1)", {}],
       ["12.", "לְ|הַחֲלִימָ_|הּ", "[to](0) [give](1) [her](2) [recovery](1)", {}],
       ["13.", "לְ|הַחֲלִימָ_|ן", "[to](0) [give](1) [them](2) [recovery](1)", {}],
-      ["10.", "וּ|לְ|רַפְּאֹתָ_|ם", "[and](0) [to](1) [heal](2) [them](3)", {}],
-      ["11.", "וּ|לְ|רַפְּאֹת|וֹ", "[and](0) [to](1) [heal](2) [him](3)", {}],
-      ["12.", "וּ|לְ|רַפְּאֹתָ_|הּ", "[and](0) [to](1) [heal](2) [her](3)", {}],
-      ["13.", "וּ|לְ|רַפְּאֹתָ_|ן", "[and](0) [to](1) [heal](2) [them](3)", {}],
+      ["100", "וּ|לְ|רַפְּאֹתָ_|ם", "[and](0) [to](1) [heal](2) [them](3)", {}],
+      ["110", "וּ|לְ|רַפְּאֹת|וֹ", "[and](0) [to](1) [heal](2) [him](3)", {}],
+      ["120", "וּ|לְ|רַפְּאֹתָ_|הּ", "[and](0) [to](1) [heal](2) [her](3)", {}],
+      ["130", "וּ|לְ|רַפְּאֹתָ_|ן", "[and](0) [to](1) [heal](2) [them](3)", {}],
+      ["101", "וּ|לְ|רַפְּאֹתָ_|ם", "[and](0) [to](1) [renew](2) [them](3)", {}],
+      ["111", "וּ|לְ|רַפְּאֹת|וֹ", "[and](0) [to](1) [renew](2) [him](3)", {}],
+      ["121", "וּ|לְ|רַפְּאֹתָ_|הּ", "[and](0) [to](1) [renew](2) [her](3)", {}],
+      ["131", "וּ|לְ|רַפְּאֹתָ_|ן", "[and](0) [to](1) [renew](2) [them](3)", {}],
       ["10.", "וּ|לְ|הַחֲזִיקָ_|ם", "[and](0) [to](1) [give](2) [them](3) [strength](1)", {}],
       ["11.", "וּ|לְ|הַחֲזִיק|וֹ", "[and](0) [to](1) [give](2) [him](3) [strength](1)", {}],
       ["12.", "וּ|לְ|הַחֲזִיקָ_|הּ", "[and](0) [to](1) [give](2) [her](3) [strength](1)", {}],
@@ -501,7 +496,7 @@
       ["11.", "*וְ|יִשְׁלַח ל|וֹ מְהֵרָה", "[And](0) [send](1) [to](2) [him](3) [quickly](4)", {}],
       ["12.", "*וְ|יִשְׁלַח לָ_|הּ מְהֵרָה", "[And](0) [send](1) [to](2) [her](3) [quickly](4)", {}],
       ["13.", "*וְ|יִשְׁלַח לָ_|ן מְהֵרָה", "[And](0) [send](1) [to](2) [them](3) [quickly](4)", {}],
-      ["0..", "מְקוֹר הַ|בְּרָָכָה לְ|אִמוֹתֵ_|ינוּ", "[The](1) [source of](0) [blessing](2) [to](3) [our](5) [mothers](4)", {}],
+      ["0..", "מְקוֹר הַ|בְּרָכָה לְ|אִמוֹתֵ_|ינוּ", "[The](1) [source of](0) [blessing](2) [to](3) [our](5) [mothers](4)", {}],
       ["0..", "", "", {}],
       ["0..", "May the source of strength"],
       ["0..", "who blessed the ones before us"],
@@ -510,7 +505,7 @@
       ["0..", "And let us say: <i>Amen</i>."],
       ["0..", "", "", {}],
       ["0..", "*מִי שֶׁ|בֵּרַךְ אִמוֹתֵ_|ינוּ", "[The one](0) [who](1) [blessed](2) [our](4) [mothers](3)", {}],
-      ["0..", "מְקוֹר הַ|בְּרָָכָה לַ|אֲבוֹתֵ_|ינוּ|", "[The](1) [source of](0) [blessing](2) [to](3) [our](5) [fathers](4)", {}],
+      ["0..", "מְקוֹר הַ|בְּרָכָה לַ|אֲבוֹתֵ_|ינוּ|", "[The](1) [source of](0) [blessing](2) [to](3) [our](5) [fathers](4)", {}],
       ["0..", "", "", {}],
       ["0..", "Bless those in need of healing with"],
       ["..0", "רְפוּאָה  שְׁלֵמָה[:]", "[complete](1) [healing](0):", {}],
