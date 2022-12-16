@@ -102,9 +102,6 @@
     "default-choices": {
       "Breaks": [ ["", 1] ]
     },
-    "transliteration": {
-      "_": [ ["^B7jr3g$", ".B7jr3J"] ]
-    },
     "text": [
       [".", "*בָּרוּךְ אַתָּה *יְיָ", "[Blessed](0) [are you](1) [*Adonai*](2),", {}],
       [".", "*אֱלֹהֵ_|ינוּ *מֶלֶךְ *הָ|עוֹלָם", "[our](1) [God](0), [Ruler of](2) [the](3) [Universe](4),", {}],
@@ -170,9 +167,6 @@
       "End of": [ ["", 0] ],
       "Introductory Verses": [ ["0", 0], [".", 2] ],
       "Final Blessing": [ ["..", 0] ]
-    },
-    "transliteration": {
-      "_": [ ["^B7jr3g$", ".B7jr3J"] ]
     },
     "text": [
       [".[01].", "*הִנֵּה אֵל יְשׁוּעָתִ_|י", "\"[*Hinei*](0)! [God](1) [is](4) [my](3) [salvation](2)", {}],

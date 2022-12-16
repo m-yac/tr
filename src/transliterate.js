@@ -337,7 +337,11 @@ const default_trlit = new Trlit({
   /* ◌ֳ */ "8": ".7",
   /* ◌ֻ */ "9": "u",
   "_": [
-    // ================ Matres lectionis ================
+    // ================ Matres lectionis exceptions ================
+    /* bore[i] */ ["^B7jr3g$", ".B7jr3J"],
+    /* l'e[i]la */ ["^lvo3L0g$", ".lvo3JL0g"],
+    /* hine[i] */ ["^e6N3G$", ".e6N3J"],
+    // ================ Matres lectionis rules ================
     /* hiriq yod vowel */ ["6J", "i"],
     /* tsere yod dipthong */ ["3(\\|)?J", "ei"],
     /* trailing M.L. yod */ ["J$", "i"],
@@ -352,7 +356,6 @@ const default_trlit = new Trlit({
     // ================ Special cases ================
     /* Tetragrammaton as Adonai */ ["[iI][vV2]([eE]7?f0[eE]|7?[iI]0)", ".*a2d7n0J"],
     /* Tetragrammaton as Elohim */ ["[iI][vV5]([eE]7?f6[eE]|7?[iI]6)", ".*a5l7e6Jm"],
-    /* Hinei */ ["^e6N3G$", ".e6N3J"],
     /* Yisrael */ ["\\*?i6yvr0a3l", "Yisrael"],
     /* Shabbat */ ["\\*?[sS][01]B[01]t", "Shabbat"],
   ]
