@@ -206,9 +206,8 @@ function encodeWord(word, i = undefined) {
       }
       // A final patach is a Furtive Patach if the letter is a Hei, Chet, or Ayin,
       // and there is a dagesh whenever the letter is a Hei
-      // FIXME: add back in support for furtive Ayin?
       const furtive_patach = j === letters.length-1 &&
-                             [he_letters.he, he_letters.chet/*, he_letters.ayin*/].includes(letter_to_enc) &&
+                             [he_letters.he, he_letters.chet, he_letters.ayin].includes(letter_to_enc) &&
                              (letters[j].dagesh || letter_to_enc !== he_letters.he) &&
                              vowel_to_enc === he_vowels.patach;
       // Encode the letter, any dagesh, and any shin/sin dot
@@ -269,7 +268,13 @@ exports.encodeToString = encodeToString;
 // A class representing a transliteration
 class Trlit {
   constructor(obj_or_code) {
-    this._ = [];
+    for (const u of Array.from("ABCDEFHIKLMNOPQRSTUWXYZ")) {
+      this[u] = `.${u.toLowerCase()}`;
+    }
+    this._ = [
+      ["Tetragrammaton as Adonai", "[iI][vV2]([eE]7?f0[eE]|7?[iI]0)", ".*a2d7n0J"],
+      ["Tetragrammaton as Elohim", "[iI][vV5]([eE]7?f6[eE]|7?[iI]6)", ".*a5l7e6Jm"]
+    ];
     this.addAll(obj_or_code);
   }
   addAll(obj_or_code) {
@@ -278,7 +283,12 @@ class Trlit {
         if (k in obj_or_code) { this[k] = obj_or_code[k]; }
       }
       if ("_" in obj_or_code) {
-        this._ = obj_or_code._.concat(this._);
+        let [arr1, arr2] = [[], this._];
+        for (const [desc, re, rhs] of obj_or_code._) {
+          arr2 = arr2.filter(([_desc1, re1, _rhs1]) => re1 !== re);
+          if (rhs !== ".") { arr1.push([desc, re, rhs]); }
+        }
+        this._ = arr1.concat(arr2);
       }
     }
     else if (typeof obj_or_code === "string") {
@@ -338,59 +348,54 @@ const default_trlit = new Trlit({
   /* ◌ֻ */ "9": "u",
   "_": [
     // ================ Matres lectionis exceptions ================
-    /* bore[i] */ ["^B7jr3g$", ".B7jr3J"],
-    /* l'e[i]la */ ["^lvo3L0g$", ".lvo3JL0g"],
-    /* hine[i] */ ["^e6N3G$", ".e6N3J"],
+    ["{בּוֹרֵא/} pronounced as {בּוֹרֵי/borei}", "^B7jr3g$", ".B7jr3J"],
+    ["{לְעֵלָּא/} pronounced as {לְעֵילָּא/l'eila}", "^lvo3L0g$", ".lvo3JL0g"],
+    ["{הִנֵּה/} pronounced as {הִנֵּי/hinei}", "^e6N3G$", ".e6N3J"],
     // ================ Matres lectionis rules ================
-    /* hiriq yod vowel */ ["6J", "i"],
-    /* tsere yod dipthong */ ["3(\\|)?J", "ei"],
-    /* trailing M.L. yod */ ["J$", "i"],
-    /* trailing M.L. hei */ ["G$", "h"],
-    /* silent M.L. then vowel */ ["[gGjJ]([0-9])", "'.$1"],
+    ["hiriq yod vowel", "6J", "i"],
+    ["tsere yod dipthong", "3(\\|)?J", "ei"],
+    ["trailing M.L. yod", "J$", "i"],
+    ["trailing M.L. hei", "G$", "h"],
+    ["silent M.L. then vowel", "[gGjJ]([0-9])", "'.$1"],
     // ================ Alef/Ayin/Shva ================
-    /* pass along capitalization on a alef or ayin */ ["\\*([aAoO])", ".$1*"],
-    /* leading alef or ayin */ ["^[aAoO]", ""],
-    /* trailing alef or ayin */ ["[aAoO][vV]?$", ""],
-    /* trailing shva */ ["[vV]$", ""],
-    /* mute shva then alef or ayin */ ["v(\\|)?([aAoO])", ".$1$2"],
+    ["pass along capitalization on a alef or ayin", "\\*([aAoO])", ".$1*"],
+    ["leading alef or ayin", "^[aAoO]", ""],
+    ["trailing alef or ayin", "[aAoO][vV]?$", ""],
+    ["trailing shva", "[vV]$", ""],
+    ["mute shva then alef or ayin", "v(\\|)?([aAoO])", ".$1$2"],
     // ================ Special cases ================
-    /* Tetragrammaton as Adonai */ ["[iI][vV2]([eE]7?f0[eE]|7?[iI]0)", ".*a2d7n0J"],
-    /* Tetragrammaton as Elohim */ ["[iI][vV5]([eE]7?f6[eE]|7?[iI]6)", ".*a5l7e6Jm"],
-    /* Yisrael */ ["\\*?i6yvr0a3l", "Yisrael"],
-    /* Shabbat */ ["\\*?[sS][01]B[01]t", "Shabbat"],
+    ["Yisrael", "\\*?i6yvr0a3l", "Yisrael"],
+    ["Shabbat", "\\*?[sS][01]B[01]t", "Shabbat"],
   ]
 });
 Object.freeze(default_trlit);
 exports.default_trlit = default_trlit;
 
-// Parse the RHS of a transliteration entry as a decoded and encoded part
-function parseTrlitRHS(rhs) {
-  let [dec, enc] = rhs.split(".");
-  if (dec === undefined) { dec = ""; }
-  if (enc === undefined) { enc = ""; }
-  return [dec, enc];
-}
-
 // Transliterate the given encoded word with the given transliteration
 function transliterateEncodedWord(encWord, trlit = default_trlit) {
   let result = "";
   let [capitalize, at_start] = [false, true];
+  function applyRule(rhs, len = 1) {
+    let [dec, enc] = rhs.split(".");
+    if (dec === undefined) { dec = ""; }
+    if (enc === undefined) { enc = ""; }
+    if (dec !== "") {
+      if (capitalize) { dec = dec[0].toUpperCase() + dec.slice(1); }
+      capitalize = false;
+      at_start = false;
+    }
+    result += dec;
+    encWord = enc + encWord.slice(len);
+  }
   outerLoop: while (encWord.length > 0) {
     // Do any regex replaces first
-    for (let [re, rhs] of trlit._) {
+    for (let [_desc, re, rhs] of trlit._) {
       if (re[0] === "^") { if (!at_start) { continue; } }
       else { re = "^" + re; }
       const match = encWord.match(new RegExp(re));
       if (match !== null) {
         rhs = rhs.replace(/\$[0-9]+/g, (s) => match[parseInt(s.slice(1))] || "");
-        let [dec, enc] = parseTrlitRHS(rhs);
-        if (dec !== "") {
-          if (capitalize) { dec = dec[0].toUpperCase() + dec.slice(1); }
-          capitalize = false;
-          at_start = false;
-        }
-        result += dec;
-        encWord = enc + encWord.slice(match[0].length);
+        applyRule(rhs, match[0].length);
         continue outerLoop;
       }
     }
@@ -407,18 +412,8 @@ function transliterateEncodedWord(encWord, trlit = default_trlit) {
     }
     // Do a normal transliteration
     let to_dec = encWord[0];
-    if (!(to_dec in trlit)) {
-      to_dec = to_dec.toLowerCase();
-      if (!(to_dec in trlit)) { throw `No implementation for: ${to_dec}`; }
-    }
-    let [dec, enc] = parseTrlitRHS(trlit[to_dec]);
-    if (dec !== "") {
-      if (capitalize) { dec = dec[0].toUpperCase() + dec.slice(1); }
-      capitalize = false;
-      at_start = false;
-    }
-    result += dec;
-    encWord = enc + encWord.slice(1);
+    if (!(to_dec in trlit)) { throw `No implementation for: ${to_dec}`; }
+    applyRule(trlit[to_dec]);
   }
   return result;
 }

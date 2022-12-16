@@ -18,9 +18,9 @@
     },
     "transliteration": {
       "_": [
-        ["([34])[EgJ]$", ".$1i"],
-        ["1G", ".1"],
-        ["^lvo3L0g$", ".lvo3iL0g"]
+        ["\"eh\" (non-M.L.), \"e\" (M.L.), or \"ei\" (M.L.) ending as \"ey\"", "([34])[EgJ]$", ".$1i"],
+        ["\"ah\" (M.L.) ending as \"a\"", "1G", ".1"],
+        ["{לְעֵלָּא/} as {לְעֵילָּא/l'eyla}", "^lvo3L0g$", ".lvo3iL0g"]
       ]
     },
     "text": [
