@@ -309,14 +309,14 @@
     },
     "text": [
       ["0", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the gates](3) [of](4) [righteousness](5),", {}],
-      ["0", "אָבֹא-בָם אוֹדֶה *יָהּ", "[I will enter](0) [them](1), [I will thank](2) [God](3)", {}],
+      ["0", "אָבֹא-בָם אוֹדֶה *יָהּ", "[entering](0) [them](1), [I will thank](2) [God](3)", {}],
       ["1", "*פִּתְחוּ-לִ_|י שַׁעֲרֵ_|י-צֶדֶק", "[Open](0) [for](1) [me](2) [the path](3) [of](4) [righteousness](5),", {}],
       ["1", "אָבֹא-בָם אוֹדֶה *יָהּ", "[taking](0) [it](1), [I will thank](2) [God](3)", {}],
       [".", "", "", {}],
       ["0", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This is](0) [the](1) [gateway](2) [to](3) [*Adonai*](4),", {}],
-      ["0", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will enter](1) [it](2)"],
+      ["0", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [enter](1) [it](2)"],
       ["1", "*זֶה-הַ|שַּׁעַר לַ|יְיָ", "[This is](0) [the](1) [path](2) [to](3) [*Adonai*](4),", {}],
-      ["1", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [will take](1) [it](2)"]
+      ["1", "צַדִּיקִים יָבֹאוּ בוֹ", "[the righteous](0) [take](1) [it](2)"]
     ],
     "translation-credit": "Translations by Matthew Yacavone and Hannah Chinn"
   },
