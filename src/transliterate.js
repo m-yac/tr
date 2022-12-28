@@ -5,10 +5,11 @@ const he_final_letters = { "ך": "כ", "ם": "מ", "ן": "נ", "ף": "פ", "ץ":
 const he_vowels = { kamatz: "ָ", patach: "ַ", patachRed: "ֲ", tsere: "ֵ", segol: "ֶ", segolRed: "ֱ", hiriq: "ִ", holam: "ֹ", kamatzRed: "ֳ", kubutz: "ֻ", shva: "ְ", qamatzQatan: "ׇ", holamVav: "ֺ", holamAlt: "ׄ", hiriqAlt: "ׅ" };
 const he_marks = { dagesh: "ּ", shinDot: "ׁ", sinDot: "ׂ" };
 const he_gershayim = { geresh: "׳", gershayim: "״" };
-const he_special_chars = { capitalize: "*", sepWithVowel: "_", sep: "|", onlyEnStart: "[", onlyEnEnd: "]" };
+const he_special_chars = { onPrevVowel: "_", capitalize: "*", sep: "|", marker: "^" };
+const he_punct = { "־": " " };
 
 // RegExps for Hebrew character sets
-const he_everything_re = /[\u0590-\u05FF\*\|_]/g;
+const he_everything_re = new RegExp(`[\\u0590-\\u05BD\\u05BF-\\u05FF${he_special_chars.onPrevVowel}\\${he_special_chars.capitalize}\\${he_special_chars.sep}\\${he_special_chars.marker}]`, "g");
 const he_modifier_re = /[\u0590-\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7]/g;
 const he_letter_re = /[א-ת]/g;
 const he_vowel_re = /[\u0590-\u05BB\u05C4\u05C5\u05C7]/g;
@@ -17,7 +18,7 @@ const he_gershayim_re = /[׳״]/g;
 
 // RegExps for Hebrew structures
 const he_word_re = new RegExp(`(${he_everything_re.source}+)`, "g");
-const he_pointed_letter_re = new RegExp(`(\\*)?(${he_letter_re.source})(${he_modifier_re.source}*)(${he_gershayim_re.source})?(_?\\|)?`, "g");
+const he_pointed_letter_re = new RegExp(`(\\*)?(${he_letter_re.source})(${he_modifier_re.source}*)(${he_gershayim_re.source})?(_?[\\|\\^])?`, "g");
 const he_pointed_letter_re_groups = 5;
 
 // A pointed Hebrew letter, consisting of:
@@ -27,7 +28,7 @@ const he_pointed_letter_re_groups = 5;
 // - possibly a shin or sin dot (`this.shinOrSinDot`, constructed from `markings` argument)
 // - possibly a vowel from `he_vowels` (`this.vowel`, constructed from `markings` argument)
 // - possibly a geresh or gershayim (`this.gershayim`)
-// - possibly a separator `'|'` or a vowel separator `'_|'` (`this.sep`)
+// - possibly a separator `'|'`/`'^'` or a vowel separator `'_|'`/`'_^'` (`this.sep`)
 class HePointedLetter {
   constructor(capitalize, letter, markings, gershayim, sep) {
     this.capitalize = capitalize === "*";
@@ -65,6 +66,10 @@ class HePointedLetter {
     const markings = "◌" + (this.dagesh ? he_marks.dagesh : "") + this.shinOrSinDot + this.vowel;
     return `${this.constructor.name}('${this.capitalize ? "*" : ""}', '${this.letter}', '${markings}', '${this.sep}')`;
   }
+  toHeString() {
+    const markings = (this.dagesh ? he_marks.dagesh : "") + this.shinOrSinDot + this.vowel;
+    return `${this.capitalize ? "*" : ""}${this.letter}${markings}${this.sep}`;
+  }
   numericValue() {
     const gematria = {"א": 1, "ב": 2, "ג": 3, "ד": 4, "ה": 5, "ו": 6, "ז": 7, "ח": 8, "ט": 9, "י": 10, "כ": 20, "ל": 30, "מ": 40, "נ": 50, "ס": 60, "ע": 70, "פ": 80, "צ": 90, "ק": 100, "ר": 200, "ש": 300, "ת": 400, "ך": 500, "ם": 600, "ן": 700, "ף": 800, "ץ": 900 };
     if (!(this.letter in gematria)) { throw `Could not find gematria for letter: ${this.letter}`; }
@@ -80,7 +85,8 @@ class HePointedLetter {
 class HeWord {
   constructor(letters = []) { this.letters = letters; }
   add(letter) { this.letters.push(letter); }
-  toString() { return `${this.constructor.name}([${this.letters.map((l) => l.toString()).join(", ")}])` }
+  toString() { return `${this.constructor.name}([${this.letters.map((l) => l.toString()).join(", ")}])`; }
+  toHeString() { return this.letters.map((l) => l.toHeString()).join(""); }
   numericValue() {
     let value = 0;
     for (let i = 0; i < this.letters.length; i++) {
@@ -102,8 +108,13 @@ class HeWord {
 // Split a Hebrew string into a list of `HeWord`s, interspersed with (possibly empty)
 // strings of non-Hebrew characters
 function splitHe(str) {
-  return str.replace(/[\[\]]/g, "").split(he_word_re).map(function (gp, i) {
-    if (i % 2 == 0) { return gp; }
+  return str.split(he_word_re).map(function (gp, i) {
+    if (i % 2 == 0) {
+      for (const k in he_punct) {
+        gp = gp.replace(k, he_punct[k]);
+      }
+      return gp;
+    }
     const gps = gp.split(he_pointed_letter_re);
     let word = new HeWord();
     for (let j = 1; j < gps.length; j += he_pointed_letter_re_groups + 1) {
@@ -127,7 +138,7 @@ const code_he_explanations = {
   "v": "Mute {שְׁוָא}",
   "V": "Pronounced {שְׁוָא}"
 };
-const code_special_chars = { sep: "|", capitalize: "*", literalStart: "[", literalEnd: "]", special: "." };
+const code_special_chars = { sep: "|", marker: "^", capitalize: "*", literalStart: "[", literalEnd: "]", special: "." };
 // RegExp of the encoding
 const code_en_re = /[A-Za-z0-9\|\[\]\.]/g;
 
@@ -148,57 +159,73 @@ function encodeWord(word, i = undefined) {
       let letter_to_enc = letters[j].letter;
       let vowel_to_enc = letters[j].vowel;
       let capitalize_to_add = letters[j].capitalize ? "*" : "";
-      let vowel_sep_to_add = letters[j].sep === "_|" ? "|" : "";
-      let final_sep_to_add = letters[j].sep === "|" ? "|" : "";
-      const curr_hasNoVowelOrShva = letters[j].hasNoVowelOrShva();
+      let vowel_sep_to_add = letters[j].sep[0] === "_" ? letters[j].sep[1] : "";
+      let final_sep_to_add = letters[j].sep[0] === "_" ? "" : letters[j].sep;
       // NOTE: The previous letter "has a vowel" if it was a M.L.
-      const last_hasNoVowelOrShva = j == 0 || letters[j-1].hasNoVowelOrShva() || last_was_ml;
+      const last_hasNonShvaVowel = j > 0 && (!letters[j-1].hasNoVowelOrShva() || last_was_ml);
+      // The next letter is a Matres lectionis (M.L.) Vav if it is a
+      // Vav with no vowel (or with a shva) and with no dagesh, or
+      // with a holam and without a dagesh
+      const next_ml_vav = j < letters.length - 1 &&
+        letters[j+1].letter === he_letters.vav &&
+        (letters[j+1].hasNoVowelOrShva() && letters[j+1].dagesh ||
+         letters[j+1].vowel === he_vowels.holam && !letters[j+1].dagesh);
       // Vav with no vowel (or with a shva), with a dagesh, and with no
       // preceeding non-shva vowel is a M.L. for kubutz (i.e. the dagesh is
-      // really a shuruk) unless the next character is also a Vav no vowel
-      // (or with a shva) and with a dagesh
+      // really a shuruk) unless the next letter is a M.L. Vav
       if (letter_to_enc === he_letters.vav &&
-          curr_hasNoVowelOrShva &&
+          letters[j].hasNoVowelOrShva() &&
           letters[j].dagesh &&
-          last_hasNoVowelOrShva &&
-          !(j < letters.length - 1 &&
-            letters[j+1].letter === he_letters.vav &&
-            letters[j+1].hasNoVowelOrShva() &&
-            letters[j+1].dagesh)) {
+          !last_hasNonShvaVowel &&
+          !next_ml_vav) {
         result += capitalize_to_add +
                   code_en[code_he.indexOf("◌" + he_vowels.kubutz)] + vowel_sep_to_add +
                   code_en[code_he.indexOf("◌̥" + he_letters.vav)] + final_sep_to_add;
         last_was_ml = true;
         continue;
       }
-      // Alef or Vav with a holam, with no dagesh, and with no preceeding non-shva
+      // Vav with a holam, with no dagesh, and with no preceeding non-shva
       // vowel is a M.L. for a holam on the previous letter
-      if ([he_letters.alepf, he_letters.vav].includes(letter_to_enc) &&
+      if (letter_to_enc === he_letters.vav &&
           vowel_to_enc === he_vowels.holam &&
           !letters[j].dagesh &&
-          last_hasNoVowelOrShva) {
+          !last_hasNonShvaVowel) {
         result += capitalize_to_add +
                   code_en[code_he.indexOf("◌" + he_vowels.holam)] + vowel_sep_to_add +
                   code_en[code_he.indexOf("◌̥" + he_letters.vav)] + final_sep_to_add;
         last_was_ml = true;
         continue;
       }
+      // Alef with a holam, with no dagesh, and with a preceeding with no
+      // vowel is a M.L. for a holam on the previous letter
+      if (letter_to_enc === he_letters.alepf &&
+          vowel_to_enc === he_vowels.holam &&
+          !letters[j].dagesh &&
+          j > 0 && letters[j-1].vowel === "") {
+        result += capitalize_to_add +
+                  code_en[code_he.indexOf("◌" + he_vowels.holam)] + vowel_sep_to_add +
+                  code_en[code_he.indexOf("◌̥" + he_letters.alepf)] + final_sep_to_add;
+        last_was_ml = true;
+        continue;
+      }
       // Any Alef, Hei, Vav, or Yod with no vowel, without a dagesh unless
       // it is a Yod, and with a preceeding non-shva vowel is a M.L. if
-      // the letter / preceeding vowel pair are in `ml_pairs`
+      // the letter / preceeding vowel pair are in `ml_pairs` and unless
+      // the next letter is an M.L. Vav
       const non_vav_ml_vowels = [he_vowels.kamatz, he_vowels.patach,
-                                 he_vowels.tsere, he_vowels.segol,
-                                 he_vowels.hiriq, he_vowels.holam,
-                                 he_vowels.kubutz];
+                                he_vowels.tsere, he_vowels.segol,
+                                he_vowels.hiriq, he_vowels.holam,
+                                he_vowels.kubutz];
       const ml_pairs = { [he_letters.alepf]: non_vav_ml_vowels,
-                         [he_letters.he]: non_vav_ml_vowels,
-                         [he_letters.vav]: [he_vowels.hiriq, he_vowels.holam],
-                         [he_letters.yod]: non_vav_ml_vowels }
+                        [he_letters.he]: non_vav_ml_vowels,
+                        [he_letters.vav]: [he_vowels.hiriq, he_vowels.holam],
+                        [he_letters.yod]: non_vav_ml_vowels }
       if (letter_to_enc in ml_pairs &&
           letters[j].vowel === "" &&
           (!letters[j].dagesh || letter_to_enc === he_letters.yod) &&
-          !last_hasNoVowelOrShva &&
-          (ml_pairs[letter_to_enc].includes(letters[j-1].vowel) || last_was_ml)) {
+          last_hasNonShvaVowel &&
+          (ml_pairs[letter_to_enc].includes(letters[j-1].vowel)) &&
+          !next_ml_vav) {
         result += vowel_sep_to_add +
                   code_en[code_he.indexOf("◌̥" + letter_to_enc)] + final_sep_to_add;
         last_was_ml = true;
@@ -258,7 +285,9 @@ exports.encodeToArray = encodeToArray;
 function encodeToString(str) {
   return splitHe(str).map(function (gp, i) {
     if (i % 2 == 0) {
-      return gp.replace(new RegExp(`${code_en_re.source}+`, "g"), (x) => `[${x}]`);
+      return gp.replace(new RegExp(`${code_en_re.source}+`, "g"), function (x) {
+        return `${code_special_chars.literalStart}${x}${code_special_chars.literalEnd}`;
+      });
     }
     return encodeWord(gp, (i-1)/2);
   }).join("");
@@ -353,7 +382,7 @@ const default_trlit = new Trlit({
     ["{הִנֵּה/} pronounced as {הִנֵּי/hinei}", "^e6N3G$", ".e6N3J"],
     // ================ Matres lectionis rules ================
     ["hiriq yod vowel", "6J", "i"],
-    ["tsere yod dipthong", "3(\\|)?J", "ei"],
+    ["tsere yod dipthong", "3(\\||\\^)?J", "e$1i"],
     ["trailing M.L. yod", "J$", "i"],
     ["trailing M.L. hei", "G$", "h"],
     ["silent M.L. then vowel", "[gGjJ]([0-9])", "'.$1"],
@@ -362,7 +391,7 @@ const default_trlit = new Trlit({
     ["leading alef or ayin", "^[aAoO]", ""],
     ["trailing alef or ayin", "[aAoO][vV]?$", ""],
     ["trailing shva", "[vV]$", ""],
-    ["mute shva then alef or ayin", "v(\\|)?([aAoO])", ".$1$2"],
+    ["mute shva then alef or ayin", "v(\\||\\^)?([aAoO])", ".$1$2"],
     // ================ Special cases ================
     ["Yisrael", "\\*?i6yvr0a3l", "Yisrael"],
     ["Shabbat", "\\*?[sS][01]B[01]t", "Shabbat"],
@@ -400,8 +429,8 @@ function transliterateEncodedWord(encWord, trlit = default_trlit) {
       }
     }
     // Handle any special characters
-    if (encWord[0] === code_special_chars.sep) {
-      result += code_special_chars.sep;
+    if ([code_special_chars.sep, code_special_chars.marker].includes(encWord[0])) {
+      result += encWord[0];
       encWord = encWord.slice(1);
       continue;
     }

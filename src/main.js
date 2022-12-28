@@ -11,7 +11,7 @@ function inlineTransliterate(str, trlit) {
     }
     else {
       const he = gp.replace(/([|*_]|\[[^\]]*\])/g, "").replace(/([~])/g, " ");
-      const tl = transliterate(gp, trlit).replace("|", "");
+      const tl = transliterate(gp.replace(/[\[\]]/g, ""), trlit).replace("|", "");
       return `<span class="avoidwrap"><span class="inlineHe">${he}</span> (<i>${tl}</i>)</span>`;
     }
   })
@@ -20,24 +20,35 @@ function inlineTransliterate(str, trlit) {
 // Generating HTML
 
 function addSpansHeTl(pr, ix, he) {
-  let j = 0;
+  let [j, j_marker] = [0, 0];
+  let in_marker = false;
   let he_html = `<span id="ix${ix}-${pr}-${j}">`;
-  for (let gp of he.replace(/([*_]|\[[^\]]*\])/g, "").split(/([ |/~-])/g)) {
+  for (let gp of he.replace(/([*_]|\[[^\]]*\])/g, "").split(/([ ^|/~-])/g)) {
     if ([" ", "-", "/"].includes(gp)) {
       j++;
+      if (in_marker) { he_html += `</span>`; in_marker = false; }
       he_html += `</span>` + gp + `<span id="ix${ix}-${pr}-${j}">`;
+    }
+    else if (gp === "^") {
+      if (in_marker) { he_html += `</span>`; in_marker = false; }
+      he_html += `<span id="marker-ix${ix}-${pr}-${j}-${j_marker}">`;
+      j_marker++;
+      in_marker = true;
     }
     else if (gp === "|") {
       j++;
+      if (in_marker) { he_html += `</span>`; in_marker = false; }
       he_html += `</span><span id="ix${ix}-${pr}-${j}">`;
     }
     else if (gp === "~") {
+      if (in_marker) { he_html += `</span>`; in_marker = false; }
       he_html += ` `;
     }
     else {
       he_html += gp;
     }
   }
+  if (in_marker) { he_html += `</span>`; in_marker = false; }
   return [j, he_html + `</span>`];
 }
 
@@ -60,7 +71,7 @@ function addSpansEn(ix, en) {
 
 function getHeTlEnRowTds(pr, trlit, ix, colors) {
   const [_v, he, en, notes] = pr["text"][ix];
-  const tl = transliterate(he, trlit);
+  const tl = transliterate(he.replace(/[\[\]]/g, ""), trlit);
   const [he_max_j, he_html] = addSpansHeTl("he", ix, he);
   const [_tl_max_j, tl_html] = addSpansHeTl("tl", ix, tl);
   const [en_js, en_html] = addSpansEn(ix, en);
@@ -198,6 +209,13 @@ for (const pr in allTranslations) {
   header += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
   header += `<script>var pr = ${JSON.stringify(allTranslations[pr])};</script>\n`;
   let content = `<script type="text/javascript" src="index.js"></script>\n`;
+  if ("extra-js" in allTranslations[pr]) {
+    content += `<script>\n`;
+    content += `  $(document).ready(function () {\n`;
+    content += allTranslations[pr]["extra-js"].map((str) => `    ${str}\n`).join("");
+    content += `  });\n`
+    content += `</script>\n`;
+  }
   content += `</head>\n<body>\n`;
   // Title
   content += `<div class="titleAndCredits">\n`;
