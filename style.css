@@ -83,6 +83,10 @@ html {
   color: var(--fg-color);
 }
 
+p {
+  font-size: 100%;
+}
+
 h1, h2, h3, h4 {
   margin-bottom: 5px;
   text-align: center;
@@ -415,10 +419,10 @@ td {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 .invisible {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 .avoidwrap {
