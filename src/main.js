@@ -123,7 +123,7 @@ index += `<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.pn
 index += `<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">\n`;
 index += `<link rel="manifest" href="site.webmanifest">\n`;
 index += `<link rel="mask-icon" href="safari-pinned-tab.svg" color="#000000">\n`;
-index += `<meta name="msapplication-TileColor" content="#da532c">\n`;
+index += `<meta name="msapplication-TileColor" content="#ffffff">\n`;
 index += `<meta name="theme-color" content="#ffffff"></meta>\n`;
 index += `<link rel="stylesheet" href="style.css" />\n`;
 index += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
