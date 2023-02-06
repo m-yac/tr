@@ -110,6 +110,15 @@ translations = [["תפלות", "Prayers", require("./prayers.json")],
                 ["לימים נוראים", "For the High Holidays", require("./for_the_high_holidays.json")]];
 allTranslations = _.merge({}, ...translations.map((tr) => tr[2]));
 
+// Favicon header
+let faviconHeader = `<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">\n`;
+faviconHeader += `<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">\n`;
+faviconHeader += `<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">\n`;
+faviconHeader += `<link rel="manifest" href="site.webmanifest">\n`;
+faviconHeader += `<link rel="mask-icon" href="safari-pinned-tab.svg" color="#000000">\n`;
+faviconHeader += `<meta name="msapplication-TileColor" content="#ffffff">\n`;
+faviconHeader += `<meta name="theme-color" content="#ffffff"></meta>\n`;
+
 // Make index.html
 const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה",
   "<span class=\"avoidWrap\">[May](4) [their](1) [memory](0)</span> " +
@@ -117,14 +126,7 @@ const index_pr = { "text": [ ["", "זִכְרוֹנָ_|ם לִ|בְרָכָה",
 const [index_row, index_colors] = addHeTlEnRow(index_pr, default_trlit, 0, {}, false);
 let index = `<!DOCTYPE html><html>\n`;
 index += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
-index += `<title>Interactive Translations</title>\n`;
-index += `<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">\n`;
-index += `<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">\n`;
-index += `<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">\n`;
-index += `<link rel="manifest" href="site.webmanifest">\n`;
-index += `<link rel="mask-icon" href="safari-pinned-tab.svg" color="#000000">\n`;
-index += `<meta name="msapplication-TileColor" content="#ffffff">\n`;
-index += `<meta name="theme-color" content="#ffffff"></meta>\n`;
+index += faviconHeader;
 index += `<link rel="stylesheet" href="style.css" />\n`;
 index += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
 index += `<script>var pr = ${JSON.stringify(index_pr)};</script>\n`;
@@ -205,6 +207,7 @@ for (const pr in allTranslations) {
   let header = `<!DOCTYPE html><html>\n`;
   header += `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">\n`;
   header += `<title>${allTranslations[pr]["title"][1]} | Interactive Translation</title>\n`;
+  header += faviconHeader;
   header += `<link rel="stylesheet" href="style.css" />\n`;
   header += `<script type="text/javascript" src="jquery.min.js"></script>\n`;
   header += `<script>var pr = ${JSON.stringify(allTranslations[pr])};</script>\n`;
