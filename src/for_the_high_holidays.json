@@ -130,5 +130,20 @@
       "You may change it if you want, the option is there."
     ]],
     "translation-credit": "Translation by Matthew Yacavone"
+  },
+  "Achat Shaalti": {
+    "title": ["אחת שאלתי", "Achat Sha'al'ti"],
+    "text-credit": "Psalm 27:4",
+    "choices": {},
+    "text": [
+      ["", "*אַחַת שָׁאַלְתִּי מֵ|אֵת יְיָ", "[One](0) [thing](5) [I ask](1) [from](2) [*Adonai*](4)", {}],
+      ["", "אֹותָהּ אֲבַקֵּשׁ", "[this](0) [thing](2) [I seek](1) –", {}],
+      ["", "", "", {}],
+      ["", "שִׁבְתִּ_|י בְּ|בֵית יְיָ", "[to dwell](0) [in](2) [the house of](3) [*Adonai*](4)", {}],
+      ["", "כׇּל יְמֵי חַיַּ_|י", "[all](0) [the days of](1) [my](3) [life](2)", {}],
+      ["", "", "", {}],
+      ["", "לַ|חֲזֹות בְּ|נֹעַם יְיָ", "[to](0) [behold](1) [the sweetness of](3) [*Adonai*](4)", {}],
+      ["", "וּ|לְ|בַקֵּר בְּ|הֵיכָלֹ_|ו", "[and](0) [to](1) [gaze on](2) [His](5) [temple](4)", {}]
+    ]
   }
 }
